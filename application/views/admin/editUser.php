@@ -1,10 +1,5 @@
 <?php  include('admin_header.php'); ?>
-<div class="container">
-<!-- Title -->
-    <div class="hk-pg-header">
-        <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="toggle-right"></i></span></span>Form Element</h4>
-    </div>
-<!-- /Title -->
+
 <!-- Row -->
             <div class="row">
                     <div class="col-xl-12">
@@ -50,6 +45,6 @@
                         </section>
 </div>
 </div>
-</div>
+
 
 <?php  include('admin_footer.php'); ?>

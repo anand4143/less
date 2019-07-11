@@ -1,9 +1,5 @@
 <?php  include('admin_header.php'); ?>
 
-<!-- Main Content -->
-<div class="hk-pg-wrapper">
-			<!-- Container -->
-    <div class="container mt-xl-50 mt-sm-30 mt-15">
  <!-- Row -->
  <div class="row">
         <div class="col-xl-12">
@@ -58,10 +54,5 @@
                 </div>
                 <!-- /Row -->
 
-				</div>
-        <!-- /Main Content -->
-
-</div>
-    <!-- /HK Wrapper -->
 
 <?php  include('admin_footer.php'); ?>
