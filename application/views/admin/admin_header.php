@@ -36,7 +36,7 @@
             <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><span class="feather-icon"><i data-feather="menu"></i></span></a>
             <a class="navbar-brand" href="javascript:void(0);">
                 <!-- <img class="brand-img d-inline-block" src="<?php echo base_url();?>assets/dist/img/logo-dark.png" alt="brand" /> -->
-                Online Exam
+                Less Superstar Admin Panel
             </a>
             <ul class="navbar-nav hk-navbar-content">
                 <!-- <li class="nav-item">
@@ -148,7 +148,7 @@
                                 <span class="badge badge-success badge-indicator"></span>
                             </div>
                             <div class="media-body">
-                                <span>Hello Admin<i class="zmdi zmdi-chevron-down"></i></span>
+                                <span>Hello <?php echo $session['firstName'];?><i class="zmdi zmdi-chevron-down"></i></span>
                             </div>
                         </div>
                     </a>
@@ -192,7 +192,7 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard1.html">Users</a>
+                                            <a class="nav-link" href="<?php echo base_url()?>/Admin/usersList">Users</a>
                                         </li>
                                         <li class="nav-item active">
                                             <a class="nav-link" href="dashboard2.html">Courses</a>
@@ -253,9 +253,6 @@
         <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
         <!--/Horizontal Nav-->
 
-<!-- Main Content -->
-  <div class="hk-pg-wrapper">
-			<!-- Container -->
-    <div class="container mt-xl-50 mt-sm-30 mt-15">
+
      
            

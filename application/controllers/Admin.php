@@ -44,15 +44,25 @@ class Admin extends MY_Controller {
     }
 
     public function dashboard(){
-        $currentUser = $this->getSessionData();
-        $logInUserFirstName = $currentUser['firstName'];
-        $logInUserLastName = $currentUser['lastName'];
-        $this->load->view('admin/dashboard',$logInUserFirstName);
+        $currentUser = $this->getSessionData();       
+        $data['session'] = $currentUser;
+        $usersList = $this->users->getUserList();
+        $data['userList'] = $usersList;
+        $this->load->view('admin/dashboard',$data);
+        
     }
 
     public function logout(){
         $this->session->unset_userdata('userSession');
         $this->session->sess_destroy();
         redirect('admin/index');
+    }
+
+    public function editUser(){ 
+        $data[] = array();
+        $currentUser = $this->getSessionData();       
+        $data['session'] = $currentUser;    
+        // print_r($this->data);
+        $this->load->view('admin/editUser',$data);
     }
 }

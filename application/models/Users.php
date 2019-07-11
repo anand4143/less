@@ -19,6 +19,14 @@ class Users extends CI_Model{
             return false;
         }
     }
+
+    public function getUserList(){
+        $this->db->select('*')->from('users')->where('userType',3);
+        $query = $this->db->get();
+        if( $query->num_rows() ){
+            return $query->result();
+        }       
+    }
 }
 
 
