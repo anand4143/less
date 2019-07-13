@@ -49,7 +49,7 @@
                     <div class="col-xl-7 pa-0">
                         <div class="auth-form-wrap py-xl-0 py-50">
                             <div class="auth-form w-xxl-55 w-xl-75 w-sm-90 w-xs-100">
-                            <?php echo form_open('admin/login'); ?>
+                            <?php echo form_open('admin/login/login'); ?>
                                     <h1 class="display-4 mb-10">Welcome Back :)</h1>
                                     <p class="mb-30">Sign in to your account and enjoy.</p>
                                    

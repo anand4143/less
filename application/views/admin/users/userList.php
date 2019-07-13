@@ -1,4 +1,4 @@
-<?php  include('admin_header.php'); ?>
+<?php $this->view('templates/admin/header.php'); ?>
 
  <!-- Row -->
  <div class="row">
@@ -6,11 +6,13 @@
 					<div class="d-flex align-items-center justify-content-between mt-40 mb-20">
 						<h4>Users List</h4>
 						<!-- <button class="btn btn-sm btn-link">view all</button> -->
+						<span id="notification"><?php echo $this->session->flashdata('updateMessage'); ?></span>
 					</div>
 						<div class="card">
 							<div class="card-body pa-0">
 								<div class="table-wrap">
 									<div class="table-responsive">
+									
 										<table class="table table-sm table-hover mb-0">
 											<thead>
 												<tr>
@@ -34,12 +36,15 @@
 													<td><?php echo $user->lastName;?></td>
 													<td><?php echo $user->email;?></td>
 													<td><?php echo $user->createdData;?></td>
-												  <td><?php if($user->isActive){?>Active<?php }else{?>inActive<?php }?></td>
-													<td>
-													<a href="<?php echo site_url()?>/Admin/editUser">
-													<span class="badge badge-success" style="margin-right:10px;" >Edit</span>
-													</a>
-													<span class="badge badge-red">Delete</span>
+												  <td>
+                                                  <?php if($user->isActive){?>
+                                                    <span class="badge badge-success">Active</span>
+                                                  <?php }else{?>
+                                                    <span class="badge badge-danger">inactive</span>
+                                                  <?php } ?>
+                                                    <td>
+														<a href="<?php echo base_url('admin/user/edit/'.$user->id);?>" title="Edit Contest"><span class="fa fa-edit"></span></a>
+														<a href="<?php echo base_url('admin/user/delete/'.$user->id);?>" title="Remove Contest"><span class="fa fa-remove"></span></a>
 													</td>
 												</tr>
 											<?php } ?>
@@ -55,4 +60,4 @@
                 <!-- /Row -->
 
 
-<?php  include('admin_footer.php'); ?>
+<?php  $this->view('templates/admin/footer.php'); ?>

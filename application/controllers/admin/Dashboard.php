@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends MY_Controller {
+class Dashboard extends MY_Controller {
 
     public function __construct(){
         parent::__construct();
@@ -13,12 +13,9 @@ class Admin extends MY_Controller {
         $this->load->library('session');
     }
 
-	public function index()
-	{
-		$this->load->view('admin/admin_login');
-    }
+	
 
-    public function login(){
+    public function index(){
        $username = $this->input->post('username');
        $password = md5($this->input->post('password'));
        
@@ -34,7 +31,7 @@ class Admin extends MY_Controller {
         );        
         $this->setSessionData($userData);
       
-        redirect('admin/dashboard');
+        redirect('admin/Dashboard/landing');
         //redirect(site_url() . 'admin/dashboard');
        }else{
             $this->session->set_flashdata('error',"Invalid username or password!");
@@ -43,20 +40,17 @@ class Admin extends MY_Controller {
       
     }
 
-    public function dashboard(){
+    public function landing(){
         $currentUser = $this->getSessionData();       
         $data['session'] = $currentUser;
         $usersList = $this->users->getUserList();
         $data['userList'] = $usersList;
-        $this->load->view('admin/dashboard',$data);
+        //echo "<pre>";print_r($data['userList']);
+        $this->load->view('admin/users/userList',$data);
         
     }
 
-    public function logout(){
-        $this->session->unset_userdata('userSession');
-        $this->session->sess_destroy();
-        redirect('admin/index');
-    }
+    
 
     public function editUser(){ 
         $data[] = array();

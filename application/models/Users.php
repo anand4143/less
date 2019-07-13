@@ -27,6 +27,19 @@ class Users extends CI_Model{
             return $query->result();
         }       
     }
+
+    public function getUser($id){
+        $rs = $this->db->get_where('users', array('isActive'=> '0', 'id' => $id), 1);
+		if($rs->num_rows() == 0){
+				return false;
+		}
+		return $rs->row();
+    }
+
+    public function updateUser($id,$userData){
+        $this->db->where('id', $id);
+		return $this->db->update('users', $userData);
+    }
 }
 
 
