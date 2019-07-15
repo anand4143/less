@@ -237,6 +237,26 @@
                                 </li>
                             </ul>
                         </li>
+						
+						 <li class="nav-item">
+                            <a class="nav-link" href="<?php echo site_url('Admin/contests') ?>" data-toggle="collapse" data-target="#pages_drp">
+                                <span class="feather-icon"><i data-feather="file-text"></i></span>
+                                <span class="nav-link-text">Manage Contests Level</span>
+                            </a>
+                            
+							<ul id="pages_drp" class="nav flex-column collapse collapse-level-1">
+                                <li class="nav-item">
+                                    <ul class="nav flex-column">                                        
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo site_url('Admin/levels') ?>">Contests Level List</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo site_url('Admin/levels/add') ?>">Create Contest Level</a>
+                                        </li>                                       
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
 
                         
                         <!-- <li class="nav-item">

@@ -94,6 +94,11 @@ $(document).ready(function() {
 				required: "Select End Date",
 				date: "Valid Date Required"
 			}
+		},
+		errorPlacement: function(error, element) {
+		// Done in highlight/unhighlight
+		 error.insertAfter(element);
+		 error.addClass('text-danger');
 		}
 	});
 });		
