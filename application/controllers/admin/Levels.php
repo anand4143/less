@@ -80,10 +80,12 @@ class Levels extends MY_Controller {
 				$status = $this->input->post('status');
 				$udata = array(
 					'contestID' => $contest_id,
-					'LevelName' => $level_name,
+					'levelName' => $level_name,
 					'description' => $description,
+					'eby' => '',
 					'status' => $status
 				);
+				
 				$res = $this->level_m->update_data($id, $udata);
 				$msg = $res ? 'Level Updated Successfully' : 'Level Fail to Update';
 				$this->session->set_flashdata('resp_msg', $msg);

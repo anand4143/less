@@ -39,7 +39,9 @@
 													</td>
 												</tr>
 												<?php endforeach;
-												endif;?>
+												else:?>
+												  <tr><td  align="center" colspan="5">No record found!</td></tr>
+												<?php endif;?>
 												
 											</tbody>
 										</table>

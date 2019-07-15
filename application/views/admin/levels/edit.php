@@ -51,7 +51,7 @@
 				 <div class="form-group row">
 					<label class="col-md-3 col-form-label" for="text-input">Status</label>
 					<div class="col-md-9">
-					   <select id="contestID" name="contestID" class="form-control">
+					   <select id="status" name="status" class="form-control">
 						  <option value="">Select Status</option>
 								<option value="1" <?php echo $c_data->status == 1 ? 'selected="selected"' : '';?>>Active</option>
 								<option value="0" <?php echo $c_data->status == 0 ? 'selected="selected"' : '';?>>In Active</option>

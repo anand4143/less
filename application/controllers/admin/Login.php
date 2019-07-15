@@ -23,7 +23,7 @@ class Login extends MY_Controller {
        $password = md5($this->input->post('password'));
        
        $isValid = $this->users->isValidate($username,$password);
-       //print_r($isValid);
+       
        if($isValid){
            $userData = array(
             'email'     => $isValid['email'],
@@ -34,11 +34,11 @@ class Login extends MY_Controller {
         );        
         $this->setSessionData($userData);
       
-        redirect('admin/Dashboard/landing');
+        redirect('admin/dashboard/landing');
         //redirect(site_url() . 'admin/dashboard');
        }else{
             $this->session->set_flashdata('error',"Invalid username or password!");
-            //redirect(base_url() . 'admin/index');
+            redirect('admin/login');
        }
       
     }
