@@ -40,6 +40,19 @@ class Users extends CI_Model{
         $this->db->where('id', $id);
 		return $this->db->update('users', $userData);
     }
+
+    public function getJudgeList(){
+       $result =  $this->db->get_where('users', array('isActive'=>'1', 'userType' => '2'));
+        if($result->num_rows()){
+            return $result->result();
+        }else{
+            return false;
+        }
+    }
+    public function saveJudge($data){
+        $this->db->insert('users',$data);
+        return $this->db->insert_id();
+    }
 }
 
 

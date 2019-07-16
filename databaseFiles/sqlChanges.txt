@@ -1,0 +1,4 @@
+1) Date : 16/07/2019 Anand Shukla
+   Table Name : users
+ Query : ALTER TABLE `users` ADD `aboutUser` TEXT NOT NULL AFTER `isActive`;
+=================================================================================

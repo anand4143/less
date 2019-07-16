@@ -21,6 +21,7 @@
     <!-- Custom CSS -->
     <!-- <link href="dist/css/style.css" rel="stylesheet" type="text/css"> -->
     <?= link_tag('assets/dist/css/style.css'); ?>
+    <?= link_tag('assets/dist/css/main.css'); ?>
 </head>
 <!-- Preloader -->
 <div class="preloader-it">
@@ -192,13 +193,13 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="dashboard1.html">Users</a>
+                                            <a class="nav-link" href="<?php echo site_url('admin/user'); ?>">Users</a>
                                         </li>
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="dashboard2.html">Courses</a>
+                                            <a class="nav-link" href="<?php echo site_url('admin/judge'); ?>">Judge</a>
                                         </li>										
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="dashboard2.html">Manage Contests</a>
+                                            <a class="nav-link" href="<?php echo site_url('admin/contests'); ?>">Contests</a>
                                         </li>										
                                     </ul>
                                 </li>
@@ -215,6 +216,10 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="<?php echo site_url('admin/user'); ?>">User List</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo site_url('admin/judge/'); ?>">Judge List</a>
+                                        </li>
+                                        
                                     </ul>
                                 </li>
                             </ul>
