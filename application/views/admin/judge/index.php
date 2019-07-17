@@ -2,6 +2,8 @@
 
 <div class="row">
     <div class="col-xl-12">
+		<?php echo $this->session->flashdata('Judgemessage')?>
+		<?php echo $this->session->flashdata('updateMessage')?>
 		<div class="d-flex align-items-center justify-content-between mt-40 mb-20">
 			<h4>Judeg List</h4>
 				<!-- <span id="notification"><?php //echo $this->session->flashdata('noJudge'); ?></span> -->
@@ -47,7 +49,8 @@
                                         <?php } ?>
                                     <td>
 										<a href="<?php echo base_url('admin/judge/edit/'.$user->id);?>" title="Edit Judge"><span class="fa fa-edit"></span></a>
-										<a href="<?php echo base_url('admin/judge/delete/'.$user->id);?>" title="Remove Judge"><span class="fa fa-remove"></span></a>
+										<!-- <a href="<?php echo base_url('admin/judge/delete/'.$user->id);?>" id="judge-<?php echo $user->id;?>" title="Remove Judge" click="deleteJudge(<?php echo $user->id; ?>)"><span class="fa fa-remove"></span></a> -->
+										<a href="javascript:void(0);" id="judge" title="Remove Judge"><span class="fa fa-remove" data-toggle="modal" data-target="#exampleModal"></span></a>
 									</td>
 								</tr>
 								<?php endforeach;
@@ -66,4 +69,44 @@
 </div>
 <!-- /Row -->
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    	<div class="modal-content">
+        	<div class="modal-header">
+            	<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                	<span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Woohoo, you're reading this text in a modal!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="deleteJudge(<?php ?>)">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end Modal -->
+
+
 <?php $this->load->view('templates/admin/footer.php');?>
+
+<script>
+function deleteJudge(judgeId){
+	alert(judgeId);
+	$.ajax({
+		type: "GET",
+		url: "<?php echo base_url()?>admin/judge/delete",
+		data: "id="+judgeId,
+		cache : false,
+		success : function(res){
+			alert("responce "+res);
+		}
+	});
+}
+
+</script>

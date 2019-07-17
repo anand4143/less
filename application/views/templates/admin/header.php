@@ -21,7 +21,7 @@
     <!-- Custom CSS -->
     <!-- <link href="dist/css/style.css" rel="stylesheet" type="text/css"> -->
     <?= link_tag('assets/dist/css/style.css'); ?>
-    <?= link_tag('assets/dist/css/main.css'); ?>
+    <?= link_tag('assets/css/main.css'); ?>
 </head>
 <!-- Preloader -->
 <div class="preloader-it">

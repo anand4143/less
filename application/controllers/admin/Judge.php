@@ -61,6 +61,60 @@ class Judge extends MY_Controller{
             $this->load->view('admin/judge');
         }
     }
+
+    public function edit($id){
+        $data = array();
+        $data['user'] = $this->users->getUser($id);
+        //echo "<pre>";print_r($data);
+        $this->load->view('admin/judge/edit',$data);
+    }
+
+    public function update($id){
+        //echo "<pre>";print_r($this->input->post());
+        if($this->input->post()){
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('userName', 'User Name', 'trim|required');
+            $this->form_validation->set_rules('email', 'User Email', 'trim|required');
+            $this->form_validation->set_rules('firstName', 'first Name', 'trim|required');
+            $this->form_validation->set_rules('lastName', 'Last Name', 'trim|required');
+
+            if($this->form_validation->run() == FALSE){
+                $data['user'] = $this->users->getUser($id);
+                $this->load->view('admin/judge/edit',$data);
+            }else{
+                $userName   = $this->input->post('userName');
+                $email      = $this->input->post('email');
+                $firstName  = $this->input->post('firstName');
+                $lastName   = $this->input->post('lastName');
+                $userData   = array(
+                    'userName'  => $userName,
+                    'email'     => $email,
+                    'firstName' => $firstName,
+                    'lastName'  => $lastName
+                );
+                $result     = $this->users->updateUser($id,$userData);
+                $message    = $result ? 'User updated successfully' : 'Fail update!';
+                $this->session->set_flashdata('updateMessage',$message);
+                if($result){
+                    redirect('admin/judge');
+                }else{
+                    $this->index();
+                }
+            }
+        }else{
+            $this->index();
+        }
+    }
+    
+
+    public function delete(){
+        $id     = $this->input->get('id');
+		$res    = $this->users->deleteUserById($id);
+		$msg    = $res ? 'Contest Removed Successfully' : 'Contest Fail to Remove';
+		echo $msg;
+		
+		
+	}
 }
 
 
