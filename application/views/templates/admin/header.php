@@ -199,7 +199,7 @@
                                             <a class="nav-link" href="<?php echo site_url('admin/judge'); ?>">Judge</a>
                                         </li>										
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="<?php echo site_url('admin/contests'); ?>">Contests</a>
+                                            <a class="nav-link" href="<?php echo base_url('admin/contests'); ?>">Contests</a>
                                         </li>										
                                     </ul>
                                 </li>
@@ -233,10 +233,10 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">                                        
                                         <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo site_url('Admin/contests') ?>">Contests List</a>
+                                            <a class="nav-link" href="<?php echo site_url('admin/contests') ?>">Contests List</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo site_url('Admin/contests/add') ?>">Create Contest</a>
+                                            <a class="nav-link" href="<?php echo site_url('admin/contests/add') ?>">Create Contest</a>
                                         </li>                                       
                                     </ul>
                                 </li>

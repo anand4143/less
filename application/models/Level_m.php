@@ -22,7 +22,7 @@ class Level_m extends CI_Model {
 	}
 	
 	public function get_data($id){
-		$this->db->select("t1.contestName, t2.id, t2.contestID, t2.levelName, t2.description,  t1.status");
+		$this->db->select("t1.contestName, t2.id, t2.contestID, t2.levelName, t2.description,  t1.status, t1.isEnabled");
 		$this->db->from('master_contests t1');
 		$this->db->join('contest_levels t2', 't1.id = t2.contestID');
 		$this->db->where('t1.isDeleted', '0');

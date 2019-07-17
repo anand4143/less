@@ -167,7 +167,7 @@
                             </div>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?php echo site_url('Admin/') ?>">
+                        <a class="dropdown-item" href="<?php echo site_url('admin/') ?>">
                         <i class="dropdown-icon zmdi zmdi-power"></i>
                             <span>Log out</span>
                         </a>

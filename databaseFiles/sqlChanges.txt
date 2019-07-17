@@ -2,3 +2,5 @@
    Table Name : users
  Query : ALTER TABLE `users` ADD `aboutUser` TEXT NOT NULL AFTER `isActive`;
 =================================================================================
+Date : 17/07/2019 - Deepesh
+ ALTER TABLE `contest_levels` ADD COLUMN `isEnabled` TINYINT(1) NULL AFTER `description`; 

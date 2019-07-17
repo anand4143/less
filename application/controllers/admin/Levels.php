@@ -21,6 +21,20 @@ class Levels extends MY_Controller {
 		$this->load->view('admin/levels/list', $data);
     }
 	
+	public function get_listing_data(){
+		$data = array();
+		$rs = $this->level_m->get_results(); 
+		if($rs){
+			$data['resp_status'] = 'success';
+			$data['list'] = $rs;
+			$data['num_rows'] = count($rs);
+		} else {
+			$data['resp_status'] = 'error';
+			$data['list'] = array();
+		}
+		echo json_encode($data);
+	}
+	
 	public function add(){
 		$data['contests'] = $this->contest_m->get_results();
 		$this->load->view('admin/levels/add', $data);
