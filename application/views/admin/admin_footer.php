@@ -45,7 +45,7 @@
 
     <!-- Toggles JavaScript -->
     <script src="<?php echo base_url();?>assets/vendors/jquery-toggles/toggles.min.js"></script>
-    <script src="dist/js/toggle-data.js"></script>
+    <script src="<?php echo base_url();?>assets/dist/js/toggle-data.js"></script>
 	
 	<!-- Toastr JS -->
     <script src="<?php echo base_url();?>assets/vendors/jquery-toast-plugin/dist/jquery.toast.min.js"></script>

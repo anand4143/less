@@ -29,7 +29,7 @@ class Users extends CI_Model{
     }
 
     public function getUser($id){
-        $rs = $this->db->get_where('users', array('isActive'=> '0', 'id' => $id), 1);
+        $rs = $this->db->get_where('users', array('isActive'=> '1', 'id' => $id), 1);
 		if($rs->num_rows() == 0){
 				return false;
 		}
@@ -39,6 +39,24 @@ class Users extends CI_Model{
     public function updateUser($id,$userData){
         $this->db->where('id', $id);
 		return $this->db->update('users', $userData);
+    }
+
+    public function getJudgeList(){
+       $result =  $this->db->get_where('users', array('isActive'=>'1', 'userType' => '2'));
+        if($result->num_rows()){
+            return $result->result();
+        }else{
+            return false;
+        }
+    }
+    public function saveJudge($data){
+        $this->db->insert('users',$data);
+        return $this->db->insert_id();
+    }
+
+    public function deleteUserById($id){
+        $this->db->where('id',$id);
+        return $this->db->update('users', array('isActive'=>'0'));
     }
 }
 
