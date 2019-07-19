@@ -47,7 +47,7 @@ class Login extends MY_Controller {
 		$this->session->unset_userdata('logged_in');
 		$this->session->unset_userdata('userSession');
         $this->session->sess_destroy();
-        redirect('admin/login/index');
+        redirect('admin/login');
     }
 
     

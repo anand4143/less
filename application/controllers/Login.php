@@ -15,10 +15,10 @@ class Login extends MY_Controller {
 
 	public function index()
 	{
-		$this->load->view('admin/login/admin_login');
+		$this->load->view('frontend/login/login');
     }
 
-    public function login(){
+    public function login() {
        $username = $this->input->post('username');
        $password = md5($this->input->post('password'));
        
@@ -33,12 +33,19 @@ class Login extends MY_Controller {
             'logged_in' => TRUE
         );        
         $this->setSessionData($userData);
-      
-        redirect('admin/dashboard/landing');
-        //redirect(site_url() . 'admin/dashboard');
-       }else{
+        switch($isValid['userType']){
+			case '1':
+			  redirect('admin/dashboard/landing');
+			  break;
+			case '2';
+				redirect('dashboard/judges');
+			  break;
+			default:
+				redirect('dashboard/participants');
+		}
+       } else {
             $this->session->set_flashdata('error',"Invalid username or password!");
-            redirect('admin/login');
+            redirect('login');
        }
       
     }
@@ -47,7 +54,7 @@ class Login extends MY_Controller {
 		$this->session->unset_userdata('logged_in');
 		$this->session->unset_userdata('userSession');
         $this->session->sess_destroy();
-        redirect('admin/login/index');
+        redirect('login');
     }
 
     

@@ -14,7 +14,7 @@ class Home extends MY_Controller {
 	public function index()
 	{
 		$data = array();
-		$this->load->view('home/main', $data);
+		$this->load->view('home', $data);
     }
 	
 }

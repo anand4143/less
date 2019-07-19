@@ -15,8 +15,19 @@ class Dashboard extends MY_Controller {
 
     public function index() {
 		$data = array();
-        $this->load->view('frontend/dashboard', $data);
+        $this->load->view('frontend/dashboard/', $data);
     }
+	
+	public function participants(){
+		$data = array();
+		$this->load->view('frontend/dashboard/participant', $data);
+	}
+	
+	public function judges(){
+		$data = array();
+		$this->load->view('frontend/dashboard/judge', $data);
+	}
+	
 
     
 }
