@@ -9,6 +9,7 @@ class Login extends MY_Controller {
         $this->load->helper('form');
         // Model
         $this->load->model('users');
+        $this->load->model('judges');
         // Session
         $this->load->library('session');
     }
@@ -19,27 +20,56 @@ class Login extends MY_Controller {
     }
 
     public function login(){
-       $username = $this->input->post('username');
-       $password = md5($this->input->post('password'));
-       
-       $isValid = $this->users->isValidate($username,$password);
-       
-       if($isValid){
-           $userData = array(
-            'email'     => $isValid['email'],
-            'firstName' => $isValid['firstName'],
-            'lastName'  => $isValid['lastName'],
-            'userType'  => $isValid['userType'],
-            'logged_in' => TRUE
-        );        
-        $this->setSessionData($userData);
-      
-        redirect('admin/dashboard/landing');
-        //redirect(site_url() . 'admin/dashboard');
-       }else{
-            $this->session->set_flashdata('error',"Invalid username or password!");
+        //echo "<pre>";print_r($this->input->post());die('here');
+        if($this->input->post('loginType')==2){
+            $username = $this->input->post('username');
+            $password = md5($this->input->post('password'));
+            
+            $isValid = $this->judges->isValidate($username,$password);
+            echo "<pre>";print_r($isValid);
+            if($isValid){
+                $userData = array(
+                    'email'     => $isValid['email'],
+                    'firstName' => $isValid['firstName'],
+                    'lastName'  => $isValid['lastName'],
+                    'userType'  => $isValid['userType'],
+                    'logged_in' => TRUE
+                );        
+                $this->setSessionData($userData);
+            
+                redirect('admin/dashboard/judgelanding');
+                //redirect(site_url() . 'admin/dashboard');
+            }else{
+                    $this->session->set_flashdata('error',"Invalid username or password!");
+                    redirect('admin/login');
+            }
+
+        }else if($this->input->post('loginType')==1){
+            $username = $this->input->post('username');
+            $password = md5($this->input->post('password'));
+            
+            $isValid = $this->users->isValidate($username,$password);
+            
+            if($isValid){
+                $userData = array(
+                    'email'     => $isValid['email'],
+                    'firstName' => $isValid['firstName'],
+                    'lastName'  => $isValid['lastName'],
+                    'userType'  => $isValid['userType'],
+                    'logged_in' => TRUE
+                );        
+                $this->setSessionData($userData);
+            
+                redirect('admin/dashboard/landing');
+                //redirect(site_url() . 'admin/dashboard');
+            }else{
+                    $this->session->set_flashdata('error',"Invalid username or password!");
+                    redirect('admin/login');
+            }
+        }else{
             redirect('admin/login');
-       }
+        }
+       
       
     }
 

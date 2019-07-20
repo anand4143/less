@@ -9,6 +9,7 @@ class Dashboard extends MY_Controller {
         $this->load->helper('form');
         // Model
         $this->load->model('users');
+        $this->load->model('judges');
         // Session
         $this->load->library('session');
     }
@@ -41,12 +42,23 @@ class Dashboard extends MY_Controller {
     }
 
     public function landing(){
-        $currentUser = $this->getSessionData();       
+        $currentUser = $this->getSessionData(); 
+        //echo "<pre>";print_r($currentUser);die('here');      
         $data['session'] = $currentUser;
         $usersList = $this->users->getUserList();
         $data['userList'] = $usersList;
         //echo "<pre>";print_r($data['userList']);
         $this->load->view('admin/users/userList',$data);
+        
+    }
+    public function judgelanding(){
+        $currentUser = $this->getSessionData(); 
+        //echo "<pre>";print_r($currentUser);die('here');      
+        $data['session'] = $currentUser;
+        $usersList = $this->judges->getJudgeList();
+        $data['userList'] = $usersList;
+        //echo "<pre>";print_r($data['userList']);
+        $this->load->view('admin/judge/landing',$data);
         
     }
 

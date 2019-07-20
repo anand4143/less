@@ -50,7 +50,7 @@
                                     <td>
 										<a href="<?php echo base_url('admin/judge/edit/'.$user->id);?>" title="Edit Judge"><span class="fa fa-edit"></span></a>
 										<!-- <a href="<?php echo base_url('admin/judge/delete/'.$user->id);?>" id="judge-<?php echo $user->id;?>" title="Remove Judge" click="deleteJudge(<?php echo $user->id; ?>)"><span class="fa fa-remove"></span></a> -->
-										<a href="javascript:void(0);" id="judge" title="Remove Judge"><span class="fa fa-remove" data-toggle="modal" data-target="#exampleModal"></span></a>
+										<a href="javascript:void(0);" id="judge" title="Remove Judge"><span class="fa fa-remove" data-toggle="modal" data-target="#exampleModal" onClick="openPopup(<?php echo $user->id?>,'<?php echo $user->firstName?>');"></span></a>
 									</td>
 								</tr>
 								<?php endforeach;
@@ -80,11 +80,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Woohoo, you're reading this text in a modal!</p>
+				<p><i class="zmdi zmdi-alert-circle-o"></i>
+					Are you sure you want to delete<input type="hidden" id="uid">
+					<span id="uname"></span>
+			</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="deleteJudge(<?php ?>)">Save changes</button>
+                <button type="button" class="btn btn-primary" onclick="deleteJudge();">Delete</button>
             </div>
         </div>
     </div>
@@ -96,15 +99,23 @@
 <?php $this->load->view('templates/admin/footer.php');?>
 
 <script>
-function deleteJudge(judgeId){
-	alert(judgeId);
+function openPopup(userId,fname){
+	$("#uid").val(userId);
+	$("#uname").html(fname);
+}
+function deleteJudge(){
+	var judgeId = $('#uid').val()
+	//alert("this is user id "+$('#uid').val());
 	$.ajax({
 		type: "GET",
 		url: "<?php echo base_url()?>admin/judge/delete",
 		data: "id="+judgeId,
 		cache : false,
 		success : function(res){
-			alert("responce "+res);
+			//alert("responce modal-open"+res);
+			//$('body').removeClass('modal-open');
+			$('#exampleModal').modal('hide');
+			location.reload();
 		}
 	});
 }
