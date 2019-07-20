@@ -18,6 +18,5 @@ class Participants extends MY_Controller {
 		$data = array();
         $this->load->view('frontend/dashboard', $data);
     }
-
     
 }

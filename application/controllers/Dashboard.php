@@ -28,7 +28,5 @@ class Dashboard extends MY_Controller {
 		$data = array();
 		$this->load->view('frontend/dashboard/judge', $data);
 	}
-	
-
     
 }
