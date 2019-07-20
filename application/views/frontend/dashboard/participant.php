@@ -9,7 +9,36 @@
 					</div>
 						<div class="card">
 							<div class="card-body pa-0">
-								Paticipant Dashboard
+							<div class="row">
+								<div class="col-sm-6 col-xs-6">
+									<a href="#">
+										<div class="panel panel-default text-center" style="margin:10px;border-radius:5px;box-shadow:0px 0px 12px 4px rgba(219,219,219,1);border:1px solid #ccc;">
+										  <div class="panel-body" style="padding:50px;">Previous Contests</div>
+										</div>
+								   </a>
+								</div>
+								<div class="col-sm-6 col-xs-6">
+									<a href="#">
+										<div class="panel panel-default text-center" style="margin:10px;border-radius:5px;box-shadow:0px 0px 12px 4px rgba(219,219,219,1);border:1px solid #ccc;">
+										  <div class="panel-body" style="padding:50px;">Your Contests</div>
+										</div>
+								   </a>
+								</div>
+								<div class="col-sm-6 col-xs-6">
+									<a href="#">
+										<div class="panel panel-default text-center" style="margin:10px;border-radius:5px;box-shadow:0px 0px 12px 4px rgba(219,219,219,1);border:1px solid #ccc;">
+										  <div class="panel-body" style="padding:50px;">All Contests</div>
+										</div>
+								   </a>
+								</div>
+								<div class="col-sm-6 col-xs-6">
+									<a href="#">
+										<div class="panel panel-default text-center" style="margin:10px;border-radius:5px;box-shadow:0px 0px 12px 4px rgba(219,219,219,1);border:1px solid #ccc;">
+										  <div class="panel-body" style="padding:50px;">Profile</div>
+										</div>
+								   </a>
+								</div>
+							</div>
 							</div>
 						</div>		
 					</div>
