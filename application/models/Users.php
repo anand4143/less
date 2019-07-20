@@ -2,9 +2,14 @@
 
 class Users extends CI_Model{
 
-    public function isValidate($username,$password){
-        $q = $this->db->where(['email' => $username, 'password' => $password] )
-                        ->get('users');
+    public function isValidate($username,$password, $type = ''){
+        $this->db->where(['email' => $username, 'password' => $password] );
+		if($type == 'admin'){
+			$this->db->where('userType', 1 );
+		} else {
+			$this->db->where('userType !=', 1 );
+		}
+        $q = $this->db->get('users');
         if( $q->num_rows() ){
             $q = $this -> db
            -> select('*')

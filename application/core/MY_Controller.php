@@ -15,7 +15,7 @@
         }
 		
 		public function auth(){
-			if(!$this->session->userdata('userSession') || $this->session->userdata('logged_in') !== TRUE){
+			if(!$this->session->userdata('email') || $this->session->userdata('logged_in') !== TRUE){
 			  $segment = $this->uri->segment(1);
 			  if($segment == 'admin'){
 				  redirect('admin');

@@ -31,9 +31,9 @@ class Login extends MY_Controller {
             'lastName'  => $isValid['lastName'],
             'userType'  => $isValid['userType'],
             'logged_in' => TRUE
-        );        
-        $this->setSessionData($userData);
-        switch($isValid['userType']){
+          );        
+          $this->setSessionData($userData);
+          switch($isValid['userType']){
 			case '1':
 			  redirect('admin/dashboard/landing');
 			  break;
@@ -42,7 +42,7 @@ class Login extends MY_Controller {
 			  break;
 			default:
 				redirect('dashboard/participants');
-		}
+		  }
        } else {
             $this->session->set_flashdata('error',"Invalid username or password!");
             redirect('login');
