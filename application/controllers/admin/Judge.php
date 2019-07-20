@@ -7,6 +7,7 @@ class Judge extends MY_Controller{
         $this->load->helper('url');
         $this->load->model('users');
         $this->load->library('session');
+		$this->auth();
     }
 
     public function index(){

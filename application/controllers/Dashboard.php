@@ -11,6 +11,7 @@ class Dashboard extends MY_Controller {
         $this->load->model('users');
         // Session
         $this->load->library('session');
+		$this->auth();
     }
 
     public function index() {

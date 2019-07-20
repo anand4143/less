@@ -9,6 +9,7 @@ class Home extends MY_Controller {
         $this->load->helper('form');
         // Session
         $this->load->library('session');
+		$this->auth();
     }
 
 	public function index()

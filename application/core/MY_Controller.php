@@ -5,11 +5,13 @@
 		}
 		
         public function setSessionData($userData){
-            $this->session->set_userdata('userSession',$userData);  
-		    $this->session->set_userdata('logged_in', TRUE);  			
+            //$this->session->set_userdata('userSession',$userData);  
+		    //$this->session->set_userdata('logged_in', TRUE);  	
+		    $this->session->set_userdata($userData);
         }
         public function getSessionData(){
-            return $this->session->userdata('userSession');           
+            //return $this->session->userdata('userSession');
+		    return $this->session->userdata();			
         }
 		
 		public function auth(){
@@ -18,7 +20,7 @@
 			  if($segment == 'admin'){
 				  redirect('admin');
 			  }
-			  redirect('home');
+			  redirect('login');
 			}
 		}
     }
