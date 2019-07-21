@@ -25,5 +25,11 @@ class Participants extends MY_Controller {
 		//echo "<pre>";print_r($data);die;
         $this->load->view('frontend/contests/upcoming_contests', $data);
     }
+	
+	public function contest_details($contest_id) {
+		$this->load->model('participant_m');
+		$data['c_data'] = $this->participant_m->get_contest_data($contest_id);
+        $this->load->view('frontend/participants/contest_detail', $data);
+	}
     
 }

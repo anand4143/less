@@ -7,19 +7,22 @@
 					<?php echo $this->session->flashdata('resp_msg'); ?>
 					<div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Upcomming Contest</h4>
+                                <h4 class="card-title">Upcomming Contests</h4>
                                 <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 390px;"><div id="activity" style="overflow: hidden; width: auto; height: 390px;">
                                     <?php if($upcoming_contests):
 											foreach($upcoming_contests as $row):
 											 $status = $row->status == 1 ? 'Active' : 'Inactive';
 											 $class = $row->status == 1 ? 'badge-success' : 'badge-danger';?>
+									<a href="<?php echo base_url('participants/contest_details/'.$row->id);?>">
 									<div class="media border-bottom-1 pt-3 pb-3">
                                         <img width="35" src="<?php echo base_url('assets/dist/img/3videoicon.png');?>" class="mr-3 rounded-circle">
                                         <div class="media-body">
                                             <h5><?php echo $row->contestName;?></h5>
                                             <p class="mb-0"><?php echo $row->description;?></p>
-                                        </div><span class="text-muted "><?php echo date('d M, Y', strtotime($row->startDate));?></span>
+                                        </div>
+										<span class="text-muted "><?php echo date('d M, Y', strtotime($row->startDate));?></span>
                                     </div>
+									</a>
 									<?php endforeach;
 									  endif;?>
                                    
