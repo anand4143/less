@@ -9,10 +9,9 @@ class Contest_m extends CI_Model {
 	public function get_results(){
 		$this->db->select('id, contestName, startDate, endDate, createdDate, status');
 		$this->db->where('isDeleted', '0');
-		$rs = $this->db->get('master_contests');
-		
+		$rs = $this->db->get('master_contests');		
 		if($rs->num_rows() == 0){
-				return false;
+			return false;
 		}
 		return $rs->result();
 	}
@@ -38,6 +37,19 @@ class Contest_m extends CI_Model {
 	public function delete_data($id){
 		$this->db->where('id', $id);
 		return $this->db->update('master_contests', array('isDeleted' => 1));
+	}
+
+	public function getRunningContensts(){
+		$date = date("Y-m-d");
+		//SELECT * FROM `master_contests` WHERE `startDate` >= CURDATE();
+		$this->db->select('id, contestName, startDate, status');
+		$this->db->where(['startDate >='=>$date]);
+		$rs = $this->db->get('master_contests');
+		//print_r($this->db->last_query());
+		if($rs->num_rows() == 0){
+			return false;
+		}
+		return $rs->result();
 	}
 }
 

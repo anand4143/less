@@ -8,6 +8,9 @@ class User extends MY_Controller {
         $this->load->helper('form');
         // Model
         $this->load->model('users');
+        $this->load->model('judges');
+        $this->load->model('contest_m');
+        $this->load->model('level_m');
         // Session
         $this->load->library('session');
 		$this->auth();
@@ -62,6 +65,32 @@ class User extends MY_Controller {
         }else{
             $this->index();
         }
+    }
+
+    public function assignUserToJudges(){
+        $data = array();
+        $usersList = $this->users->getUserList();
+        $data['userList'] = $usersList;
+        $judgeList = $this->judges->getJudgeList();
+        $data['judgeList'] = $judgeList;
+        $data['contestList'] = $this->contest_m->getRunningContensts();
+        //echo "<pre>";print_r($data); die("judge ");
+        $this->load->view('admin/users/assignUserToJudges',$data);
+    }
+
+    public function getLevels(){
+        $contestId = $this->input->get('id');
+        $levels = $this->level_m->getLevelByContestId($contestId);
+        //echo "<pre>";echo "<li>====> ".count($levels);die;
+        echo '<option value="">Select Levels</option>';
+        if(!$levels){
+            echo '<option value="">Levels not available</option>';
+        }else{
+            for($i = 0; $i < count($levels); $i++){
+                echo '<option value="'.$levels[$i]->id.'">'.$levels[$i]->levelName.'</option>';
+            }
+        }
+    
     }
 }
 
