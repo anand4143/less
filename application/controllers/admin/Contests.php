@@ -60,8 +60,12 @@ class Contests extends MY_Controller {
 	}
 	
 	public function edit($id){
-		$data = array();
-		$data['c_data'] = $this->contest_m->get_data($id);
+		$data = array();		
+		$rs = $this->contest_m->get_data($id);
+		if(!$rs){
+			redirect('admin/contests');
+		} 
+		$data['c_data'] = $rs;
 		$this->load->view('admin/contests/edit', $data);	
 	}
 	

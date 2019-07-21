@@ -74,8 +74,8 @@
 			<thead>
 				<tr>
 					<th><strong>Level Name</strong></th>
+					<th class="w-6"><strong>Current Level</strong></th>
 					<th class="w-5"><strong>Status</strong></th>
-					<th class="w-5"><strong>Enabled</strong></th>
 				</tr>
 			</thead>
 			<tbody id="tBodyLevelListingId">
@@ -93,7 +93,7 @@
 $('.contest-level-list').on('click', function() {
     var cId = $(this).attr('data-cid');
     $('#contestNameId').html($(this).attr('data-cname'));	
-	var post_url = '<?php echo base_url();?>admin/levels/get_listing_data/'+cId;
+	var post_url = '<?php echo base_url();?>admin/levels/get_contest_levels/'+cId;
 	
 	let reqHeader = new Headers();
 	reqHeader.append('Content-Type', 'text/json');
@@ -110,11 +110,11 @@ $('.contest-level-list').on('click', function() {
 		if(data.resp_status == 'success'){
 			$.each(data.list, function( index, row ) {
 				let status = row.status ? 'Active' : 'Inactive';
-				let isEnabled = row.isEnabled ? 'Yes' : 'No';
+				let isEnabled = row.isEnabled == 1 ? 'Yes' : 'No';
 				html +="<tr>";
 				html +=" <td>"+row.levelName+"</td>";
-				html +=" <td>"+status+"</td>";
 				html +=" <td>"+isEnabled+"</td>";
+				html +=" <td>"+status+"</td>";				
 				html +="</tr>";
 			});
 		} else {
@@ -127,35 +127,5 @@ $('.contest-level-list').on('click', function() {
 	.catch(function (err) {
 		console.log("Something went wrong!", err);
 	});
-});
-
-
-
-	function loadLevelList(obj){
-		var cId = $(this).attr('data-cid'); 
-		var post_url = '<?php base_url();?>admin/levels/get_listing_data/'+cId;
-		 //call the fetch function
-    fetch(post_url)
-    .then(res => res.json())//response type
-    .then(data => console.log(data)); //log the data;
-		
-		
-		
-		$.ajax({
-			url: post_url,
-			timeout:5000,
-			
-			success: function(data){
-				container.html(data);
-			},
-			error: function(req,error){
-				if(error === 'error'){error = req.statusText;}
-				var errormsg = 'There was a communication error: '+error;
-				container.html(errormsg);
-			},
-			beforeSend: function(data){
-				container.html('<p>Loading...</p>');
-			}
-		});
-	}
+});	
 </script>
