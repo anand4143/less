@@ -20,7 +20,7 @@ class Login extends MY_Controller {
     }
 
     public function login(){
-        //echo "<pre>";print_r($this->input->post());die('here');
+        //echo "<pre>";print_r($this->input->post());die("i m here");
         if($this->input->post('loginType')==2){
             $username = $this->input->post('username');
             $password = md5($this->input->post('password'));
@@ -48,8 +48,8 @@ class Login extends MY_Controller {
             $username = $this->input->post('username');
             $password = md5($this->input->post('password'));
             
-            $isValid = $this->users->isValidate($username,$password);
-            
+            $isValid = $this->users->isValidate($username,$password,'admin');
+            //echo "<pre>";print_r($isValid);die("i m her22222e");
             if($isValid){
                 $userData = array(
                     'email'     => $isValid['email'],
@@ -67,16 +67,18 @@ class Login extends MY_Controller {
                     redirect('admin/login');
             }
         }else{
-            redirect('admin/login');
-        }
-       
-      
+        redirect('admin/login');
     }
+    
+}
+      
+    
 
     public function logout(){
-        $this->session->unset_userdata('userSession');
+		$this->session->unset_userdata('logged_in');
+		$this->session->unset_userdata('userSession');
         $this->session->sess_destroy();
-        redirect('admin/login/index');
+        redirect('admin/login');
     }
 
     

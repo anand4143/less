@@ -40,7 +40,7 @@
 									</td>
 									<td><?php echo $user->lastName;?></td>
 									<td><?php echo $user->email;?></td>
-									<td><?php echo date('d-m-Y', strtotime($user->createdData));?></td>
+									<td><?php echo date('d-m-Y', strtotime($user->createdDate));?></td>
 									<td>
                                         <?php if($user->isActive){?>
                                         	<span class="badge badge-success">Active</span>

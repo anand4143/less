@@ -21,6 +21,9 @@
                 <a class="d-flex auth-brand" href="#">
                    Less Superstars
                 </a>
+				<a class="d-flex auth-brand pull-right" href="<?php echo base_url('login');?>">
+                   Login
+                </a>
             </header>
             <div class="container-fluid">
                 <div class="row">

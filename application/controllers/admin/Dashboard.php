@@ -12,6 +12,7 @@ class Dashboard extends MY_Controller {
         $this->load->model('judges');
         // Session
         $this->load->library('session');
+		$this->auth();
     }
 
 	

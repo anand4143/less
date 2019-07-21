@@ -2,9 +2,14 @@
 
 class Users extends CI_Model{
 
-    public function isValidate($username,$password){
-        $q = $this->db->where(['email' => $username, 'password' => $password] )
-                        ->get('users');
+    public function isValidate($username,$password, $type = ''){
+        $this->db->where(['email' => $username, 'password' => $password] );
+		if($type == 'admin'){
+			$this->db->where('userType', 1 );
+		} else {
+			$this->db->where('userType !=', 1 );
+		}
+        $q = $this->db->get('users');
         if( $q->num_rows() ){
             $q = $this -> db
            -> select('*')
@@ -21,15 +26,18 @@ class Users extends CI_Model{
     }
 
     public function getUserList(){
-        $this->db->select('*')->from('users')->where('userType',3);
+        $this->db->select('*')->from('users')->where('userType',2);
+        
         $query = $this->db->get();
+        //print_r($this->db->last_query()); die('hereereeeeee');
         if( $query->num_rows() ){
             return $query->result();
         }       
     }
 
     public function getUser($id){
-        $rs = $this->db->get_where('users', array('isActive'=> '1', 'id' => $id), 1);
+        $rs = $this->db->get_where('users', array( 'id' => $id), 1);
+        //print_r($this->db->last_query());
 		if($rs->num_rows() == 0){
 				return false;
 		}
@@ -37,6 +45,7 @@ class Users extends CI_Model{
     }
 
     public function updateUser($id,$userData){
+        //echo "<pre>";print_r($userData);die('inside model update function ');
         $this->db->where('id', $id);
 		return $this->db->update('users', $userData);
     }

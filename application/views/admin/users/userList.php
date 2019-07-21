@@ -35,7 +35,7 @@
 													<td><?php echo $user->firstName;?></td>
 													<td><?php echo $user->lastName;?></td>
 													<td><?php echo $user->email;?></td>
-													<td><?php echo $user->createdData;?></td>
+													<td><?php echo $user->createdDate;?></td>
 												  <td>
                                                   <?php if($user->isActive){?>
                                                     <span class="badge badge-success">Active</span>

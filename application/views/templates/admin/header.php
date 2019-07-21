@@ -149,7 +149,7 @@
                                 <span class="badge badge-success badge-indicator"></span>
                             </div>
                             <div class="media-body">
-                                <span>Hello Admin<i class="zmdi zmdi-chevron-down"></i></span>
+                                <span>Hello <?php echo $this->session->userdata('firstName');?><i class="zmdi zmdi-chevron-down"></i></span>
                             </div>
                         </div>
                     </a>

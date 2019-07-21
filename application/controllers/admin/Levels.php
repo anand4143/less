@@ -12,6 +12,8 @@ class Levels extends MY_Controller {
 		 $this->load->model('level_m');
         // Session
         $this->load->library('session');
+		//check login auth
+		$this->auth();
     }
 
 	public function index()

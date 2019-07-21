@@ -10,6 +10,7 @@ class User extends MY_Controller {
         $this->load->model('users');
         // Session
         $this->load->library('session');
+		$this->auth();
 }
 
     public function index(){
@@ -21,11 +22,13 @@ class User extends MY_Controller {
     public function edit($id){
         $data = array();
         $data['user'] = $this->users->getUser($id);
+        //echo "<pre>";print_r($data);die('hiiiii');
         $this->load->view('admin/users/editUser',$data);
+      
     }
 
     public function update($id){
-        //echo "<pre>";print_r($this->input->post());
+        //echo "<pre>";print_r($this->input->post());die('edit funcjkkjtions') ;
         if($this->input->post()){
             $this->load->library('form_validation');
             $this->form_validation->set_rules('userName', 'User Name', 'trim|required');
