@@ -4,7 +4,7 @@
  <div class="row">
         <div class="col-xl-12">
 					<div class="d-flex align-items-center justify-content-between mt-40 mb-20">
-						<h4>Users List</h4>
+						<h4>Assigned User List</h4>
 						<!-- <button class="btn btn-sm btn-link">view all</button> -->
 						<span id="notification"><?php echo $this->session->flashdata('updateMessage'); ?></span>
 					</div>
@@ -43,8 +43,8 @@
                                                     <span class="badge badge-danger">inactive</span>
                                                   <?php } ?>
                                                     <td>
-														<a href="<?php echo base_url('admin/user/edit/'.$user->id);?>" title="Edit Contest"><span class="fa fa-edit"></span></a>
-														<a href="<?php echo base_url('admin/user/delete/'.$user->id);?>" title="Remove Contest"><span class="fa fa-remove"></span></a>
+														<a href="<?php echo base_url('admin/judge/edit/'.$user->id);?>" title="Edit Contest"><span class="fa fa-edit"></span></a>
+														<a href="<?php echo base_url('admin/judge/delete/'.$user->id);?>" title="Remove Contest"><span class="fa fa-remove"></span></a>
 													</td>
 												</tr>
 											<?php } ?>

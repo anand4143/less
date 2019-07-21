@@ -26,15 +26,18 @@ class Users extends CI_Model{
     }
 
     public function getUserList(){
-        $this->db->select('*')->from('users')->where('userType',3);
+        $this->db->select('*')->from('users')->where('userType',2);
+        
         $query = $this->db->get();
+        //print_r($this->db->last_query()); die('hereereeeeee');
         if( $query->num_rows() ){
             return $query->result();
         }       
     }
 
     public function getUser($id){
-        $rs = $this->db->get_where('users', array('isActive'=> '1', 'id' => $id), 1);
+        $rs = $this->db->get_where('users', array( 'id' => $id), 1);
+        //print_r($this->db->last_query());
 		if($rs->num_rows() == 0){
 				return false;
 		}
@@ -42,6 +45,7 @@ class Users extends CI_Model{
     }
 
     public function updateUser($id,$userData){
+        //echo "<pre>";print_r($userData);die('inside model update function ');
         $this->db->where('id', $id);
 		return $this->db->update('users', $userData);
     }
