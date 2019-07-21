@@ -38,7 +38,6 @@ class Contest_m extends CI_Model {
 		$this->db->where('id', $id);
 		return $this->db->update('master_contests', array('isDeleted' => 1));
 	}
-
 	public function getRunningContensts(){
 		$date = date("Y-m-d");
 		//SELECT * FROM `master_contests` WHERE `startDate` >= CURDATE();
@@ -48,6 +47,21 @@ class Contest_m extends CI_Model {
 		//print_r($this->db->last_query());
 		if($rs->num_rows() == 0){
 			return false;
+		}
+		return $rs->result();
+	}
+	
+	public function upcoming_cotest_list(){
+		$this->db->select('id, contestName, description, startDate, endDate, createdDate, status');
+		$this->db->where('isDeleted', '0');
+		$this->db->where('status', 1);
+		//$this->db->where('DATE(startDate)', date('Y-m-d'), false);
+		$this->db->where('startDate >=', date('Y-m-d'));
+	    //$this->db->where('endDate <=', date('Y-m-d'));
+		$rs = $this->db->get('master_contests');
+		
+		if($rs->num_rows() == 0){
+				return false;
 		}
 		return $rs->result();
 	}

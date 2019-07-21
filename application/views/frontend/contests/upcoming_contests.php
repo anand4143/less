@@ -1,62 +1,42 @@
-<?php $this->view('templates/admin/header.php'); ?>
+<?php $this->view('templates/frontend/header.php'); ?>
 
 
  <!-- Row -->
  <div class="row">
         <div class="col-xl-12">
 					<?php echo $this->session->flashdata('resp_msg'); ?>
-					<div class="d-flex align-items-center justify-content-between mt-40 mb-20">
-						<h4>Contests List</h4>
-						<a href="<?php echo base_url('admin/contests/add');?>" class="btn btn-sm btn-link">Add New</a>
-					</div>
-						<div class="card">
-							<div class="card-body pa-0">
-								<div class="table-wrap">
-									<div class="table-responsive">
-										<table class="table table-sm table-hover mb-0">
-											<thead>
-												<tr>
-													<th>Contest Name</th>
-													<th>Start Date</th>
-													<th>End Date</th>
-													<th>Created Date</th>
-													<th class="w-5">Status</th>
-													<th class="w-8">Action</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php if($contests):
-													foreach($contests as $row):
-													 $status = $row->status == 1 ? 'Active' : 'Inactive';
-													 $class = $row->status == 1 ? 'badge-success' : 'badge-danger';?>
-												<tr>
-													<td><?php echo $row->contestName;?></td>
-													<td><?php echo date('d-m-Y', strtotime($row->startDate));?></td>
-													<td><?php echo date('d-m-Y', strtotime($row->endDate));?></td>
-													<td><?php echo $row->createdDate;?></td>
-													<td><span class="badge <?php echo $class;?>"><?php echo $status;?></span></td>
-													<td>
-														<a href="<?php echo base_url('admin/contests/edit/'.$row->id);?>" title="Edit Contest"><span class="fa fa-edit"></span></a>
-														<a href="<?php echo base_url('admin/contests/delete/'.$row->id);?>" title="Remove Contest"><span class="fa fa-remove"></span></a>
-													    <a href="#" id="levelListingId<?php echo $row->id;?>" class="contest-level-list" data-cid="<?php echo $row->id;?>" data-cname="<?php echo $row->contestName;?>" data-toggle="modal" data-target="#exampleModal" title="View Content Level List" ><i class="fa fa-list" aria-hidden="true"></i></a>
-													</td>
-												</tr>
-												<?php endforeach;
-												endif;?>
-												
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>		
+					<div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Upcomming Contests</h4>
+                                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 390px;"><div id="activity" style="overflow: hidden; width: auto; height: 390px;">
+                                    <?php if($upcoming_contests):
+											foreach($upcoming_contests as $row):
+											 $status = $row->status == 1 ? 'Active' : 'Inactive';
+											 $class = $row->status == 1 ? 'badge-success' : 'badge-danger';?>
+									<a href="<?php echo base_url('participants/contest_details/'.$row->id);?>">
+									<div class="media border-bottom-1 pt-3 pb-3">
+                                        <img width="35" src="<?php echo base_url('assets/dist/img/3videoicon.png');?>" class="mr-3 rounded-circle">
+                                        <div class="media-body">
+                                            <h5><?php echo $row->contestName;?></h5>
+                                            <p class="mb-0"><?php echo $row->description;?></p>
+                                        </div>
+										<span class="text-muted "><?php echo date('d M, Y', strtotime($row->startDate));?></span>
+                                    </div>
+									</a>
+									<?php endforeach;
+									  endif;?>
+                                   
+                                </div><div class="slimScrollBar" style="background: transparent; width: 5px; position: absolute; top: 108px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 268.728px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                            </div>
+                        </div>
+						
 					</div>
                 </div>
                 <!-- /Row -->
 
 
 
-<?php  $this->view('templates/admin/footer.php'); ?>
+<?php  $this->view('templates/frontend/footer.php'); ?>
 
 
 <!-- Modal -->
