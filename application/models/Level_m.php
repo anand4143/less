@@ -53,16 +53,19 @@ class Level_m extends CI_Model {
 		$this->db->where('id', $id);
 		return $this->db->update('contest_levels', array('isDeleted' => 1));
 	}
-	
-	public function update_current_level($contest_id, $id){		
-		$this->db->where('isDeleted', 0);
-		$this->db->where('contestID', $contest_id);
-		$this->db->update('contest_levels', array('isEnabled' => 0));
-		
-		$this->db->where('isDeleted', 0);
-		$this->db->where('contestID', $contest_id);
-		$this->db->where('id', $id);
-		return $this->db->update('contest_levels', array('isEnabled' => 1));
+
+	public function getLevelByContestId($contestId){
+		$this->db->select('*');
+		$this->db->from('contest_levels');
+		$this->db->where('contestID', $contestId);
+		$rs = $this->db->get();	
+		// print($this->db->last_query());	
+		// echo "<li>====>".$rs->num_rows();
+		if($rs->num_rows() == 0){
+				return false;
+		}
+		return $rs->result();
+
 	}
 }
 

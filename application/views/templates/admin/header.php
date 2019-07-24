@@ -219,6 +219,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="<?php echo site_url('admin/judge/'); ?>">Judge List</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo site_url('admin/user/assignUserToJudges'); ?>">Assign Users To Judges</a>
+                                        </li>
                                         
                                     </ul>
                                 </li>
