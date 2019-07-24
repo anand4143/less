@@ -75,7 +75,7 @@ class Levels extends MY_Controller {
 	
 	public function edit($id){
 		$data = array();
-		$rs= $this->level_m->get_results($id);
+		$rs= $this->contest_m->get_results($id);
 		if(!$rs){
 			redirect('admin/levels');
 		} 
