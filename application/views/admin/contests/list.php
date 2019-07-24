@@ -74,7 +74,6 @@
 			<thead>
 				<tr>
 					<th><strong>Level Name</strong></th>
-					<th class="w-6"><strong>Current Level</strong></th>
 					<th class="w-5">Current Level</th>
 					<th class="w-5"><strong>Status</strong></th>
 				</tr>
@@ -84,7 +83,8 @@
 		  </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	    <div id="resp_msg" class="text-left"></div>
+        <div class="text-right "><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
       </div>
     </div>
   </div>
@@ -111,12 +111,12 @@ $('.contest-level-list').on('click', function() {
 		if(data.resp_status == 'success'){
 			$.each(data.list, function( index, row ) {
 				let status = row.status ? 'Active' : 'Inactive';
-				let isEnabled = row.isEnabled == 1 ? 'Yes' : 'No';
+				//let isEnabled = row.isEnabled == 1 ? 'Yes' : 'No';
 				let isChecked = row.isEnabled == 1 ? "checked='checked'" : "";
 				html +="<tr>";
 				html +=" <td>"+row.levelName+"</td>";
-				html +=" <td>"+isEnabled+"</td>";
-				html +=" <td><button id='btnCurrentLelvelId"+row.id+"' class='btn btn-sm btn-primary' type='button'><label style='margin-bottom: 0px;'><input type='radio' id='isEnabled"+row.id+"' name='isEnabled' value='"+row.id+"' data-cid='"+row.contestID+"' onclick='update_current_level(this);' class='current-level' "+isChecked+" > Current Level<label></button></td>";	
+				//html +=" <td>"+isEnabled+"</td>";
+				html +=" <td><button id='btnCurrentLelvelId"+row.id+"' class='btn btn-sm btn-primary' type='button'><label style='margin-bottom: 0px;'><input type='radio' id='isEnabled"+row.id+"' name='isEnabled' value='"+row.id+"' data-cid='"+row.contestID+"' onclick='update_current_level(this);' class='current-level' "+isChecked+" > <span id='loadingTxt"+row.id+"'>Current Level</span><label></button></td>";	
 				html +=" <td>"+status+"</td>";				
 				html +="</tr>";
 			});
@@ -137,6 +137,8 @@ function update_current_level(objThis){
 	var obj = $(objThis);
 	var cId = obj.attr('data-cid');
 	var lId = obj.val();
+	var ele_txt = $('#loadingTxt'+lId).text();
+	$('#loadingTxt'+lId).text('Processing....');
 	var post_url = '<?php echo base_url();?>admin/levels/change_current_level/'+cId+'/'+lId;
 	
 	let reqHeader = new Headers();
@@ -161,6 +163,7 @@ function update_current_level(objThis){
 			});
 		}*/
 		$('#resp_msg').html(data.resp_msg);
+		$('#loadingTxt'+lId).text(ele_txt);
 		setTimeout(function(){$('#resp_msg').html('');},2000);
 		
 	})
