@@ -38,7 +38,7 @@
 													<td><?php echo $row->createdDate;?></td>
 													
 													<td><button id="btnCurrentLelvelId<?php echo $row->id;?>" class="btn btn-sm btn-primary" type="submit">
-			 <label style="margin-bottom: 0px;"><input type="radio" id="isEnabled<?php echo $row->id?>" name="isEnabled" value="<?php echo $row->id?>" data-cid="<?php echo $row->contestID;?>" class="current-level" <?php echo $isChecked;?> > Current Level<label></button>
+			 <label style="margin-bottom: 0px;"><input type="radio" id="isEnabled<?php echo $row->id?>" name="isEnabled<?php echo $row->contestID;?>" value="<?php echo $row->id?>" data-cid="<?php echo $row->contestID;?>" class="current-level" <?php echo $isChecked;?> > Current Level<label></button>
 													</td>
 													<td><span class="badge <?php echo $class;?>"><?php echo $status;?></span></td>
 													<td>

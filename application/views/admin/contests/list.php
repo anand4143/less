@@ -75,6 +75,7 @@
 				<tr>
 					<th><strong>Level Name</strong></th>
 					<th class="w-6"><strong>Current Level</strong></th>
+					<th class="w-5">Current Level</th>
 					<th class="w-5"><strong>Status</strong></th>
 				</tr>
 			</thead>
@@ -111,9 +112,11 @@ $('.contest-level-list').on('click', function() {
 			$.each(data.list, function( index, row ) {
 				let status = row.status ? 'Active' : 'Inactive';
 				let isEnabled = row.isEnabled == 1 ? 'Yes' : 'No';
+				let isChecked = row.isEnabled == 1 ? "checked='checked'" : "";
 				html +="<tr>";
 				html +=" <td>"+row.levelName+"</td>";
 				html +=" <td>"+isEnabled+"</td>";
+				html +=" <td><button id='btnCurrentLelvelId"+row.id+"' class='btn btn-sm btn-primary' type='button'><label style='margin-bottom: 0px;'><input type='radio' id='isEnabled"+row.id+"' name='isEnabled' value='"+row.id+"' data-cid='"+row.contestID+"' onclick='update_current_level(this);' class='current-level' "+isChecked+" > Current Level<label></button></td>";	
 				html +=" <td>"+status+"</td>";				
 				html +="</tr>";
 			});
@@ -128,4 +131,42 @@ $('.contest-level-list').on('click', function() {
 		console.log("Something went wrong!", err);
 	});
 });	
+
+function update_current_level(objThis){
+//$('.current-level').on('click', function() {
+	var obj = $(objThis);
+	var cId = obj.attr('data-cid');
+	var lId = obj.val();
+	var post_url = '<?php echo base_url();?>admin/levels/change_current_level/'+cId+'/'+lId;
+	
+	let reqHeader = new Headers();
+	reqHeader.append('Content-Type', 'text/json');
+	let initObject = {
+		method: 'GET', headers: reqHeader,
+	};
+
+	fetch(post_url, initObject)
+	.then(function (response) {
+		return response.json();
+	})
+	.then(function (data) {		
+		/*if(data.resp_status == 'success'){
+			$.each(data.levels, function( index, row ) {
+				let isChecked = row.isEnabled == 1 ? 'checked="checked"' : '';
+				let html = '';
+				html += '<label style="margin-bottom: 0px;">';
+				html += ' <input type="radio" id="isEnabled'+row.id+'" name="isEnabled" value="'+row.id+'" data-cid="'+row.contestID+'" class="current-level" '+isChecked+'> Current Level';
+				html += '</label>';
+				$('#btnCurrentLelvelId'+row.id).html(html);
+			});
+		}*/
+		$('#resp_msg').html(data.resp_msg);
+		setTimeout(function(){$('#resp_msg').html('');},2000);
+		
+	})
+	.catch(function (err) {
+		console.log("Something went wrong!", err);
+	});
+//});
+}
 </script>
