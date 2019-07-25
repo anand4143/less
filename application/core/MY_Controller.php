@@ -11,7 +11,7 @@
 		    $this->session->set_userdata($userData);
         }
 		
-        public function getSessionData($key){
+        public function getSessionData($key = ''){
             //return $this->session->userdata('userSession');
 		    return !empty($key) ? $this->session->userdata($key) : $this->session->userdata();			
         }
