@@ -107,6 +107,24 @@ class Contest_m extends CI_Model {
 	public function save_contest_participate_data($data){
 		$this->db->insert('users_contests_levels', $data);
 	}
+	
+	public function get_contest_participants($contest_id){
+		$this->db->select("t1.id, t2.userName, t2.email, CONCAT(t2.firstName, ' ', t2.lastName) AS fullName, t3.contestName, t4.levelName");
+		$this->db->from('users_contests_levels t1');
+		$this->db->join('users t2', 't1.userID = t2.id');
+		$this->db->join('master_contests t3', 't1.contestID = t3.id');
+		$this->db->join('contest_levels t4', 't1.levelID = t4.id');
+		$this->db->where('t3.isDeleted', '0');
+		$this->db->where('t4.isDeleted', '0');
+		//$this->db->where('t2.status', 1);
+		$this->db->where('t3.id', $contest_id);
+		$rs = $this->db->get();
+		//echo $this->db->last_query();die;
+		if($rs->num_rows() == 0){
+			return false;
+		}
+		return $rs->result();
+	}
 }
 
 

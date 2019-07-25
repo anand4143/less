@@ -122,6 +122,21 @@ class Contests extends MY_Controller {
 		} else {
 			return false;
 		}
-	} 
+	}
+
+	public function get_contest_participants($contest_id) {
+		$data = array();
+		$rs = $this->contest_m->get_contest_participants($contest_id); 
+		if($rs){
+			$data['resp_status'] = 'success';
+			$data['list'] = $rs;
+			$data['num_rows'] = count($rs);
+		} else {
+			$data['resp_status'] = 'error';
+			$data['list'] = array();
+		}
+		echo json_encode($data);
+		
+	}
    
 }

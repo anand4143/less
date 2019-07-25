@@ -7,24 +7,60 @@
 					<?php echo $this->session->flashdata('resp_msg'); ?>
 					<div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Contest Details</h4>
-                                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 390px;"><div id="activity" style="overflow: hidden; width: auto; height: 390px;">
-                                    
-									<?php if($c_data){?>
-									<strong><?php echo $c_data->contestName;?></strong>
-									<br>
-									 <?php echo $c_data->levelName;?>
-									<br>
-									About Contest:<br>
-                                     <?php echo $c_data->description;?>
-									 <br>
-									 <button type="button" data-url="<?php echo base_url('contests/participate/'.$c_data->id.'/'.$c_data->levelID);?>" onclick="participate_contest(this);">Participation</button>
-									<?php }else {?>
+                                <h4 class="card-title">Contest Info</h4>
+								<?php if($c_data){?>
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label" for="text-input">Contest Name</label>
+											<div class="col-md-9">
+											   <?php echo $c_data->contestName;?>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label" for="text-input">Contest Level</label>
+											<div class="col-md-9">
+											   <?php echo $c_data->levelName;?>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-md-3 col-form-label" for="text-input">About Contest</label>
+											<div class="col-md-9">
+											   <?php echo $c_data->description;?>
+											</div>
+										</div>
+								      <?php if(!$is_participated){ ?>
+										<div>
+											<label class="col-md-3 col-form-label" for="text-input">&nbsp;</label>
+											<div class="col-md-9">
+												<button type="button" class="btn btn-sm btn-primary" data-url="<?php echo base_url('contests/participate/'.$c_data->id.'/'.$c_data->levelID);?>" onclick="participate_contest(this);">Participation to This Contest</button>
+											</div>
+									     </div>
+										
+									 <?php } else { ?>
+									   	<div class="form-group row">
+											<label class="col-md-3 col-form-label" for="text-input">Upload Song</label>
+											<div class="col-md-9">
+											   <div class="custom-file">
+												<input type="file" class="custom-file-input" id="upload_song_link" name="upload_song_link">
+												<label class="custom-file-label" for="customFile">Choose file</label>
+											  </div>
+											   <?php //echo form_error('upload_song_link', '<span class="help-block text-danger">', '</span>'); ?>
+											</div>
+										 </div>
+										 <div>
+											<label class="col-md-3 col-form-label" for="text-input">&nbsp;</label>
+											<div class="col-md-9">
+											  <button class="btn btn-sm btn-primary" type="submit">
+											  <i class="fa fa-dot-circle-o"></i> Upload</button>
+											  <button class="btn btn-sm btn-danger" type="reset">
+											  <i class="fa fa-ban"></i> Cancel</button>
+											</div>
+									     </div>
+									 <?php } ?>
+							    <?php }else {?>
 									 Start Soon.........
-									<?php }?>
+								<?php }?>
                                 </div>
-								<div class="slimScrollBar" style="background: transparent; width: 5px; position: absolute; top: 108px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 268.728px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
-                            </div>
+						
                         </div>
 						
 					</div>

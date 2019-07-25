@@ -39,6 +39,7 @@
 														<a href="<?php echo base_url('admin/contests/edit/'.$row->id);?>" title="Edit Contest"><span class="fa fa-edit"></span></a>
 														<a href="<?php echo base_url('admin/contests/delete/'.$row->id);?>" title="Remove Contest"><span class="fa fa-remove"></span></a>
 													    <a href="#" id="levelListingId<?php echo $row->id;?>" class="contest-level-list" data-cid="<?php echo $row->id;?>" data-cname="<?php echo $row->contestName;?>" data-toggle="modal" data-target="#levelModal" title="View Content Level List" ><i class="fa fa-list" aria-hidden="true"></i></a>
+														<a href="#" id="viewParticipatIconId<?php echo $row->id;?>" class="view-participant-list" data-cid="<?php echo $row->id;?>" data-cname="<?php echo $row->contestName;?>" data-toggle="modal" data-target="#participantModal" title="View Participant List" ><i class="fa fa-users" aria-hidden="true"></i></a>
 													</td>
 												</tr>
 												<?php endforeach;
@@ -92,10 +93,10 @@
 
 <!--participant Modal -->
 <div class="modal fade" id="participantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document" style="max-width:">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Participants : <small id="contestNameId"></small> </h5>
+        <h5 class="modal-title" id="exampleModalLabel">Participants : <small id="participantContestId"></small> </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -103,13 +104,14 @@
       <div class="modal-body" id="contestLevelId">
           <table class="table table-sm table-hover mb-0">
 			<thead>
-				<tr>
-					<th><strong>Level Name</strong></th>
-					<th class="w-5">Current Level</th>
-					<th class="w-5"><strong>Status</strong></th>
+				<tr>					
+					<th><strong>Name</strong></th>
+					<th><strong>User Name</strong></th>
+					<th ><strong>Email</strong></th>
+					<th ><strong>Level</strong></th>
 				</tr>
 			</thead>
-			<tbody id="tBodyLevelListingId">
+			<tbody id="tBodyPaticipantListingId">
 			</tbody>
 		  </table>
       </div>
@@ -203,4 +205,45 @@ function update_current_level(objThis){
 	});
 //});
 }
+
+
+
+
+$('.view-participant-list').on('click', function() {
+    var cId = $(this).attr('data-cid');
+    $('#participantContestId').html($(this).attr('data-cname'));	
+	var post_url = '<?php echo base_url();?>admin/contests/get_contest_participants/'+cId;
+	
+	let reqHeader = new Headers();
+	reqHeader.append('Content-Type', 'text/json');
+	let initObject = {
+	method: 'GET', headers: reqHeader,
+	};
+
+	fetch(post_url, initObject)
+	.then(function (response) {
+		return response.json();
+	})
+	.then(function (data) {
+		let html = '';
+		if(data.resp_status == 'success'){
+			$.each(data.list, function( index, row ) {
+				html +="<tr>";				
+				html +=" <td>"+row.fullName+"</td>";
+				html +=" <td>"+row.userName+"</td>";
+				html +=" <td>"+row.email+"</td>";
+				html +=" <td>"+row.levelName+"</td>";				
+				html +="</tr>";
+			});
+		} else {
+			html +="<tr>";
+			html +=" <td colspan='4' align='center' class='text-warning'>No participant found for this contest!</td>";
+			html +="</tr>";
+		}
+		$('#tBodyPaticipantListingId').html(html);
+	})
+	.catch(function (err) {
+		console.log("Something went wrong!", err);
+	});
+});
 </script>

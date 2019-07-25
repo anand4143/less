@@ -36,7 +36,10 @@ class Contests extends MY_Controller {
 	
 	public function contest_details($contest_id) {
 		$this->load->model('contest_m');
+		$this->load->model('participant_m');
 		$data['c_data'] = $this->contest_m->get_contest_data($contest_id);
+		
+		$data['is_participated'] = $this->participant_m->is_alreay_participate_contest($contest_id);
 		//echo "<pre>";print_r($data);die;
         $this->load->view('frontend/contests/contest_detail', $data);
 	}
