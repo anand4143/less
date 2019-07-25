@@ -10,10 +10,13 @@
 		    //$this->session->set_userdata('logged_in', TRUE);  	
 		    $this->session->set_userdata($userData);
         }
-        public function getSessionData(){
+		
+        public function getSessionData($key){
             //return $this->session->userdata('userSession');
-		    return $this->session->userdata();			
+		    return !empty($key) ? $this->session->userdata($key) : $this->session->userdata();			
         }
+		
+	   
 		
 		public function auth(){
 			if(!$this->session->userdata('email') || $this->session->userdata('logged_in') !== TRUE){

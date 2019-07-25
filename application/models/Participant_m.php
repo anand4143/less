@@ -6,14 +6,11 @@ class Participant_m extends CI_Model {
         parent::__construct();
     }
 	
-	public function get_contest_data($contest_id){
-		$this->db->select("t1.id, t1.contestName,t2.description, t2.id AS level_id, t2.levelName");
+	public function is_alreay_participate_contest($contest_id) {
+		$this->db->select("count(t1.id) AS num_rows");
 		$this->db->from('master_contests t1');
-		$this->db->join('contest_levels t2', 't1.id = t2.contestID');
+		$this->db->join('contest_levels t2', 't1.id = t2.contestID AND t2.isDeleted = 0 AND t2.status = 1', 'left');
 		$this->db->where('t1.isDeleted', '0');
-		$this->db->where('t2.isDeleted', '0');
-		$this->db->where('t2.status', 1);
-		$this->db->where('t2.isEnabled', 1);
 		$this->db->where('t1.id', $contest_id);
 		$rs = $this->db->get();
 		

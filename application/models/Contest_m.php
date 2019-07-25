@@ -50,8 +50,27 @@ class Contest_m extends CI_Model {
 		}
 		return $rs->result();
 	}
+	/*Front End*/
+	public function current_contest_list(){
+		$this->db->select("t1.id, t1.contestName, t1.description, t1.startDate, t1.endDate, t2.id AS levelD, t2.levelName");
+		$this->db->from('master_contests t1');
+		$this->db->join('contest_levels t2', 't1.id = t2.contestID');
+		$this->db->where('t1.isDeleted', '0');
+		$this->db->where('t2.isDeleted', '0');
+		$this->db->where('t2.status', 1);
+		$this->db->where('t2.isEnabled', 1);
+		$this->db->where('startDate >=', date('Y-m-d'));
+	    $this->db->where('endDate >=', date('Y-m-d'));
+		
+		$rs = $this->db->get();
+		
+		if($rs->num_rows() == 0){
+				return false;
+		}
+		return $rs->result();
+	}
 	
-	public function upcoming_cotest_list(){
+	public function upcoming_contest_list(){
 		$this->db->select('id, contestName, description, startDate, endDate, createdDate, status');
 		$this->db->where('isDeleted', '0');
 		$this->db->where('status', 1);
@@ -64,6 +83,29 @@ class Contest_m extends CI_Model {
 				return false;
 		}
 		return $rs->result();
+	}
+	
+	/*Front End */
+	public function get_contest_data($contest_id) {
+		$this->db->select("t1.id, t1.contestName, t1.description, t2.id AS levelID, t2.levelName");
+		$this->db->from('master_contests t1');
+		$this->db->join('contest_levels t2', 't1.id = t2.contestID');
+		$this->db->where('t1.isDeleted', '0');
+		$this->db->where('t2.isDeleted', '0');
+		$this->db->where('t2.status', 1);
+		$this->db->where('t2.isEnabled', 1);
+		$this->db->where('t1.id', $contest_id);
+		$rs = $this->db->get();
+		
+		if($rs->num_rows() == 0){
+				return false;
+		}
+		return $rs->row();
+	}
+	
+	/*Front end*/
+	public function save_contest_participate_data($data){
+		$this->db->insert('users_contests_levels', $data);
 	}
 }
 

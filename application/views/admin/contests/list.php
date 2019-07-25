@@ -38,7 +38,7 @@
 													<td>
 														<a href="<?php echo base_url('admin/contests/edit/'.$row->id);?>" title="Edit Contest"><span class="fa fa-edit"></span></a>
 														<a href="<?php echo base_url('admin/contests/delete/'.$row->id);?>" title="Remove Contest"><span class="fa fa-remove"></span></a>
-													    <a href="#" id="levelListingId<?php echo $row->id;?>" class="contest-level-list" data-cid="<?php echo $row->id;?>" data-cname="<?php echo $row->contestName;?>" data-toggle="modal" data-target="#exampleModal" title="View Content Level List" ><i class="fa fa-list" aria-hidden="true"></i></a>
+													    <a href="#" id="levelListingId<?php echo $row->id;?>" class="contest-level-list" data-cid="<?php echo $row->id;?>" data-cname="<?php echo $row->contestName;?>" data-toggle="modal" data-target="#levelModal" title="View Content Level List" ><i class="fa fa-list" aria-hidden="true"></i></a>
 													</td>
 												</tr>
 												<?php endforeach;
@@ -59,12 +59,43 @@
 <?php  $this->view('templates/admin/footer.php'); ?>
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--Level Modal -->
+<div class="modal fade" id="levelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><span id="contestNameId"></span>(Level) </h5>
+        <h5 class="modal-title" id="exampleModalLabel">Levels : <small id="contestNameId"></small> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="contestLevelId">
+          <table class="table table-sm table-hover mb-0">
+			<thead>
+				<tr>
+					<th><strong>Level Name</strong></th>
+					<th class="w-5">Current Level</th>
+					<th class="w-5"><strong>Status</strong></th>
+				</tr>
+			</thead>
+			<tbody id="tBodyLevelListingId">
+			</tbody>
+		  </table>
+      </div>
+      <div class="modal-footer">
+	    <div id="resp_msg" class="text-left"></div>
+        <div class="text-right "><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--participant Modal -->
+<div class="modal fade" id="participantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Participants : <small id="contestNameId"></small> </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

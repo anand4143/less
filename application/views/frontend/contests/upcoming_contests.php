@@ -13,7 +13,7 @@
 											foreach($upcoming_contests as $row):
 											 $status = $row->status == 1 ? 'Active' : 'Inactive';
 											 $class = $row->status == 1 ? 'badge-success' : 'badge-danger';?>
-									<a href="<?php echo base_url('participants/contest_details/'.$row->id);?>">
+									<a href="<?php echo base_url('contests/contest_details/'.$row->id);?>">
 									<div class="media border-bottom-1 pt-3 pb-3">
                                         <img width="35" src="<?php echo base_url('assets/dist/img/3videoicon.png');?>" class="mr-3 rounded-circle">
                                         <div class="media-body">

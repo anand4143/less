@@ -26,7 +26,8 @@ class Login extends MY_Controller {
        
        if($isValid){
            $userData = array(
-            'email'     => $isValid['email'],
+            'userID'      => $isValid['id'],
+			'email'     => $isValid['email'],
             'firstName' => $isValid['firstName'],
             'lastName'  => $isValid['lastName'],
             'userType'  => $isValid['userType'],
