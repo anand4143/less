@@ -57,10 +57,12 @@
 				 
 		   </div>
 		   <div class="card-footer ">
-			  <button class="btn btn-sm btn-primary" type="submit">
+		   <button type="submit" class="btn btn-primary mr-10">Submit</button>
+			<button type="button" class="btn btn-light" onClick="javascript: window.history.go(-1);">Back</button>
+			  <!-- <button class="btn btn-sm btn-primary" type="submit">
 			  <i class="fa fa-dot-circle-o"></i> Submit</button>
 			  <button class="btn btn-sm btn-danger" type="reset">
-			  <i class="fa fa-ban"></i> Reset</button>
+			  <i class="fa fa-ban"></i> Reset</button> -->
 		   </div>
 		</div>
 		 <?php echo form_close();?>

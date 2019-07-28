@@ -67,6 +67,16 @@ class Users extends CI_Model{
         $this->db->where('id',$id);
         return $this->db->update('users', array('isActive'=>'0'));
     }
+    public function getUserListWithContestsAndLevel(){
+        $query = $this->db->query('select t1.id,t1.firstName,t1.lastName,t1.email,t2.contestId,t2.contestName,t2.levelname,t2.levelId from users t1 RIGHT join (select t3.userID,t5.contestName,t5.id as contestId,t4.id as levelId,t4.levelName as levelname from users_contests_levels t3 left join contest_levels t4 on t4.contestID = t3.contestID and t4.id=t3.levelID LEFT join master_contests t5 on t5.id=t4.contestID) t2 on t1.id= t2.userID');
+        return $query->result();
+
+    }
+
+    public function insertDataUsersJudgesTable($data){
+        $this->db->insert('users_judge',$data);
+        return $this->db->insert_id();
+    }
 }
 
 

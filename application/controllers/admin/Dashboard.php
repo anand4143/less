@@ -54,11 +54,11 @@ class Dashboard extends MY_Controller {
     }
     public function judgelanding(){
         $currentUser = $this->getSessionData(); 
-        //echo "<pre>";print_r($currentUser);die('here');      
+       // echo "<pre>";print_r($currentUser);die('here');      
         $data['session'] = $currentUser;
-        $usersList = $this->judges->getJudgeList();
+        $usersList = $this->judges->getUserListWithContestsAndLevelById($currentUser['id']);
         $data['userList'] = $usersList;
-        //echo "<pre>";print_r($data['userList']);
+        //echo "<pre>";print_r($data['userList']);die('judge landing');
         $this->load->view('admin/judge/landing',$data);
         
     }

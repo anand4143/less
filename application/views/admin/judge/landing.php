@@ -1,4 +1,4 @@
-<?php $this->view('templates/admin/header.php'); ?>
+<?php $this->view('templates/admin/judge/header.php'); ?>
 
  <!-- Row -->
  <div class="row">
@@ -20,8 +20,8 @@
 													<th>First Name</th>
 													<th>Last Name</th>
 													<th>Email</th>
-													<th>Register Date</th>
-													<th>Status</th>
+													<th>Contest Name</th>
+													<th>Level Name</th>
 													<th class="w-20">Action</th>
 												</tr>
 											</thead>
@@ -35,17 +35,10 @@
 													<td><?php echo $user->firstName;?></td>
 													<td><?php echo $user->lastName;?></td>
 													<td><?php echo $user->email;?></td>
-													<td><?php echo $user->createdDate;?></td>
-												  <td>
-                                                  <?php if($user->isActive){?>
-                                                    <span class="badge badge-success">Active</span>
-                                                  <?php }else{?>
-                                                    <span class="badge badge-danger">inactive</span>
-                                                  <?php } ?>
-                                                    <td>
-														<a href="<?php echo base_url('admin/judge/edit/'.$user->id);?>" title="Edit Contest"><span class="fa fa-edit"></span></a>
-														<a href="<?php echo base_url('admin/judge/delete/'.$user->id);?>" title="Remove Contest"><span class="fa fa-remove"></span></a>
-													</td>
+													<td><?php echo $user->contestName;?></td>
+													<td><?php echo $user->levelname;?></td>
+												  <td> <a href="#">
+												  <i class='fa fa-balance-scale' style='font-size:30px;color:red'></i></a></td>
 												</tr>
 											<?php } ?>
 												
@@ -60,4 +53,4 @@
                 <!-- /Row -->
 
 
-<?php  $this->view('templates/admin/footer.php'); ?>
+<?php  $this->view('templates/admin/judge/footer.php'); ?>

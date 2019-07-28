@@ -26,9 +26,10 @@ class Login extends MY_Controller {
             $password = md5($this->input->post('password'));
             
             $isValid = $this->judges->isValidate($username,$password);
-            echo "<pre>";print_r($isValid);
+            //echo "<pre>";print_r($isValid);die('login cont');
             if($isValid){
                 $userData = array(
+                    'id' => $isValid['id'],
                     'email'     => $isValid['email'],
                     'firstName' => $isValid['firstName'],
                     'lastName'  => $isValid['lastName'],

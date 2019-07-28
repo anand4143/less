@@ -6,13 +6,14 @@ class Judge extends MY_Controller{
         parent:: __construct();
         $this->load->helper('url');
         $this->load->model('users');
+        $this->load->model('judges');
         $this->load->library('session');
 		$this->auth();
     }
 
     public function index(){
         $data = array();
-        $res =  $this->users->getJudgeList();
+        $res =  $this->judges->getJudgeList();
         //echo "<pre>";print_r($res);
        // if($res == false){
        // $this->set_flashdata("noJudge",'No Judge available in our system!');
