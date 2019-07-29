@@ -35,12 +35,18 @@ class Contests extends MY_Controller {
     }
 	
 	public function contest_details($contest_id) {
+		$user_id = $this->getSessionData('userID');
+		
 		$this->load->model('contest_m');
 		$this->load->model('participant_m');
-		$data['c_data'] = $this->contest_m->get_contest_data($contest_id);
-		
+		$this->load->model('smule_m');
+		$c_data = $this->contest_m->get_contest_data($contest_id);
+		$data['c_data'] = $c_data;
 		$data['is_participated'] = $this->participant_m->is_alreay_participate_contest($contest_id);
-		//echo "<pre>";print_r($data);die;
+		$rs = $this->smule_m->get_user_smules($contest_id, $c_data->levelID);
+		$data['my_songs'] = $rs[$user_id];
+		//unset($rs[$user_id]);
+		$data['others_song_list'] = $rs;
         $this->load->view('frontend/contests/contest_detail', $data);
 	}
 	
@@ -59,6 +65,73 @@ class Contests extends MY_Controller {
 			 $data['resp_status'] = 'failed';
 		}
 		$this->load->view('frontend/contests/participate_message', $data);
+    }
+	
+	public function upload_song($contest_id, $level_id){
+		$resp_data =  array();
+		
+		$this->load->model('smule_m');
+		$user_id = $this->getSessionData('userID');
+		$smule_url = $this->input->post('smule_url');
+		
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('smule_url', 'Upload Song', 'required|callback_valid_url');
+		$this->form_validation->set_error_delimiters('<em clss="text-danger">','</em>');
+		if($this->form_validation->run()) {
+			$is_limit_exceed = $this->smule_m->is_upload_limit_exceed($contest_id, $level_id, $user_id);
+			if($is_limit_exceed){
+				$resp_data['resp_status'] = 'error';
+				$resp_data['resp_msg'] = 'Song upload limit exceeded';
+			} else {
+				$new_data = array(
+					'contestID' => $contest_id,
+					'levelID' => $level_id, 
+					'userID' => $user_id,
+					'smuleUrl' => $smule_url,
+					'smuleID' => '',
+					'eby' => $user_id
+				);
+				$resp = $this->smule_m->store_data($new_data);
+				if($resp){
+					$resp_data['resp_status'] = 'success';
+					$resp_data['resp_msg'] = 'Song uploaded sucessfully';
+				} else {
+					$resp_data['resp_status'] = 'error';
+					$resp_data['resp_msg'] = 'Song upload failed, try again!';
+				}
+			}	
+		} else {
+			$resp_data['resp_status'] = 'error';
+			foreach($_POST as $key => $value){
+				$resp_data['messages'][$key] = form_error($key);
+			}
+		}
+		echo json_encode($resp_data);
+	}
+	
+	public function get_all_user_songs($contest_id, $level_id){
+		$resp_data = array();
+		$this->load->model('smule_m');
+		$rs = $this->smule_m->get_user_smules($contest_id, $level_id);
+		if($rs){
+			$resp['resp_status'] = 'success';
+			$resp['list'] = $rs;
+			$resp['num_row'] = count($rs);
+		} else {
+			$resp['resp_status'] = 'error';
+			$resp['list'] = array();
+			$resp['num_row'] = 0;
+		}
+		echo json_encode($resp_data);
+	}
+	
+	public function valid_url($str){
+        $pattern = "|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i";
+        if (!preg_match($pattern, $str)){
+            $this->set_message('valid_url', 'Please enter valid url.');
+            return FALSE;
+        } 
+        return TRUE;
     }
     
 }
