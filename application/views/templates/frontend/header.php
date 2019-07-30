@@ -37,12 +37,45 @@
 						<div class="col-sm-5 text-left text-sm-right">
 							<div class="divided-content small-text greylinks color2">
 								<div>
-									<div class="dropdown"> <a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My account
-								<span class="caret"></span>
-	                		</a>
+									<div class="dropdown">
+									<?php 
+										if(isset($sessionData)){
+									?> 
+										<a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											My account<span class="caret"></span>
+	                					</a>
+									<?php }else{ ?>
+										<a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Running Contests
+	                					</a>
+										<a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											SIGN IN / SIGN UP<span class="caret"></span>
+	                					</a>
+									<?php 
+										}
+									?>
 										<ul class="dropdown-menu" aria-labelledby="account-dropdown">
-											<li> <a href="<?php echo base_url()?>login">Sign In</a> </li>
-											<li> <a href="<?php echo base_url()?>/signup">Sign Up</a> </li>
+										<?php 
+										
+											if(isset($sessionData)){
+												if($sessionData['userId']){
+										?>
+											<li> <a href="<?php echo base_url()?>user/profile">Profile</a> </li>
+											<li> <a href="<?php echo base_url()?>/login/logout">Logout</a> </li>
+										<?php
+											}else{
+										?>
+											<li> <a href="<?php echo base_url()?>login">SignIn</a> </li>
+											<li> <a href="<?php echo base_url()?>/login/signUp">SignUp</a> </li>
+										<?php
+											}
+										}else{
+											?>
+											<li> <a href="<?php echo base_url()?>login">SignIn</a> </li>
+											<li> <a href="<?php echo base_url()?>/login/signUp">SignUp</a> </li>
+										<?php 
+										}
+										?>
 										</ul>
 									</div>
 								</div>

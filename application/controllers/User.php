@@ -39,15 +39,16 @@ class User extends MY_Controller {
     public function landing(){
         ///echo 'anand ';
         //redirect('frontend/users/lan');
-        $this->load->view('frontend/users/landing');
+        $userData['sessionData'] = $this->getSessionData();
+        $this->load->view('frontend/users/landing',$userData);
     }
 
     public function profile(){
-        $loginUser = $this->getSessionData();
+        $userData['sessionData'] = $this->getSessionData();
        // echo "<pre>";print_r($loginUser['userId']);
-        $userData['user'] = $this->users->getUser($loginUser['userId']);
-        echo '<pre>';print_r($userData);
-        $this->load->view('frontend/users/profile');
+        $userData['user'] = $this->users->getUser( $userData['sessionData']['userId']);
+        //echo '<pre>';print_r($userData);die;
+        $this->load->view('frontend/users/profile',$userData);
     }
 
     
