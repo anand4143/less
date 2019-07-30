@@ -1,89 +1,369 @@
+
+
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
-    <title>Admin-Less Superstar</title>
-    <?php //link_tag("assets/css/bootstrap.min.css");  ?>
-    <?php //link_tag('assets/css/style.css'); ?>
-    <?= link_tag('assets/dist/css/style.css'); ?>
+	<title>Lesssuperstare</title>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <?= link_tag('assets/css/frontend/bootstrap.min.css'); ?>
+	<?= link_tag('assets/css/frontend/animations.css');?>
+	<?= link_tag('assets/css/frontend/fonts.css');?>
+	<?= link_tag('assets/css/frontend/cue.css');?>
+	<?= link_tag('assets/css/frontend/main.css');?>
+	<?= link_tag('assets/css/frontend/shop.css');?>
+	<?= link_tag('assets/css/frontend/mediaelementplayer-legacy.css');?>
+    <script src="<?php echo base_url();?>assets/js/frontend/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader-it">
-        <div class="loader-pendulums"></div>
-    </div>
-    <!-- /Preloader -->
-   
-	<!-- HK Wrapper -->
-	<div class="hk-wrapper">
-        <!-- Main Content -->
-        <div class="hk-pg-wrapper hk-auth-wrapper">
-            <header class="d-flex justify-content-between align-items-center">
-                <a class="d-flex auth-brand" href="#">
-                   Less Superstars
-                </a>
-				<a class="d-flex auth-brand pull-right" href="<?php echo base_url('login');?>">
-                   Login
-                </a>
-            </header>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-15 pa-0">
-                        <div id="owl_demo_1" class="owl-carousel dots-on-item owl-theme">
-                            <div class="fadeOut item auth-cover-img overlay-wrap" style="background-image:url(<?php echo base_url();?>assets/dist/img/bg2.jpg);">
-                                <div class="auth-cover-info py-xl-0 pt-100 pb-50">
-                                    <div class="auth-cover-content text-center w-xxl-75 w-sm-90 w-xs-100">
-                                        <h1 class="display-3 text-white mb-20">Develop a passion for learning. If you do, you will never cease to grow.</h1>
-                                        <!-- <p class="text-white">Develop a passion for learning. If you do, you will never cease to grow.</p> -->
-                                    </div>
-                                </div>
-                                <div class="bg-overlay bg-trans-dark-50"></div>
-                            </div>
-                            <div class="fadeOut item auth-cover-img overlay-wrap" style="background-image:url(<?php echo base_url();?>assets/dist/img/bg1.jpg);">
-                                <div class="auth-cover-info py-xl-0 pt-100 pb-50">
-                                    <div class="auth-cover-content text-center w-xxl-75 w-sm-90 w-xs-100">
-                                        <h1 class="display-3 text-white mb-20">Knowledge is power. Information is liberating. Education is the premise of progress, in every society, in every family.</h1>
-                                        <!-- <p class="text-white">Knowledge is power. Information is liberating. Education is the premise of progress, in every society, in every family.</p> -->
-                                    </div>
-                                </div>
-								<div class="bg-overlay bg-trans-dark-50"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        <!-- /Main Content -->
+	<div class="preloader">
+		<div class="preloader_image"></div>
+	</div>
+	<!-- wrappers for visual page editor and boxed version of template -->
+	<div id="canvas">
+		<div id="box_wrapper">
+			<!-- template sections -->
+			<section class="page_toplogo with_bottom_overlap_logo ls with_top_color_border columns_padding_0">
+				<div class="container">
+					<div class="row flex-wrap v-center" style="padding-top: 10px;">
+						<div class="col-sm-2 col-sm-push-5 text-left text-sm-center">
+							<div class="bottom_overlap_logo"> <a href="index.html" class="logo">
+	                    <img src="<?php echo base_url();?>assets/frontend/images/logo.png" alt="">
+	                </a> </div>
+							<!-- header toggler --><span class="toggle_menu"><span></span></span>
+						</div>
+						<div class="col-sm-5 col-sm-pull-2 hidden-xs"> <span class="small-text rightpadding_20 hidden-sm">follow us:</span> <span class="divided-content">
+					<span><a class="social-icon socicon-facebook" href="#" title="Facebook"></a></span> <span><a class="social-icon socicon-twitter" href="#" title="Twitter"></a></span> <span><a class="social-icon socicon-linkedin" href="#" title="linkedin"></a></span>							 </span>
+						</div>
+						<div class="col-sm-5 text-left text-sm-right">
+							<div class="divided-content small-text greylinks color2">
+								<div>
+									<div class="dropdown"> <a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My account
+								<span class="caret"></span>
+	                		</a>
+										<ul class="dropdown-menu" aria-labelledby="account-dropdown">
+											<li> <a href="<?php echo base_url()?>login">Sign In</a> </li>
+											<li> <a href="<?php echo base_url()?>/signup">Sign Up</a> </li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<header class="page_header header_darkgrey header_transparent divided_items with_menu_icon">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12" style="z-index: 9999;">
+							<nav class="mainmenu_wrapper">
+								<ul class="mainmenu nav sf-menu">
+									<li class="active"> <a href="index-2.html">Services</a>
+										<ul>
+											<li> <a href="#">Audio Production</a> </li>
+											<li> <a href="#">Video Production</a> </li>
+											<li> <a href="#">Photography</a> </li>
+											
+											<li> <a href="#">Animation</a> </li>
+											<li> <a href="#">Launches, Distribution And Market Release</a> </li>
+											<li> <a href="#">Events And Talent Management​</a> </li>
+										</ul>
+									</li>
+									
+									<li> <a href="index-2.html">About</a>
+										<ul>
+											<li> <a href="#">About Us</a> </li>
+											<li> <a href="#">Career</a> </li>
+											<li> <a href="#">Gallery</a> </li>
+										</ul>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</header>
+			<section class="intro_section page_mainslider ds">
+				<div class="flexslider" data-dots="true" data-nav="ture">
+					<ul class="slides">
+						<li>
+						<video width="100%" height="100%" loop autoplay muted>
+						  <source src="<?php echo base_url();?>assets/frontend/images/promotion-1-final.mp4" type="video/mp4">
+						  <source src="<?php echo base_url();?>assets/frontend/images/promotion-1-final.ogg" type="video/ogg">
+						Your browser does not support the video tag.
+						</video>
+						
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12 text-center">
+										<div class="slide_description_wrapper">
+											<div class="slide_description">
+												<div class="intro-layer" data-animation="fadeInUp">
+													<p class="small-text bannertxt"> We Are No Super stars<br> We Are No Less<br>Either!</p>
+												</div>
+												<div class="intro-layer" data-animation="fadeInUp">
+													<p class="topmargin_30">
+														<a href="#0" class="theme_button inverse min_width_button bannerbtn" >
+															Become A Lesssuperstar
+														</a>
+											</p>
+												</div>
+											</div>
+											
+										</div>
+										
+									</div>
+									
+								</div>
+								
+							</div>
+							
+						</li>
+						
+						
+					</ul>
+				</div>
+				<!-- eof flexslider -->
+			</section>
+			<section id="about" class="ls section_padding_top_40 section_padding_bottom_40 table_section table_section_md columns_margin_bottom_30">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-7 col-md-push-5"> <img src="<?php echo base_url();?>assets/frontend/images/about.jpg" alt=""> </div>
+						<div class="col-md-5 col-md-pull-7">
+							<h2 class="section_header"> <span class="small">Mera Gaana</span> Contest </h2>
+							<hr class="header_divider">
+							<p> Smule Sing! In association with LessSuperstars has brought a once in a life time opportunity for you. Few simple steps to follow and you’re ready to sore high in the sky.</p>
+							<div class="content-justify vertical-center content-margins topmargin_25"> <a href="about.html" class="theme_button color min_width_button">Read more</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section id="players" class="ls">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h2 class="section_header">Our Services</h2>
+							<hr class="header_divider">
+							<div class="owl-carousel topmargin_80" data-responsive-lg="3" data-nav="true" data-dots="false">
+								<div class="vertical-item content-absolute hover-entry-content">
+									<div class="item-media"> <img src="<?php echo base_url();?>assets/frontend/images/team/01.jpg" alt=""> </div>
+									<div class="item-content cs transp_gradient_bg">
+										<h4 class="entry-title bottommargin_0"> <a href="team-single.html">Audio Production</a> </h4>
+										<div class="entry-content">
+											<div class="toppadding_20">
+												<p class="content-3lines-ellipsis"> Ever thought of recording a cover version or thought of doing a Karaoke to impress someone? Are you a Singer / Song writer then you must have thought about recording your own </p>
+												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">Read More</a> </p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="vertical-item content-absolute hover-entry-content">
+									<div class="item-media"> <img src="<?php echo base_url();?>assets/frontend/images/team/02.jpg" alt=""> </div>
+									<div class="item-content cs transp_gradient_bg">
+										<h4 class="entry-title bottommargin_0"> <a href="team-single.html">Video Production / Film making</a> </h4>
+										
+										<div class="entry-content">
+											<div class="toppadding_20">
+												<p class="content-3lines-ellipsis">Our services include creation of music videos for individual songs or complete album, shooting of commercial films, ads/commercials or documentary for your video production. With our expert industrial videographers and video editor</p>
+												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">Read More</a> </p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="vertical-item content-absolute hover-entry-content">
+									<div class="item-media"> <img src="<?php echo base_url();?>assets/frontend/images/team/03.jpg" alt=""> </div>
+									<div class="item-content cs transp_gradient_bg">
+										<h4 class="entry-title bottommargin_0"> <a href="team-single.html">Photography</a> </h4>
+										
+										<div class="entry-content">
+											<div class="toppadding_20">
+												<p class="content-3lines-ellipsis">We have a team of professionals who will make sure that the output you get is nothing less than WOW. We specialize in concept based shoots, model portfolios, wedding shoots, cake...</p>
+												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">Read More</a> </p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="vertical-item content-absolute hover-entry-content">
+									<div class="item-media"> <img src="<?php echo base_url();?>assets/frontend/images/team/04.jpg" alt=""> </div>
+									<div class="item-content cs transp_gradient_bg">
+										<h4 class="entry-title bottommargin_0"> <a href="team-single.html">Animation</a> </h4>
+										
+										<div class="entry-content">
+											<div class="toppadding_20">
+												<p class="content-3lines-ellipsis">Science, technology, progress: they bring us great boons. But often, the new is complex and unfamiliar – and very difficult to explain. That idea that might change the world can sometimes...</p>
+												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">Read More</a> </p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="vertical-item content-absolute hover-entry-content">
+									<div class="item-media"> <img src="<?php echo base_url();?>assets/frontend/images/team/05.jpg" alt=""> </div>
+									<div class="item-content cs transp_gradient_bg">
+										<h4 class="entry-title bottommargin_0"> <a href="team-single.html">Launches, Distribution And Market Release-</a> </h4>
+										
+										<div class="entry-content">
+											<div class="toppadding_20">
+												<p class="content-3lines-ellipsis">We have different range of promotional packages for your album/video/film or any audio/video project. We have options of traditional media, which includes newspaper ...</p>
+												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">Read More</a> </p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="vertical-item content-absolute hover-entry-content">
+									<div class="item-media"> <img src="<?php echo base_url();?>assets/frontend/images/team/06.jpg" alt=""> </div>
+									<div class="item-content cs transp_gradient_bg">
+										<h4 class="entry-title bottommargin_0"> <a href="team-single.html">Events And Talent Management</a> </h4>
+										
+										<div class="entry-content">
+											<div class="toppadding_20">
+												<p class="content-3lines-ellipsis">We host many talent hunt events and even gives opportunity to talents to register with us, to perform on events and shows. We hold regular auditions for singers, musicians and actors for different productions and event shows...</p>
+												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">Read More</a> </p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			
+			
+			<section id="news" class="ls section_padding_top_100 section_padding_bottom_100">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h2 class="section_header">How to Get Started</h2>
+							<hr class="header_divider">
+							<div class="owith_shadow_items text-left topmargin_60">
+								<div class="row">
+									<div class="col-lg-4">
+										<article class="vertical-item content-padding with_shadow loop-color" style="padding-top: 30px;">
+										<div class="item-ico">
+										<i class="fa fa-phone"></i>
+										</div>
+											<div class="item-content text-center">
+												<header class="entry-header">
+													<h4 class="entry-title">Talk to Us</h4>
+												</header>
+												<div class="entry-content">
+													<p>Just email us or call us- we’ll listen to you share your thoughts an propose a way forward.</p>
+												</div>
+											</div>
+										</article>
+									</div>
+									
+									<div class="col-lg-4">
+										<article class="vertical-item content-padding with_shadow loop-color" style="padding-top: 30px;">
+										<div class="item-ico">
+										<i class="fa fa-coffee"></i>
+										</div>
+											<div class="item-content text-center">
+												<header class="entry-header">
+													<h4 class="entry-title">Let’s sit, Make a plan</h4>
+												</header>
+												<div class="entry-content">
+													<p>we’ll sit on a tea/ coffee, make a plan, you give Us the go ahead and well plan everything for you.</p>
+												</div>
+											</div>
+										</article>
+									</div>
+									
+									<div class="col-lg-4">
+										<article class="vertical-item content-padding with_shadow loop-color" style="padding-top: 30px;">
+										<div class="item-ico">
+										<i class="fa fa-gear"></i>
+										</div>
+											<div class="item-content text-center">
+												<header class="entry-header">
+													<h4 class="entry-title">We’ll Create and Deliver</h4>
+												</header>
+												<div class="entry-content">
+													<p>We’ll produce, shoot ,edit everything. All delivered ready to launch.</p>
+												</div>
+											</div>
+										</article>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			
+			
+			<section id="subscribe" class="ds parallax section_padding_top_100 section_padding_bottom_100">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-md-8 col-sm-10 col-sm-offset-1 col-md-offset-2 col-lg-offset-3 text-center">
+							<h2 class="section_header">Want To Learn About Film and Media ?</h2>
+							<button type="submit" class="theme_button color min_width_button" style="font-size: 24px;">Get Started</button>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section id="testimonila" class="ls section_padding_top_50 section_padding_bottom_100">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h2 class="section_header">How to Get Started</h2>
+							<hr class="header_divider">
+							
+							<div class="owl-carousel topmargin_80 with_shadow_items" data-responsive-lg="2" data-nav="true" data-dots="false" auto-play="true" style="overflow: inherit;">
+								<article class="vertical-item content-padding with_shadow loop-color  bottompadding_30">
+								<div class="userimg"><img src="<?php echo base_url();?>assets/frontend/images/user.png"/></div>
+								<div class="toppadding_60"> LessSuperstars created an amazing documentary on Indian Railway. Incredible project. Lost for words.</div>
+								
+								<h6 class="bottommargin_0">Alok Mishra</h6>
+								<i>IRSS, Railway Department</i>
+								
+									</article>
+									
+									<article class="vertical-item content-padding with_shadow loop-color  bottompadding_30">
+								<div class="userimg"><img src="<?php echo base_url();?>assets/frontend/images/user.png"/></div>
+								<div class="toppadding_60"> LessSuperstars created an amazing documentary on Indian Railway. Incredible project. Lost for words.</div>
+								
+								<h6 class="bottommargin_0">Alok Mishra</h6>
+								<i>IRSS, Railway Department</i>
+								
+									</article>
+							</div>
+						</div>
+						</div>
+						</div>
+						</section>
+						
+						
+						
+						
+						<section id="trusted" class="ls section_padding_bottom_100">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">	
+						
+							<h2 class="section_header">Trusted by</h2>
+							<hr class="header_divider">
+																		
+							<div class="owl-carousel topmargin_80" data-responsive-lg="5" data-nav="true" data-dots="false" auto-play="true" style="overflow: inherit;">
+								<div class="item">
+								<div class="trustedlogos"><img src="<?php echo base_url();?>assets/frontend/images/l1.jpg"/></div>
+								</div>
+								<div class="item"><div class="trustedlogos"><img src="<?php echo base_url();?>assets/frontend/images/l2.jpg"/></div></div>
+								<div class="item"><div class="trustedlogos"><img src="<?php echo base_url();?>assets/frontend/images/l3.jpg"/></div></div>
+								<div class="item"><div class="trustedlogos"><img src="<?php echo base_url();?>assets/frontend/images/l4.jpg"/></div></div>
+								<div class="item"><div class="trustedlogos"><img src="<?php echo base_url();?>assets/frontend/images/l5.jpg"/></div></div>
+									
+							</div>
+						</div>
+						</div>
+						</div>
+						</section>
 
-    </div>
-	<!-- /HK Wrapper -->
-    
-   
-
-<!-- jQuery -->
-<script src="<?php echo base_url();?>assets/vendors/jquery/dist/jquery.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="<?php echo base_url();?>assets/vendors/popper.js/dist/umd/popper.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-
-<!-- Slimscroll JavaScript -->
-<script src="<?php echo base_url();?>assets/dist/js/jquery.slimscroll.js"></script>
-
-<!-- Fancy Dropdown JS -->
-<script src="<?php echo base_url();?>assets/dist/js/dropdown-bootstrap-extended.js"></script>
-
-<!-- Owl JavaScript -->
-<script src="<?php echo base_url();?>assets/vendors/owl.carousel/dist/owl.carousel.min.js"></script>
-
-<!-- FeatherIcons JavaScript -->
-<script src="<?php echo base_url();?>assets/dist/js/feather.min.js"></script>
-
-<!-- Init JavaScript -->
-<script src="<?php echo base_url();?>assets/dist/js/init.js"></script>
-<script src="<?php echo base_url();?>assets/dist/js/login-data.js"></script>
-
-</body>
-</html>
-
-<?php  //include('admin_footer.php'); ?>
+<?php  include('templates/frontend/footer.php'); ?>

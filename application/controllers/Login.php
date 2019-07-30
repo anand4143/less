@@ -16,7 +16,7 @@ class Login extends MY_Controller {
 	public function index()
 	{
 		$this->load->view('frontend/login/login');
-    }
+  }
 
     public function login() {
        $username = $this->input->post('username');
@@ -27,7 +27,7 @@ class Login extends MY_Controller {
        if($isValid){
            $userData = array(
             'userID'      => $isValid['id'],
-			'email'     => $isValid['email'],
+			      'email'     => $isValid['email'],
             'firstName' => $isValid['firstName'],
             'lastName'  => $isValid['lastName'],
             'userType'  => $isValid['userType'],

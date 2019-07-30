@@ -1,85 +1,79 @@
-</div>
-            <!-- /Container -->
-			
-            <!-- Footer -->
-            <div class="hk-footer-wrap container">
-                <footer class="footer">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <p>Powered by<a href="#" class="text-dark" target="_blank">Hari Shanker Choudhary</a> © 2019</p>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <p class="d-inline-block">Follow us</p>
-                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-facebook"></i></span></a>
-                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-twitter"></i></span></a>
-                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-google-plus"></i></span></a>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-            <!-- /Footer -->
-        </div>
-        <!-- /Main Content -->
+<footer class="page_footer ds gradient_bg section_padding_bottom_75">
+				<div class="container">
+				<h4 class="widget-title text-center toppadding_50"> Our Branches </h4>
+				<div class="">
+				<div class="row">
+					<div class="col-md-3">
+						<address class="branches">
+							LessSuperstars Khasra No.6, RohillaPur, Sector 132, Noida-201301 Uttar Pradesh
+						</address>
+					</div>
+					<div class="col-md-3">
+						<address class="branches">
+							A 51, Abul Fazal Enclave, Jamia Nagar, Okhla, New Delhi 110025
+						</address>
+					</div>
+					<div class="col-md-3">
+						<address class="branches">
+							SS- 1888,1889, LDA Sec H, Aashiyana circle, Aashiyana, Lucknow
+						</address>
+					</div>
+					<div class="col-md-3">
+						<address class="branches">
+							A-22, Wild Wood Park II, Off yari road, Versova, Andheri (West) Mumbai- 400061 Maharashtra
+						</address>
+					</div>
+				</div>
+				</div>
+					
+					<div class="row">
+						<div class="col-md-4 text-center">
+							<div class="widget widget_text">
+								<h4 class="widget-title"> Discover </h4>
+								<ul class="whitelinks list-unstyled">
+									<li> <a href="#0">Gallery</a> </li>
+									<li> <a href="#0">About</a> </li>
+									<li> <a href="#0">Enquiry</a> </li>
+									<li> <a href="#0">Career</a> </li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-4 text-center">
+							<div class="widget widget_text">
+								<h4 class="widget-title"> Connect With Us </h4>
+								
+								<div class="big-icons topmargin_25">
+									<a href="#" class="social-icon border-icon socicon-facebook"></a>
+									<a href="#" class="social-icon border-icon socicon-twitter"></a>
+									<a href="#" class="social-icon border-icon socicon-linkedin"></a>
+									
+								</div>
+								<a href="mailto:thecrowd@example.com">info@example.com</a>
+							</div>
+						</div>
+						<div class="col-md-4 text-center">
+							<div class="widget widget_text">
+								<h4 class="widget-title"> </h4>
+								<ul class="list-unstyled whitetext" style="color: #fff;">
+									<li> Copyright 2019. lesssuperstars</li>
+									<li>All Rights Reserved.</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
 
-
-
-
-</div>
-    <!-- /HK Wrapper -->
-
-    <!-- jQuery -->
-    <script src="<?php echo base_url();?>assets/vendors/jquery/dist/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo base_url();?>assets/vendors/popper.js/dist/umd/popper.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!-- Slimscroll JavaScript -->
-    <script src="<?php echo base_url();?>assets/dist/js/jquery.slimscroll.js"></script>
-
-    <!-- Fancy Dropdown JS -->
-    <script src="<?php echo base_url();?>assets/dist/js/dropdown-bootstrap-extended.js"></script>
-
-    <!-- FeatherIcons JavaScript -->
-    <script src="<?php echo base_url();?>assets/dist/js/feather.min.js"></script>
-
-    <!-- Toggles JavaScript -->
-    <script src="<?php echo base_url();?>assets/vendors/jquery-toggles/toggles.min.js"></script>
-    <script src="<?php echo base_url();?>assets/dist/js/toggle-data.js"></script>
-	
-	<!-- Toastr JS -->
-    <script src="<?php echo base_url();?>assets/vendors/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
-    
-	<!-- Counter Animation JavaScript -->
-	<script src="<?php echo base_url();?>assets/vendors/waypoints/lib/jquery.waypoints.min.js"></script>
-	<script src="<?php echo base_url();?>assets/vendors/jquery.counterup/jquery.counterup.min.js"></script>
-	
-	<!-- Morris Charts JavaScript -->
-    <script src="<?php echo base_url();?>assets/vendors/raphael/raphael.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/morris.js/morris.min.js"></script>
-	
-	<!-- Easy pie chart JS -->
-    <script src="<?php echo base_url();?>assets/vendors/easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
-	
-	<!-- Flot Charts JavaScript -->
-    <script src="<?php echo base_url();?>assets/vendors/flot/excanvas.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/flot/jquery.flot.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/flot/jquery.flot.pie.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/flot/jquery.flot.resize.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/flot/jquery.flot.time.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/flot/jquery.flot.stack.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/flot/jquery.flot.crosshair.js"></script>
-    <script src="<?php echo base_url();?>assets/vendors/jquery.flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-	
-	<!-- EChartJS JavaScript -->
-    <script src="<?php echo base_url();?>assets/vendors/echarts/dist/echarts-en.min.js"></script>
-    
-    <!-- Init JavaScript -->
-    <script src="<?php echo base_url();?>assets/dist/js/init.js"></script>
-	<script src="<?php echo base_url();?>assets/dist/js/dashboard2-data.js"></script>
-	<script src="<?php echo base_url();?>assets/js/jquery.validate.min.js"></script>
+		</div>
+		<!-- eof #box_wrapper -->
+	</div>
+	<!-- eof #canvas -->
+    <script src="<?php echo base_url();?>assets/js/frontend/compressed.js"></script>
+    <script src="<?php echo base_url();?>assets/js/frontend/main.js"></script>
+	<!-- <script src="js/compressed.js"></script> -->
+	<!-- <script src="js/main.js"></script> -->
+	<!-- Google Map Script -->
+	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTwYSMRGuTsmfl2z_zZDStYqMlKtrybxo"></script> -->
 </body>
-
-
-<!-- Mirrored from hencework.com/theme/mintos/dashboard2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Feb 2019 06:49:30 GMT -->
 </html>

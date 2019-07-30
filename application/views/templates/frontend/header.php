@@ -1,121 +1,102 @@
-<html lang="en">
+<!DOCTYPE html>
+<html class="no-js">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Admin Dashboard</title>
-    <meta name="description" content="Less superstar" />
-    <!-- <link rel="shortcut icon" href="favicon.ico"> 
-    <link rel="icon" href="favicon.ico" type="image/x-icon">-->
-
-    <!-- <link href="vendors/morris.js/morris.css" rel="stylesheet" type="text/css" /> -->
-    <?= link_tag('assets/vendors/morris.js/morris.css'); ?>
-    <!-- <link href="vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css"> -->
-    <?= link_tag('assets/vendors/jquery-toggles/css/toggles.css'); ?>
-    <!-- <link href="vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css"> -->
-    <?= link_tag('assets/vendors/jquery-toggles/css/themes/toggles-light.css'); ?>
-	
-	<!-- Toastr CSS -->
-    <!-- <link href="vendors/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css"> -->
-    <?= link_tag('assets/vendors/jquery-toast-plugin/dist/jquery.toast.min.css'); ?>
-
-    <!-- Custom CSS -->
-    <!-- <link href="dist/css/style.css" rel="stylesheet" type="text/css"> -->
-    <?= link_tag('assets/dist/css/style.css'); ?>
-    <?= link_tag('assets/css/main.css'); ?>
+	<title>Lesssuperstare</title>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <?= link_tag('assets/css/frontend/bootstrap.min.css'); ?>
+	<?= link_tag('assets/css/frontend/animations.css');?>
+	<?= link_tag('assets/css/frontend/fonts.css');?>
+	<?= link_tag('assets/css/frontend/cue.css');?>
+	<?= link_tag('assets/css/frontend/main.css');?>
+	<?= link_tag('assets/css/frontend/shop.css');?>
+	<?= link_tag('assets/css/frontend/mediaelementplayer-legacy.css');?>
+    <script src="<?php echo base_url();?>assets/js/frontend/vendor/modernizr-2.6.2.min.js"></script>
 </head>
-<!-- Preloader -->
-<div class="preloader-it">
-        <div class="loader-pendulums"></div>
-    </div>
-    <!-- /Preloader -->
-	
-	<!-- HK Wrapper -->
-	<div class="hk-wrapper hk-horizontal-nav">
+<body>
+	<div class="preloader">
+		<div class="preloader_image"></div>
+	</div>
+	<!-- wrappers for visual page editor and boxed version of template -->
+	<div id="canvas">
+		<div id="box_wrapper">
+		<!-- template sections -->
+		<section class="page_toplogo with_bottom_overlap_logo ls with_top_color_border columns_padding_0">
+				<div class="container">
+					<div class="row flex-wrap v-center" style="padding-top: 10px;">
+						<div class="col-sm-2 col-sm-push-5 text-left text-sm-center">
+							<div class="bottom_overlap_logo"> <a href="index.html" class="logo">
+	                    <img src="<?php echo base_url();?>assets/frontend/images/logo.png" alt="">
+	                </a> </div>
+							<!-- header toggler --><span class="toggle_menu"><span></span></span>
+						</div>
+						<div class="col-sm-5 col-sm-pull-2 hidden-xs"> <span class="small-text rightpadding_20 hidden-sm">follow us:</span> <span class="divided-content">
+					<span><a class="social-icon socicon-facebook" href="#" title="Facebook"></a></span> <span><a class="social-icon socicon-twitter" href="#" title="Twitter"></a></span> <span><a class="social-icon socicon-linkedin" href="#" title="linkedin"></a></span>							 </span>
+						</div>
+						<div class="col-sm-5 text-left text-sm-right">
+							<div class="divided-content small-text greylinks color2">
+								<div>
+									<div class="dropdown"> <a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My account
+								<span class="caret"></span>
+	                		</a>
+										<ul class="dropdown-menu" aria-labelledby="account-dropdown">
+											<li> <a href="<?php echo base_url()?>login">Sign In</a> </li>
+											<li> <a href="<?php echo base_url()?>/signup">Sign Up</a> </li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<header class="page_header header_darkgrey header_transparent divided_items with_menu_icon">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12" style="z-index: 9999;">
+							<nav class="mainmenu_wrapper">
+								<ul class="mainmenu nav sf-menu">
+									<li class="active"> <a href="index-2.html">Services</a>
+										<ul>
+											<li> <a href="#">Audio Production</a> </li>
+											<li> <a href="#">Video Production</a> </li>
+											<li> <a href="#">Photography</a> </li>
+											
+											<li> <a href="#">Animation</a> </li>
+											<li> <a href="#">Launches, Distribution And Market Release</a> </li>
+											<li> <a href="#">Events And Talent Management​</a> </li>
+										</ul>
+									</li>
+									
+									<li> <a href="index-2.html">About</a>
+										<ul>
+											<li> <a href="#">About Us</a> </li>
+											<li> <a href="#">Career</a> </li>
+											<li> <a href="#">Gallery</a> </li>
+										</ul>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</header>
 
-        <!-- Top Navbar -->
-        <nav class="navbar navbar-expand-xl navbar-dark fixed-top hk-navbar">
-            <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><span class="feather-icon"><i data-feather="menu"></i></span></a>
-            <a class="navbar-brand" href="javascript:void(0);">
-                <!-- <img class="brand-img d-inline-block" src="<?php echo base_url();?>assets/dist/img/logo-dark.png" alt="brand" /> -->
-                Less Superstar
-            </a>
-            <ul class="navbar-nav hk-navbar-content">
-                <li class="nav-item dropdown dropdown-authentication">
-                    <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="media">
-                            <div class="media-img-wrap">
-                                <div class="avatar">
-                                    <img src="<?php echo base_url();?>assets/dist/img/avatar12.jpg" alt="user" class="avatar-img rounded-circle">
-                                </div>
-                                <span class="badge badge-success badge-indicator"></span>
-                            </div>
-                            <div class="media-body">
-                                <span>Hello <?php echo $this->session->userdata('firstName');?><i class="zmdi zmdi-chevron-down"></i></span>
-                            </div>
-                        </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
-                        <a class="dropdown-item" href="profile.html"><i class="dropdown-icon zmdi zmdi-account"></i><span>Profile</span></a>
-                        <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-card"></i><span>My balance</span></a>
-                        <a class="dropdown-item" href="inbox.html"><i class="dropdown-icon zmdi zmdi-email"></i><span>Inbox</span></a>
-                        <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-settings"></i><span>Settings</span></a>
-                        <div class="dropdown-divider"></div>
-                        <div class="sub-dropdown-menu show-on-hover">
-                            <a href="#" class="dropdown-toggle dropdown-item no-caret"><i class="zmdi zmdi-check text-success"></i>Online</a>
-                            <div class="dropdown-menu open-left-side">
-                                <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-check text-success"></i><span>Online</span></a>
-                                <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-circle-o text-warning"></i><span>Busy</span></a>
-                                <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-minus-circle-outline text-danger"></i><span>Offline</span></a>
-                            </div>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?php echo site_url('login/logout') ?>">
-                        <i class="dropdown-icon zmdi zmdi-power"></i>
-                            <span>Log out</span>
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-
-
-         <!--Horizontal Nav-->
-         <nav class="hk-nav hk-nav-light">
-            <a href="javascript:void(0);" id="hk_nav_close" class="hk-nav-close"><span class="feather-icon"><i data-feather="x"></i></span></a>
-            <div class="nicescroll-bar">
-                <div class="navbar-nav-wrap">
-                    <ul class="navbar-nav flex-row">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#dash_drp">
-                                <span class="feather-icon"><i data-feather="activity"></i></span>
-                                <span class="nav-link-text">Dashboard</span>
-                            </a>
-                            
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('Admin/contests') ?>" data-toggle="collapse" data-target="#pages_drp">
-                                <span class="feather-icon"><i data-feather="file-text"></i></span>
-                                <span class="nav-link-text">Services</span>
-                            </a>
-                        </li>
-						<li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('Admin/contests') ?>" data-toggle="collapse" data-target="#pages_drp">
-                                <span class="feather-icon"><i data-feather="file-text"></i></span>
-                                <span class="nav-link-text">About</span>
-                            </a>
-                        </li>
-						
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
-        <!--/Horizontal Nav-->
-
-<!-- Main Content -->
-  <div class="hk-pg-wrapper">
-			<!-- Container -->
-    <div class="container mt-xl-50 mt-sm-30 mt-15">
-     
-           
+			<section class="page_breadcrumbs cs gradient section_padding_top_25 section_padding_bottom_25 table_section table_section_md">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 text-center text-md-left">
+							<h2 class="small">Signin</h2>
+						</div>
+						<div class="col-md-6 text-center text-md-right">
+							<ol class="breadcrumb">
+								<li> <a href="index.html">Home</a> </li>
+								<li> <a href="#">Home</a> </li>
+								<li class="active">Signin</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
