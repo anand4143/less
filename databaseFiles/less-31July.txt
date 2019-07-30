@@ -1,0 +1,9 @@
+ALTER TABLE `users` ADD `gender` VARCHAR(100) NOT NULL AFTER `aboutUser`;
+ALTER TABLE `users` ADD `mobileno` VARCHAR(100) NOT NULL AFTER `gender`;
+ALTER TABLE `users` ADD `address` TEXT NOT NULL AFTER `mobileno`;
+ALTER TABLE `users` ADD `cityID` INT(10) NOT NULL COMMENT 'id of city table' AFTER `address`;
+ALTER TABLE `users` ADD `state` INT(10) NOT NULL COMMENT 'id of state tabel' AFTER `cityID`;
+ALTER TABLE `users` ADD `countryID` INT(10) NOT NULL DEFAULT '1' COMMENT 'Now default value 1 as India' AFTER `state`;
+ALTER TABLE `users` ADD `pincode` VARCHAR(100) NOT NULL AFTER `countryID`;
+
+CREATE TABLE `master_state` ( `id` INT(11) NOT NULL AUTO_INCREMENT, `CountryID` INT(11) NOT NULL, `StateName` VARCHAR(50) NOT NULL, `Notes` LONGTEXT, PRIMARY KEY (id) ) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1

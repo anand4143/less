@@ -51,6 +51,30 @@ class User extends MY_Controller {
         $this->load->view('frontend/users/profile',$userData);
     }
 
+    public function register(){
+        echo "<pre>";print_r($this->input->post());
+        $data = array(
+            'firstName' => $this->input->post('firstName'),
+            'lastName' => $this->input->post('lastName'),
+            'email' => $this->input->post('email'),
+            'password' => md5($this->input->post('password')),
+            'gender' => $this->input->post('gender'),
+            'mobileno' => $this->input->post('mobileno'),
+            'address' => $this->input->post('address'),
+            'city' => $this->input->post('city'),
+            'state' => $this->input->post('state'),
+            'pincode' => $this->input->post('pincode')
+        );
+        $result = $this->users->registerUser($data);
+        if($result){
+            $this->session->set_flashdata('registerSuccess',"Please login with your credential");
+            redirect('login');
+        }else{
+            $this->session->set_flashdata('registerError',"Something went wrong. Please try later");
+            redirect('login');
+        }
+    }
+
     
 
 

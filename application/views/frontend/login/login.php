@@ -3,6 +3,8 @@
 				<div class="container">
 				<div class="signupcontainer">
 				<?php echo $this->session->flashdata('error'); ?>
+				<?php echo $this->session->flashdata('registerSuccess'); ?>
+				<?php echo $this->session->flashdata('registerError'); ?>
                 <!-- <form class="contact-form row columns_padding_5" method="post" action="http://webdesign-finder.com/html/thecrowd/"> -->
                     <?php echo form_open('user/dashboard',['class'=>'contact-form row columns_padding_5']);?>
 								<div class="col-sm-12">
@@ -33,7 +35,7 @@
 									</div>
 								</div>
 								<div class="col-sm-12 text-center">
-								Don't Have Account Please <a href="signup.html">Signup</a>
+								Don't Have Account Please <a href="<?php echo base_url();?>registration">Signup</a>
 								</div>
 							<!-- </form> -->
 					</div>
