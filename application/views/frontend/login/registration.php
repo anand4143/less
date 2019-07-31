@@ -1,4 +1,20 @@
 <?php  $this->view('templates/frontend/header.php');?>
+<section class="page_breadcrumbs cs gradient section_padding_top_25 section_padding_bottom_25 table_section table_section_md">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 text-center text-md-left">
+							<h2 class="small">Registration</h2>
+						</div>
+						<div class="col-md-6 text-center text-md-right">
+							<!-- <ol class="breadcrumb">
+								<li> <a href="index.html">Home</a> </li>
+								<li> <a href="#">Home</a> </li>
+								<li class="active">Signin</li>
+							</ol> -->
+						</div>
+					</div>
+				</div>
+			</section>
 <section class="signinContainer">
 				<div class="container">
 				<div class="signupcontainer signupcon">
@@ -65,19 +81,33 @@
                                         <?php echo form_input(['class'=>'form-control','name'=>'address','id'=>'address','size'=>'30','placeholder'=>'Address *']);?>
 									</div>
 								</div>
+
+                                <div class="col-sm-4">
+									<div class="form-group bottommargin_0">
+										<label for="email">State<span class="required">*</span></label> 
+                                        <select name="state" id="state" class="form-control" placehoder="'State *">
+                                        <option value="0">Please select state</option>
+                                        <?php 
+                                            foreach($states as $state){
+                                        ?>
+                                        <option value="<?php echo $state->id;?>"><?php echo $state->name; ?></option>
+                                        <?php        
+                                            }
+                                        ?>
+                                        </select>
+									</div>
+								</div>
 								
 								<div class="col-sm-4">
 									<div class="form-group bottommargin_0">
 										<label for="email">City<span class="required">*</span></label> 
-                                        <?php echo form_input(['class'=>'form-control','name'=>'city','id'=>'city','size'=>'30','placeholder'=>'City *']);?>
+                                        <select name="city" id="city" class="form-control" placeholder="City *">
+                                            <option value="0">Please select city</option>
+                                        </select>
+                                       
 									</div>
 								</div>
-								<div class="col-sm-4">
-									<div class="form-group bottommargin_0">
-										<label for="email">State<span class="required">*</span></label> 
-                                        <?php echo form_input(['class'=>'form-control','name'=>'state','id'=>'state','size'=>'30','placeholder'=>'State *']);?>
-									</div>
-								</div>
+								
 								<div class="col-sm-4">
 									<div class="form-group bottommargin_0">
 										<label for="email">Pincode<span class="required">*</span></label> 
@@ -100,3 +130,20 @@
 				</div>
 			</section>
 			<?php  $this->view('templates/frontend/footer.php');?>	
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#state").on('change',function(){
+        var stateId = $('#state').val();
+        $.ajax({
+            url  :"<?php echo base_url()?>/registration/fetchCity",
+            data : {stateId : stateId },
+            method : "POST",
+            success : function(data){
+                //alert(data);
+                $('#city').html(data);
+            }
+        });
+    });
+});
+</script>

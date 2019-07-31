@@ -72,7 +72,7 @@
 										}else{
 											?>
 											<li> <a href="<?php echo base_url()?>login">SignIn</a> </li>
-											<li> <a href="<?php echo base_url()?>/login/signUp">SignUp</a> </li>
+											<li> <a href="<?php echo base_url();?>registration">SignUp</a> </li>
 										<?php 
 										}
 										?>
@@ -117,19 +117,4 @@
 				</div>
 			</header>
 
-			<section class="page_breadcrumbs cs gradient section_padding_top_25 section_padding_bottom_25 table_section table_section_md">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6 text-center text-md-left">
-							<h2 class="small">Signin</h2>
-						</div>
-						<div class="col-md-6 text-center text-md-right">
-							<ol class="breadcrumb">
-								<li> <a href="index.html">Home</a> </li>
-								<li> <a href="#">Home</a> </li>
-								<li class="active">Signin</li>
-							</ol>
-						</div>
-					</div>
-				</div>
-			</section>
+			

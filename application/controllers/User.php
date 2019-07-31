@@ -61,7 +61,7 @@ class User extends MY_Controller {
             'gender' => $this->input->post('gender'),
             'mobileno' => $this->input->post('mobileno'),
             'address' => $this->input->post('address'),
-            'city' => $this->input->post('city'),
+            'cityID' => $this->input->post('city'),
             'state' => $this->input->post('state'),
             'pincode' => $this->input->post('pincode')
         );

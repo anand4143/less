@@ -82,6 +82,28 @@ class Users extends CI_Model{
         $this->db->insert('users', $data);
         return $this->db->insert_id();
     }
+
+    public function getState(){
+        $this->db->select('*');
+        $this->db->from('states');
+        $this->db->where(['country_id'=>101]);
+        $this->db->order_by('name','ASC');
+        $query = $this->db->get();
+        if( $query->num_rows() ){
+            return $query->result();
+        }   
+    }
+    public function getCity($stateId){
+        $this->db->select('*');
+        $this->db->from('cities');
+        $this->db->where(['state_id'=>$stateId]);
+        $this->db->order_by('name','ASC');
+        $query = $this->db->get();
+        //echo $this->db->last_query();
+        if( $query->num_rows() ){
+            return $query->result();
+        }   
+    }
 }
 
 
