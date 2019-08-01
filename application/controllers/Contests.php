@@ -91,6 +91,8 @@ class Contests extends MY_Controller {
 					'smuleID' => '',
 					'eby' => $user_id
 				);
+
+				echo "<pre>";print_r($new_data);
 				$resp = $this->smule_m->store_data($new_data);
 				if($resp){
 					$resp_data['resp_status'] = 'success';
@@ -106,6 +108,7 @@ class Contests extends MY_Controller {
 				$resp_data['messages'][$key] = form_error($key);
 			}
 		}
+
 		echo json_encode($resp_data);
 	}
 	

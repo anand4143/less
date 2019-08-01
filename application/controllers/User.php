@@ -20,7 +20,7 @@ class User extends MY_Controller {
         $isValid = $this->users->isValidate($email,$password);
         if($isValid){            
             $userData = array(
-                'userId'    => $isValid['id'],
+                'userID'    => $isValid['id'],
                 'email'     => $isValid['email'],
                 'firstName' => $isValid['firstName'],
                 'lastName'  => $isValid['lastName'],
