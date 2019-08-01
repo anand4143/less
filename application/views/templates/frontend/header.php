@@ -58,7 +58,7 @@
 										<?php 
 										
 											if(isset($sessionData)){
-												if($sessionData['userId']){
+												if($sessionData['userID']){
 										?>
 											<li> <a href="<?php echo base_url()?>user/profile">Profile</a> </li>
 											<li> <a href="<?php echo base_url()?>/login/logout">Logout</a> </li>

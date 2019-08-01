@@ -44,11 +44,17 @@ class User extends MY_Controller {
     }
 
     public function profile(){
-        $userData['sessionData'] = $this->getSessionData();
-       // echo "<pre>";print_r($loginUser['userId']);
-        $userData['user'] = $this->users->getUser( $userData['sessionData']['userId']);
+		$this->load->model('contest_m');
+		
+		$data = array();
+        $data['sessionData'] = $this->getSessionData();
+       // echo "<pre>";print_r($loginUser['userID']);
+        $data['user'] = $this->users->getUser( $data['sessionData']['userID']);
         //echo '<pre>';print_r($userData);die;
-        $this->load->view('frontend/users/profile',$userData);
+		
+		
+		$data['contests'] = $this->contest_m->current_contest_list($data['sessionData']['userID']);
+        $this->load->view('frontend/users/profile', $data);
     }
 
     public function register(){

@@ -21,7 +21,8 @@ class Contests extends MY_Controller {
 	public function current_contests() {
 		$data = array();
 		$this->load->model('contest_m');
-		$data['contests'] = $this->contest_m->current_contest_list();
+		$user_id = $this->getSessionData('userID');
+		$data['contests'] = $this->contest_m->current_contest_list($user_id);
 		//echo "<pre>";print_r($data);die;
         $this->load->view('frontend/contests/current_contests', $data);
     }
@@ -40,6 +41,7 @@ class Contests extends MY_Controller {
 		$this->load->model('contest_m');
 		$this->load->model('participant_m');
 		$this->load->model('smule_m');
+		$this->load->model('users');
 		$c_data = $this->contest_m->get_contest_data($contest_id);
 		$data['c_data'] = $c_data;
 		$data['is_participated'] = $this->participant_m->is_alreay_participate_contest($contest_id);
@@ -47,24 +49,29 @@ class Contests extends MY_Controller {
 		$data['my_songs'] = $rs[$user_id];
 		//unset($rs[$user_id]);
 		$data['others_song_list'] = $rs;
+		$data['user'] = $this->users->getUser($this->getSessionData('userID'));
         $this->load->view('frontend/contests/contest_detail', $data);
 	}
 	
 	public function participate($contest_id, $level_id) {
 		$user_id = $this->getSessionData('userID');
+		
 		$this->load->model('contest_m');
 		$new_data = array(
 			'userID' => $user_id,
 			'contestID' => $contest_id,
 			'levelID' => $level_id
 		);
+		//check is alreay participated
+		
 		$rs = $this->contest_m->save_contest_participate_data($new_data);
-		if($rs){
-		  $data['resp_status'] = 'success';
+		
+		if($rs) {
+			redirect('contests/contest_details/'.$contest_id);
 		} else {
-			 $data['resp_status'] = 'failed';
+	      $data['resp_status'] = 'failed';
+		  $this->load->view('frontend/contests/participate_message', $data);
 		}
-		$this->load->view('frontend/contests/participate_message', $data);
     }
 	
 	public function upload_song($contest_id, $level_id){
@@ -92,7 +99,6 @@ class Contests extends MY_Controller {
 					'eby' => $user_id
 				);
 
-				echo "<pre>";print_r($new_data);
 				$resp = $this->smule_m->store_data($new_data);
 				if($resp){
 					$resp_data['resp_status'] = 'success';
