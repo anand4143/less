@@ -7,63 +7,39 @@
 						</div>
 						<div class="col-md-6 text-center text-md-right">
 							<ol class="breadcrumb">
-								<li> <a href="index.html">Home</a> </li>
-								<li> <a href="#">Dashboard</a> </li>
+								<li> <a href="<?php echo base_url();?>">Home</a> </li>
+								<li> <a href="<?php echo base_url('user/landing');?>">Dashboard</a> </li>
 								
 							</ol>
 						</div>
 					</div>
 				</div>
 			</section>
-<!-- <div class="row">
-    <div class="col-sm-6">
-        <div class="panel panel-default">
-        <div class="panel-body text-cente">Previous Contests</div>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="panel panel-default">
-        <div class="panel-body text-cente">Current Contest</div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-6">
-        <div class="panel panel-default">
-            <div class="panel-body text-cente">Contests List</div>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="panel panel-default">
-            <div class="panel-body text-cente"><a href="<?php  base_url();?>/user/profile">Profile</div>
-        </div>
-    </div>
-</div> -->
 
-<section class="dashboardcontainer">
+			<section class="dashboardcontainer">
 				<div class="container">
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="dashboardboxes apsc-facebook-icon">
 						<a href="#">
 						<i class="fa fa-users"></i>
-							Users Previous Contest
+							Previous Contest
 						</a>
 					</div>
 					</div>
 					
 					<div class="col-sm-6">
 						<div class="dashboardboxes apsc-twitter-icon">
-						<a href="#">
+						<a href="<?php echo base_url('contests/current_contests');?>">
 						<i class="fa fa-user"></i>
-						User Contest
+						Current Contest
 						</a>
 					</div>
 					</div>
 					
 					<div class="col-sm-6">
 						<div class="dashboardboxes apsc-google-plus-icon">
-						<a href="#">
+						<a href="<?php echo base_url('contests/upcoming_contests');?>">
 						<i class="fa fa-level-up"></i>
 						All Coming Contest
 							</a>

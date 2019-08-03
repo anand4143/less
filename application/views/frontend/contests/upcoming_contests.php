@@ -1,141 +1,55 @@
 <?php $this->view('templates/frontend/header.php'); ?>
-
-
- <!-- Row -->
- <div class="row">
-        <div class="col-xl-12">
-					<?php echo $this->session->flashdata('resp_msg'); ?>
-					<div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Upcomming Contests</h4>
-                                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 390px;"><div id="activity" style="overflow: hidden; width: auto; height: 390px;">
-                                    <?php if($upcoming_contests):
-											foreach($upcoming_contests as $row):
-											 $status = $row->status == 1 ? 'Active' : 'Inactive';
-											 $class = $row->status == 1 ? 'badge-success' : 'badge-danger';?>
-									<a href="<?php echo base_url('contests/contest_details/'.$row->id);?>">
-									<div class="media border-bottom-1 pt-3 pb-3">
-                                        <img width="35" src="<?php echo base_url('assets/dist/img/3videoicon.png');?>" class="mr-3 rounded-circle">
-                                        <div class="media-body">
-                                            <h5><?php echo $row->contestName;?></h5>
-                                            <p class="mb-0"><?php echo $row->description;?></p>
-                                        </div>
-										<span class="text-muted "><?php echo date('d M, Y', strtotime($row->startDate));?></span>
-                                    </div>
-									</a>
-									<?php endforeach;
-									  endif;?>
-                                   
-                                </div><div class="slimScrollBar" style="background: transparent; width: 5px; position: absolute; top: 108px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 268.728px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
-                            </div>
-                        </div>
-						
+			<section class="page_breadcrumbs cs gradient section_padding_top_25 section_padding_bottom_25 table_section table_section_md">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 text-center text-md-left">
+							<h2 class="small">Upcoming Contests</h2>
+						</div>
+						<div class="col-md-6 text-center text-md-right">
+							<ol class="breadcrumb">
+								<li> <a href="<?php echo base_url('user/landing');?>">Dashboard</a> </li>
+								<li> <a href="#">Upcoming Contests</a> </li>
+								
+							</ol>
+						</div>
 					</div>
-                </div>
-                <!-- /Row -->
-
-
-
-<?php  $this->view('templates/frontend/footer.php'); ?>
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><span id="contestNameId"></span>(Level) </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="contestLevelId">
-          <table class="table table-sm table-hover mb-0">
-			<thead>
-				<tr>
-					<th><strong>Level Name</strong></th>
-					<th class="w-5"><strong>Status</strong></th>
-					<th class="w-5"><strong>Enabled</strong></th>
-				</tr>
-			</thead>
-			<tbody id="tBodyLevelListingId">
-			</tbody>
-		  </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script type="">
-$('.contest-level-list').on('click', function() {
-    var cId = $(this).attr('data-cid');
-    $('#contestNameId').html($(this).attr('data-cname'));	
-	var post_url = '<?php echo base_url();?>admin/levels/get_listing_data/'+cId;
-	
-	let reqHeader = new Headers();
-	reqHeader.append('Content-Type', 'text/json');
-	let initObject = {
-	method: 'GET', headers: reqHeader,
-	};
-
-	fetch(post_url, initObject)
-	.then(function (response) {
-		return response.json();
-	})
-	.then(function (data) {
-		let html = '';
-		if(data.resp_status == 'success'){
-			$.each(data.list, function( index, row ) {
-				let status = row.status ? 'Active' : 'Inactive';
-				let isEnabled = row.isEnabled ? 'Yes' : 'No';
-				html +="<tr>";
-				html +=" <td>"+row.levelName+"</td>";
-				html +=" <td>"+status+"</td>";
-				html +=" <td>"+isEnabled+"</td>";
-				html +="</tr>";
-			});
-		} else {
-			html +="<tr>";
-			html +=" <td colspan='3' align='center'>No Level found!</td>";
-			html +="</tr>";
-		}
-		$('#tBodyLevelListingId').html(html);
-	})
-	.catch(function (err) {
-		console.log("Something went wrong!", err);
-	});
-});
-
-
-
-	function loadLevelList(obj){
-		var cId = $(this).attr('data-cid'); 
-		var post_url = '<?php base_url();?>admin/levels/get_listing_data/'+cId;
-		 //call the fetch function
-    fetch(post_url)
-    .then(res => res.json())//response type
-    .then(data => console.log(data)); //log the data;
-		
-		
-		
-		$.ajax({
-			url: post_url,
-			timeout:5000,
+				</div>
+			</section>
 			
-			success: function(data){
-				container.html(data);
-			},
-			error: function(req,error){
-				if(error === 'error'){error = req.statusText;}
-				var errormsg = 'There was a communication error: '+error;
-				container.html(errormsg);
-			},
-			beforeSend: function(data){
-				container.html('<p>Loading...</p>');
-			}
-		});
-	}
-</script>
+			<section class="dcommoncontainer">
+				<div class="container">
+					<div class="row">
+						<div class="cucontest table-responsive">
+							<table width="100%" class="table table-hover" border="0" cellspacing="0" cellpadding="0">
+							  <tbody>
+								<tr>
+								  <th style="width: 30%"><strong>Contest Name</strong></th>
+								  <th style="width: 25%"><strong>Registration Start Date</strong></th>
+								  <th style="width: 25%"><strong>Registration End Date</strong></th>
+								  <th style="width: 20%"><strong></strong></th>
+								</tr>
+								<?php 
+								if($upcoming_contests):
+									foreach($upcoming_contests as $row):
+								?>	
+								<tr>
+								  <td><?php echo $row->contestName;?></td>
+								  <td><?php echo date('d-m-Y', strtotime($row->regStartDate));?></td>
+								  <td><?php echo date('d-m-Y', strtotime($row->regEndDate));?></td>
+								  <td><a class="theme_button color" href="javascript:void(0);" data-url="" >Comming Soon...</a></td>
+								</tr>
+								<?php endforeach;
+								else :?>
+								<tr>
+								  <td colspan="4">No upcoming constest found!</td>
+								</tr>
+								<?php
+								endif;?> 
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+<?php  $this->view('templates/frontend/footer.php'); ?>

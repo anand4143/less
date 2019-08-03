@@ -30,17 +30,23 @@ class Contests extends MY_Controller {
 		if($this->input->post()) {
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('contestName', 'Contest Name', 'trim|required|min_length[2]|max_length[128]');
-			$this->form_validation->set_rules('startDate', 'Start Date', 'required');
-			$this->form_validation->set_rules('endDate', 'End Date', 'required');
+			$this->form_validation->set_rules('regStartDate', 'Registration Start Date', 'required');
+			$this->form_validation->set_rules('regEndDate', 'Registration End Date', 'required');
+			$this->form_validation->set_rules('startDate', 'Contest Start Date', 'required');
+			$this->form_validation->set_rules('endDate', 'Contest End Date', 'required');
 			if ($this->form_validation->run() == FALSE){
 				$this->load->view('admin/contests/add');
 			} else {
 				$contest_name = $this->input->post('contestName');
+				$reg_start_date = $this->input->post('regStartDate');
+				$reg_end_date = $this->input->post('regEndDate');
 				$start_date = $this->input->post('startDate');
 				$end_date = $this->input->post('endDate');
 				$description = $this->input->post('description');
 				$new_data = array(
 					'contestName' => $contest_name,
+					'regStartDate' => date('Y-m-d', strtotime($reg_start_date)),
+					'regEndDate' => date('Y-m-d', strtotime($reg_end_date)),
 					'startDate' => date('Y-m-d', strtotime($start_date)),
 					'endDate' => date('Y-m-d', strtotime($end_date)),
 					'description' => $description
@@ -80,11 +86,15 @@ class Contests extends MY_Controller {
 				$this->load->view('admin/contests/edit', $data);
 			} else {
 				$contest_name = $this->input->post('contestName');
+				$reg_start_date = $this->input->post('regStartDate');
+				$reg_end_date = $this->input->post('regEndDate');
 				$start_date = $this->input->post('startDate');
 				$end_date = $this->input->post('endDate');
 				$description = $this->input->post('description');
 				$udata = array(
 					'contestName' => $contest_name,
+					'regStartDate' => date('Y-m-d', strtotime($reg_start_date)),
+					'regEndDate' => date('Y-m-d', strtotime($reg_end_date)),
 					'startDate' => date('Y-m-d', strtotime($start_date)),
 					'endDate' => date('Y-m-d', strtotime($end_date)),
 					'description' => $description

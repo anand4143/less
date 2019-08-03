@@ -42,9 +42,9 @@
 						<div class="padding_30">
 							<div class="userpro" style="padding-left: 0px;">
 							<h5>My Info</h5>
-							<div class="infosty"><strong><i class="fa fa-user"></i></strong> Anand Sukla </div>
-							<div class="infosty"><strong><i class="fa fa-envelope"></i></strong> XYZ@gmail.com </div>
-							<div class="infosty"><strong><i class="fa fa-phone"></i></strong>  +91 95xxxxxxx6</div>
+							<div class="infosty"><strong><i class="fa fa-user"></i></strong> <?php echo $user->firstName.' '.$user->lastName;?> </div>
+							<div class="infosty"><strong><i class="fa fa-envelope"></i></strong> <?php echo $user->email;?> </div>
+							<div class="infosty"><strong><i class="fa fa-phone"></i></strong> <?php echo $user->mobileno;?></div>
 							<div class="mt-20">
 							<a class="theme_button color btn-block" href="#currentcontest" data-toggle="modal">Current Contest</a>
 							</div>
@@ -75,71 +75,7 @@
 
 
 
-<section class="page_breadcrumbs cs gradient section_padding_top_25 section_padding_bottom_25 table_section table_section_md">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6 text-center text-md-left">
-							<h2 class="small">User Profile</h2>
-						</div>
-						<div class="col-md-6 text-center text-md-right">
-							<ol class="breadcrumb">
-								<li> <a href="index.html">Home</a> </li>
-								<li> <a href="#">User Profile</a> </li>
-								
-							</ol>
-						</div>
-					</div>
-				</div>
-			</section>
-<!-- <div class="row">
-    <div class="col-sm-6">
-        <div class="panel panel-default">
-        <div class="panel-body text-cente">Previous Contests</div>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="panel panel-default">
-        <div class="panel-body text-cente">Current Contest</div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-6">
-        <div class="panel panel-default">
-            <div class="panel-body text-cente">Contests List</div>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="panel panel-default">
-            <div class="panel-body text-cente"><a href="<?php  base_url();?>/user/profile">Profile</div>
-        </div>
-    </div>
-</div> -->
 
-<section class="dashboardcontainer">
-				<div class="container">
-				<div class="row">
-					<div class="col-sm-6">First Name : 
-                        <?php //echo "<pre>";print_r($user );
-                        echo $user->firstName
-                        ?>
-					</div>
-					
-					<div class="col-sm-6">Last Name : 
-						<?php echo $user->lastName?>
-					</div>
-					
-					<div class="col-sm-6">Email : 
-                    <?php echo $user->email?>
-					</div>
-					
-					<div class="col-sm-6">
-						asdfsdfasd asdf asdfasdfasdfsadf
-					</div>
-					
-				</div>
-				</div>
-			</section>
 <?php  $this->view('templates/frontend/footer.php');?>
 
 
@@ -171,7 +107,14 @@
 			  <td><?php echo $row->contestName;?></td>
 			  <td><?php echo date('d-m-Y', strtotime($row->startDate));?></td>
 			  <td><?php echo date('d-m-Y', strtotime($row->endDate));?></td>
-			  <td><a class="theme_button color" href="javascript:void(0);" data-url="<?php echo base_url('contests/participate/'.$row->id.'/'.$row->levelID);?>" onclick="participate_contest(this);">Participate</a></td>
+			  <td>
+				<?php if(!empty($row->userID)) :?>
+				<a class="theme_button color" href="<?php echo base_url('contests/contest_details/'.$row->id);?>" >View</a>
+				
+				<?php else :?>
+				 <a class="theme_button color" href="javascript:void(0);" data-url="<?php echo base_url('contests/participate/'.$row->id.'/'.$row->levelID);?>" onclick="participate_contest(this);">Participate</a>
+				<?php endif;?>
+			  </td>
 			</tr>
 			<?php endforeach;
 			endif;?>

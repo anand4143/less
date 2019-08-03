@@ -24,9 +24,24 @@
 					   <?php echo form_error('contestName', '<span class="help-block text-danger">', '</div>'); ?>
 					</div>
 				 </div>
+				 <div class="form-group row">
+					<label class="col-md-3 col-form-label" for="startDate">Registration Start Date</label>
+					<div class="col-md-3">
+					   <input class="form-control" type="date" id="regStartDate"  name="regStartDate" value="<?php echo set_value('regStartDate', $c_data->regStartDate); ?>"  placeholder="Select Start Date" maxlength="10">
+					   <?php echo form_error('regStartDate', '<span class="help-block text-danger">', '</span>'); ?>
+					</div>
+				 </div>
 				 
 				 <div class="form-group row">
-					<label class="col-md-3 col-form-label" for="startDate">Start Date</label>
+					<label class="col-md-3 col-form-label" for="endDate">Registration End Date</label>
+					<div class="col-md-3">
+					   <input class="form-control" type="date" id="regEndDate"  name="regEndDate" value="<?php echo set_value('regEndDate', $c_data->regStartDate); ?>" placeholder="Select End Date" maxlength="10">
+					   <?php echo form_error('regEndDate', '<span class="help-block text-danger">', '</span'); ?>
+					</div>
+				 </div>
+				 
+				 <div class="form-group row">
+					<label class="col-md-3 col-form-label" for="startDate">Contest Start Date</label>
 					<div class="col-md-3">
 					   <input class="form-control" type="date" id="startDate"  name="startDate" value="<?php echo set_value('startDate', $c_data->startDate); ?>"  placeholder="Select Start Date" maxlength="10">
 					   <?php echo form_error('startDate', '<span class="help-block text-danger">', '</div>'); ?>
@@ -34,7 +49,7 @@
 				 </div>
 				 
 				 <div class="form-group row">
-					<label class="col-md-3 col-form-label" for="endDate">End Date</label>
+					<label class="col-md-3 col-form-label" for="endDate">Contest End Date</label>
 					<div class="col-md-3">
 					   <input class="form-control" type="date" id="endDate"  name="endDate" value="<?php echo set_value('endDate', $c_data->endDate); ?>" placeholder="Select End Date" maxlength="10">
 					   <?php echo form_error('endDate', '<span class="help-block text-danger">', '</div>'); ?>

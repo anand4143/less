@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-	<title>Lesssuperstare</title>
+	<title>Lesssuperstars</title>
 	<meta charset="utf-8">
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,7 @@
 				<div class="container">
 					<div class="row flex-wrap v-center" style="padding-top: 10px;">
 						<div class="col-sm-2 col-sm-push-5 text-left text-sm-center">
-							<div class="bottom_overlap_logo"> <a href="index.html" class="logo">
+							<div class="bottom_overlap_logo"> <a href="<?php if($this->session->userdata('logged_in')){ echo base_url('user/landing');}else{echo base_url();}?>" class="logo">
 	                    <img src="<?php echo base_url();?>assets/frontend/images/logo.png" alt="">
 	                </a> </div>
 							<!-- header toggler --><span class="toggle_menu"><span></span></span>

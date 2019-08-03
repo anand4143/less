@@ -7,7 +7,7 @@
 						</div>
 						<div class="col-md-6 text-center text-md-right">
 							<ol class="breadcrumb">
-								<li> <a href="dashboard.html">Dashboard</a> </li>
+								<li> <a href="<?php echo base_url('user/landing');?>">Dashboard</a> </li>
 								<li class="active">Profile</li>
 							</ol>
 						</div>
@@ -32,199 +32,85 @@
 									</div>
 								</div>
 								<div class="col-sm-6 text-right">
-									<a href="#uploadSong" data-toggle="modal" class="theme_button color"><i class="fa fa-external-link"></i> Upload Song</a>
+									<a href="#uploadSong" data-toggle="modal" class="theme_button color"><i class="fa fa-music"></i> &nbsp; Upload Song</a>
 								</div>
 							</div>
 						</div>
 						</div>
 						<div class="dashboardboxes">
-						<div class="padding_20">
-							<h4>List of Participants</h4>
-							<div class="table">
-								<table width="100%" class="table table-hover" border="0" cellspacing="0" cellpadding="0">
-								  <tbody>
-									<tr>
-									  <th><strong>Name</strong></th>
-									  <th><strong>Lavel</strong></th>
-									  <th><strong>Email Id</strong></th>
-									  <th><strong>Song</strong></th>
-									</tr>
-									<tr>
-									  <td>Jhon Smit</td>
-									  <td>Xyz123</td>
-									  <td>XYZ@gmail.com</td>
-									  <td>Lorem Ipsum is simply dummy text of...</td>
-									</tr>
-									<tr>
-									  <td>Jhon Smit</td>
-									  <td>Xyz123</td>
-									  <td>XYZ@gmail.com</td>
-									  <td>Lorem Ipsum is simply dummy text of...</td>
-									</tr>
-									<tr>
-									  <td>Jhon Smit</td>
-									  <td>Xyz123</td>
-									  <td>XYZ@gmail.com</td>
-									  <td>Lorem Ipsum is simply dummy text of...</td>
-									</tr>
-									<tr>
-									  <td>Jhon Smit</td>
-									  <td>Xyz123</td>
-									  <td>XYZ@gmail.com</td>
-									  <td>Lorem Ipsum is simply dummy text of...</td>
-									</tr>
-									<tr>
-									  <td>Jhon Smit</td>
-									  <td>Xyz123</td>
-									  <td>XYZ@gmail.com</td>
-									  <td>Lorem Ipsum is simply dummy text of...</td>
-									</tr>
-									<tr>
-									  <td>Jhon Smit</td>
-									  <td>Xyz123</td>
-									  <td>XYZ@gmail.com</td>
-									  <td>Lorem Ipsum is simply dummy text of...</td>
-									</tr>
-									<tr>
-									  <td>Jhon Smit</td>
-									  <td>Xyz123</td>
-									  <td>XYZ@gmail.com</td>
-									  <td>Lorem Ipsum is simply dummy text of...</td>
-									</tr>
-									<tr>
-									  <td>Jhon Smit</td>
-									  <td>Xyz123</td>
-									  <td>XYZ@gmail.com</td>
-									  <td>Lorem Ipsum is simply dummy text of...</td>
-									</tr>
-									<tr>
-									  <td>Jhon Smit</td>
-									  <td>Xyz123</td>
-									  <td>XYZ@gmail.com</td>
-									  <td>Lorem Ipsum is simply dummy text of...</td>
-									</tr>
-								  </tbody>
-								</table>
-							<div class="text-right">
-								<ul class="pagination">
-								<li><a href="#"><span class="sr-only">Prev</span><i class="fa  fa-angle-left"></i></a></li>
-								<li class="active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#"><span class="sr-only">Next</span><i class="fa fa-angle-right"></i></a></li>
-							</ul>
+							<div class="padding_20">
+								<h4>My Songs</h4>
+								<div class="table">
+									<table width="100%" class="table table-hover" border="0" cellspacing="0" cellpadding="0">
+									  <tbody>
+										<tr>
+										  <th><strong>Name</strong></th>
+										  <th><strong>Level</strong></th>
+										  <th><strong>Email Id</strong></th>
+										  <th><strong>Song</strong></th>
+										</tr>
+										 <?php if(isset($my_songs['song_list']) && count($my_songs['song_list'])):  
+											foreach($my_songs['song_list'] as $song): ?>
+										<tr>
+										  <td><?php echo $user->userName;?></td>
+										  <td><?php echo $c_data->levelName?></td>
+										  <td><?php echo $user->email;?></td>
+										  <td> <?php echo $song['smuleUrl'];?></td>
+										</tr>
+										<?php endforeach;
+										  else :
+										  ?>
+											<tr>
+											  <td colspan="4" align="center">No song found! </td>
+											</tr>
+										<?php 
+										endif;?>
+									  </tbody>
+									</table>
+								
+								</div>
 							</div>
+							 <?php if(!empty($others_song_list) && count($others_song_list)): 
+									foreach($others_song_list as $row): ?> 
+							<div class="padding_20">
+								<h4><?php echo $row['fullName'];?></h4>
+								<div class="table">
+									<table width="100%" class="table table-hover" border="0" cellspacing="0" cellpadding="0">
+									  <tbody>
+										<tr>
+										  <th><strong>Name</strong></th>
+										  <th><strong>Level</strong></th>
+										  <th><strong>Email Id</strong></th>
+										  <th><strong>Song</strong></th>
+										</tr>
+										 <?php if(isset($row['song_list']) && count($row['song_list'])):  
+   											 foreach($row['song_list'] as $song): ?>
+										<tr>
+										  <td><?php echo $row['fullName'];?></td>
+										  <td><?php echo $c_data->levelName?></td>
+										  <td><?php echo $row['email'];?></td>
+										  <td> <?php echo $song['smuleUrl'];?></td>
+										</tr>
+										<?php endforeach;
+										  else :
+										  ?>
+											<tr>
+											  <td colspan="4" align="center">No song found! </td>
+											</tr>
+										<?php 
+										endif;?>
+									  </tbody>
+									</table>
+								
+								</div>
 							</div>
-						</div>
+							<?php endforeach;
+							endif;?>
 						</div>
 					</div>
 				</div>
 				</div>
 			</section>
-
-
-
- <!-- Row -->
- <div class="row">
-        <div class="col-xl-12">
-					<?php echo $this->session->flashdata('resp_msg'); ?>
-					<div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Contest Info</h4>
-								<?php if($c_data){?>
-										<div class="form-group row">
-											<label class="col-md-3 col-form-label" for="text-input">Contest Name</label>
-											<div class="col-md-9">
-											   <?php echo $c_data->contestName;?>
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-md-3 col-form-label" for="text-input">Contest Level</label>
-											<div class="col-md-9">
-											   <?php echo $c_data->levelName;?>
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-md-3 col-form-label" for="text-input">About Contest</label>
-											<div class="col-md-9">
-											   <?php echo $c_data->description;?>
-											</div>
-										</div>
-								      <?php if(!$is_participated){ ?>
-										<div>
-											<label class="col-md-3 col-form-label" for="text-input">&nbsp;</label>
-											<div class="col-md-9">
-												<button type="button" class="btn btn-sm btn-primary" data-url="<?php echo base_url('contests/participate/'.$c_data->id.'/'.$c_data->levelID);?>" onclick="participate_contest(this);">Participation to This Contest</button>
-											</div>
-									     </div>										
-									 <?php } else { ?>
-									   	 <div>
-											<label class="col-md-3 col-form-label" for="text-input">&nbsp;</label>
-											<div class="col-md-9">
-											  <a href="#"  data-toggle="modal" data-target="#uploadSongModal" class="btn btn-sm btn-primary" type="button">
-											  <i class="fa fa-music"></i> &nbsp;Upload Song</a>											  
-											</div>
-									     </div>
-										 
-										 <br>
-										 <!--user song list-->
-										 <div class="card">
-										   <div class="card-header">
-											My Songs
-										   </div>
-										   <div class="card-body">
-											  <ul class="list-group">
-											    <?php if(count($my_songs['song_list'])):  
-   												     foreach($my_songs['song_list'] as $song): ?>
-												 <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
-												     <?php echo $song['smuleUrl'];?>
-													 <span class="badge badge-primary badge-pill">2</span>
-												 </li>
-												 <?php endforeach;
-												endif;?>
-												
-											  </ul>
-										   </div>
-										</div>
-										 <!--user song list-->
-										 
-										  <!--Other user song list-->
-										  <?php 
-										  if(count($others_song_list)): 
-										    foreach($others_song_list as $row): ?>
-										 <div class="card">
-										   <div class="card-header">
-											<?php echo $row['userName'];?>
-										   </div>
-										   <div class="card-body">
-											  <ul class="list-group">
-											     <?php if(count($row['song_list'])):  
-   												     foreach($row['song_list'] as $song): ?>
-												 <li class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
-												    <?php echo $song['smuleUrl'];?>
-												 </li>
-												<?php endforeach;
-												endif;?>
-											  </ul>
-										   </div>
-										</div>
-										<?php endforeach;
-										endif;?>
-										 <!--Other user song list-->
-									 <?php } ?>
-							    <?php } else {?>
-									 Start Soon.........
-								<?php }?>
-                                </div>
-						
-                        </div>
-						
-					</div>
-                </div>
-                <!-- /Row -->
-
 
 
 <?php  $this->view('templates/frontend/footer.php'); ?>
@@ -250,7 +136,7 @@
       <div class="modal-footer">
 	       <div id="resp_msg" class="text-left"></div>
 			<button class="theme_button color btn-block" type="submit">
-				<i class="fa fa-music"></i> Upload
+				<i class="fa fa-music"></i>&nbsp; Upload
 			</button>
       </div>
     </div>

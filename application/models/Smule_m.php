@@ -7,7 +7,7 @@ class Smule_m extends CI_Model {
     }
 	
 	public function get_user_smules($contest_id, $level_id, $user_id = 0){
-		$this->db->select("t1.userID, t1.smuleUrl, t1.smuleID, t1.createdDate, t4.userName, CONCAT(t4.firstName, ' ', t4.lastName) AS fullName");
+		$this->db->select("t1.userID, t1.smuleUrl, t1.smuleID, t1.createdDate, t4.userName, CONCAT(t4.firstName, ' ', t4.lastName) AS fullName, t4.email");
 		$this->db->from('user_smule t1');
 		$this->db->join('master_contests t2', 't1.contestID = t2.id');
 		$this->db->join('contest_levels t3', 't1.levelID = t3.id');
@@ -33,6 +33,7 @@ class Smule_m extends CI_Model {
 			$resp[$row->userID]['userID'] = $row->userID;
 			$resp[$row->userID]['userName'] = $row->userName;
 			$resp[$row->userID]['fullName'] = $row->fullName;
+			$resp[$row->userID]['email'] = $row->email;
 			$resp[$row->userID]['song_list'][] = array(
 				'smuleUrl' => $row->smuleUrl,
 				'smuleID' => $row->smuleID,

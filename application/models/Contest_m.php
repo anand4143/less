@@ -52,7 +52,7 @@ class Contest_m extends CI_Model {
 	}
 	/*Front End*/
 	public function current_contest_list($user_id){
-		$this->db->select("t1.id, t1.contestName, t1.description, t1.startDate, t1.endDate, t2.id AS levelID, t2.levelName");
+		$this->db->select("t1.id, t1.contestName, t1.description, t1.startDate, t1.endDate, t2.id AS levelID, t2.levelName, t3.userID");
 		$this->db->from('master_contests t1');
 		$this->db->join('contest_levels t2', 't1.id = t2.contestID');
 		$this->db->join('users_contests_levels t3', 't1.id = t3.contestID ', 'left');
@@ -60,9 +60,10 @@ class Contest_m extends CI_Model {
 		$this->db->where('t2.isDeleted', '0');
 		$this->db->where('t2.status', 1);
 		$this->db->where('t2.isEnabled', 1);		
-		$this->db->where('startDate >=', date('Y-m-d'));
-	    $this->db->where('endDate >=', date('Y-m-d'));
-		$this->db->where('t3.userID IS NULL');
+		$this->db->where('startDate <=', date('Y-m-d'));
+		$this->db->where('endDate >=', date('Y-m-d'));
+	    //$this->db->where('endDate <', date('Y-m-d'));
+		//$this->db->where('t3.userID IS NULL');
 		
 		
 		$rs = $this->db->get();
@@ -72,13 +73,13 @@ class Contest_m extends CI_Model {
 		}
 		return $rs->result();
 	}
-	
+	/*Front End */
 	public function upcoming_contest_list(){
-		$this->db->select('id, contestName, description, startDate, endDate, createdDate, status');
+		$this->db->select('id, contestName, description,  regStartDate, regEndDate');
 		$this->db->where('isDeleted', '0');
 		$this->db->where('status', 1);
 		//$this->db->where('DATE(startDate)', date('Y-m-d'), false);
-		$this->db->where('startDate >=', date('Y-m-d'));
+		$this->db->where('regStartDate >=', date('Y-m-d'));
 	    //$this->db->where('endDate <=', date('Y-m-d'));
 		$rs = $this->db->get('master_contests');
 		
