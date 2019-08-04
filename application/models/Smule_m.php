@@ -23,7 +23,7 @@ class Smule_m extends CI_Model {
           $this->db->where('userID', $user_id);
 		}
 		$rs = $this->db->get();
-		
+		//echo $this->db->last_query();die;
 		if($rs->num_rows() == 0){
 			return false;
 		}

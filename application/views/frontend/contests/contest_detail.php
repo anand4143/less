@@ -44,18 +44,12 @@
 									<table width="100%" class="table table-hover" border="0" cellspacing="0" cellpadding="0">
 									  <tbody>
 										<tr>
-										  <th><strong>Name</strong></th>
-										  <th><strong>Level</strong></th>
-										  <th><strong>Email Id</strong></th>
-										  <th><strong>Song</strong></th>
+										  <th><strong>Songs</strong></th>
 										</tr>
 										 <?php if(isset($my_songs['song_list']) && count($my_songs['song_list'])):  
 											foreach($my_songs['song_list'] as $song): ?>
 										<tr>
-										  <td><?php echo $user->userName;?></td>
-										  <td><?php echo $c_data->levelName?></td>
-										  <td><?php echo $user->email;?></td>
-										  <td> <?php echo $song['smuleUrl'];?></td>
+										  <td> <a href="<?php echo $song['smuleUrl'];?>"><i class="fa fa-music"></i></a></td>
 										</tr>
 										<?php endforeach;
 										  else :
@@ -78,18 +72,12 @@
 									<table width="100%" class="table table-hover" border="0" cellspacing="0" cellpadding="0">
 									  <tbody>
 										<tr>
-										  <th><strong>Name</strong></th>
-										  <th><strong>Level</strong></th>
-										  <th><strong>Email Id</strong></th>
-										  <th><strong>Song</strong></th>
+										  <th><strong>Songs</strong></th>
 										</tr>
 										 <?php if(isset($row['song_list']) && count($row['song_list'])):  
    											 foreach($row['song_list'] as $song): ?>
 										<tr>
-										  <td><?php echo $row['fullName'];?></td>
-										  <td><?php echo $c_data->levelName?></td>
-										  <td><?php echo $row['email'];?></td>
-										  <td> <?php echo $song['smuleUrl'];?></td>
+										  <td> <a href="<?php echo $song['smuleUrl'];?>"><i class="fa fa-music"></i></a></td>
 										</tr>
 										<?php endforeach;
 										  else :
