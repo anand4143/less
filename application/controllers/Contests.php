@@ -46,7 +46,7 @@ class Contests extends MY_Controller {
 		$data['c_data'] = $c_data;
 		$data['is_participated'] = $this->participant_m->is_alreay_participate_contest($contest_id);
 		$rs = $this->smule_m->get_user_smules($contest_id, $c_data->levelID);
-		$data['my_songs'] = $rs[$user_id];
+		$data['my_songs'] = isset($rs[$user_id]) ? $rs[$user_id] : array();
 		unset($rs[$user_id]);
 		$data['others_song_list'] = $rs;
 		$data['user'] = $this->users->getUser($this->getSessionData('userID'));
