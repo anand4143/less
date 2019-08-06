@@ -51,13 +51,13 @@
 								<div class="col-sm-6">
 									<div class="form-group bottommargin_0">
 										<label for="email">Password<span class="required">*</span></label> 
-                                        <?php echo form_input(['class'=>'form-control', "name"=>"password", "id"=>"password","size"=>"30","placeholder"=>"Password *"]);?>                                        
+                                        <?php echo form_input(['class'=>'form-control', 'type'=>'password', "name"=>"password", "id"=>"password","size"=>"30","placeholder"=>"Password *"]);?>                                        
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="form-group bottommargin_0">
 										<label for="email">Confirm Password</label> 
-                                        <?php echo form_input(['class'=>'form-control', "name"=>"confirmPassword", "id"=>"confirmPassword","size"=>"30","placeholder"=>"Confirm Password *"]);?> 
+                                        <?php echo form_input(['class'=>'form-control','type'=>'password', "name"=>"confirmPassword", "id"=>"confirmPassword","size"=>"30","placeholder"=>"Confirm Password *"]);?> 
 									</div>
 								</div>
 								

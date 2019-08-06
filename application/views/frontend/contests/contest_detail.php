@@ -49,7 +49,7 @@
 										 <?php if(isset($my_songs['song_list']) && count($my_songs['song_list'])):  
 											foreach($my_songs['song_list'] as $song): ?>
 										<tr>
-										  <td> <a href="<?php echo $song['smuleUrl'];?>"><i class="fa fa-music"></i></a></td>
+										  <td> <a target="_blank" href="<?php echo $song['smuleUrl'];?>"><i class="fa fa-music"></i></a></td>
 										</tr>
 										<?php endforeach;
 										  else :
@@ -77,7 +77,7 @@
 										 <?php if(isset($row['song_list']) && count($row['song_list'])):  
    											 foreach($row['song_list'] as $song): ?>
 										<tr>
-										  <td> <a href="<?php echo $song['smuleUrl'];?>"><i class="fa fa-music"></i></a></td>
+										  <td> <a target="_blank" href="<?php echo $song['smuleUrl'];?>"><i class="fa fa-music"></i></a></td>
 										</tr>
 										<?php endforeach;
 										  else :
