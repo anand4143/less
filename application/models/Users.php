@@ -58,10 +58,7 @@ class Users extends CI_Model{
     //         return false;
     //     }
     // }
-    public function saveJudge($data){
-        $this->db->insert('users',$data);
-        return $this->db->insert_id();
-    }
+    
 
     public function deleteUserById($id){
         $this->db->where('id',$id);

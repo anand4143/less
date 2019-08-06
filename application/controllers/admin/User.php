@@ -80,7 +80,7 @@ class User extends MY_Controller {
                 $data['userListWithContestLevel'][$i]->judgeid = $getJudgeId;
                 $data['userListWithContestLevel'][$i]->judgeName = $judgeFLName->firstName.' '.$judgeFLName->lastName;
             }else{
-                $data['userListWithContestLevel'][$i]->judgeid = 0;;
+                $data['userListWithContestLevel'][$i]->judgeid = 0;
             }
         }
         $judgeList = $this->judges->getJudgeList();

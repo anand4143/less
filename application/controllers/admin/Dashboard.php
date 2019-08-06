@@ -56,12 +56,22 @@ class Dashboard extends MY_Controller {
         $currentUser = $this->getSessionData(); 
        // echo "<pre>";print_r($currentUser);die('here');      
         $data['session'] = $currentUser;
-        $usersList = $this->judges->getUserListWithContestsAndLevelById($currentUser['id']);
-        $data['userList'] = $usersList;
-        //echo "<pre>";print_r($data['userList']);die('judge landing');
+        $data['allUserSongListOfRunningContests'] = $this->judges->allUserSongListOfRunningContests();
+    //     $data['songAssignToJudge'] = $this->judges->getAllSongAssignToJudges();
+    //     echo "<pre>";print_r($data);
+    //    die('judge landing');
         $this->load->view('admin/judge/landing',$data);
         
     }
+
+    public function searchForId($id, $array) {
+        foreach ($array as $key => $val) {
+            if ($val['uid'] === $id) {
+                return $key;
+            }
+        }
+        return null;
+     }
 
     
 

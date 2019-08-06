@@ -49,7 +49,7 @@
                                         <?php } ?>
                                     <td>
 										<a href="<?php echo base_url('admin/judge/edit/'.$user->id);?>" title="Edit Judge"><span class="fa fa-edit"></span></a>
-										<!-- <a href="<?php echo base_url('admin/judge/delete/'.$user->id);?>" id="judge-<?php echo $user->id;?>" title="Remove Judge" click="deleteJudge(<?php echo $user->id; ?>)"><span class="fa fa-remove"></span></a> -->
+										<!-- <a href="<?php //echo base_url('admin/judge/delete/'.$user->id);?>" id="judge-<?php //echo $user->id;?>" title="Remove Judge" click="deleteJudge(<?php //echo $user->id; ?>)"><span class="fa fa-remove"></span></a> -->
 										<a href="javascript:void(0);" id="judge" title="Remove Judge"><span class="fa fa-remove" data-toggle="modal" data-target="#exampleModal" onClick="openPopup(<?php echo $user->id?>,'<?php echo $user->firstName?>');"></span></a>
 									</td>
 								</tr>
@@ -104,7 +104,7 @@ function openPopup(userId,fname){
 	$("#uname").html(fname);
 }
 function deleteJudge(){
-	var judgeId = $('#uid').val()
+	var judgeId = $('#uid').val();
 	//alert("this is user id "+$('#uid').val());
 	$.ajax({
 		type: "GET",

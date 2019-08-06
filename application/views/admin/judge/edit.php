@@ -50,8 +50,8 @@
 				 <div class="form-group row">
 					<label class="col-md-3 col-form-label" for="textarea-input">About Judge</label>
 					<div class="col-md-9">
-					   <textarea class="form-control" id="aboutUser" name="aboutUser" rows="4" placeholder="User Description" maxlength="1024"><?php echo set_value('aboutUser',$user->aboutUser); ?></textarea>
-					   <?php echo form_error('aboutUser', '<span class="help-block text-danger">', '</span>'); ?>
+					   <textarea class="form-control" id="aboutJudge" name="aboutJudge" rows="4" placeholder="User Description" maxlength="1024"><?php echo set_value('aboutJudge',$user->aboutJudge); ?></textarea>
+					   <?php echo form_error('aboutJudge', '<span class="help-block text-danger">', '</span>'); ?>
 					</div>
 				 </div>
 				 
