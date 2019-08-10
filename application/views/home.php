@@ -28,7 +28,7 @@
 				<div class="container">
 					<div class="row flex-wrap v-center" style="padding-top: 10px;">
 						<div class="col-sm-2 col-sm-push-5 text-left text-sm-center">
-							<div class="bottom_overlap_logo"> <a href="index.html" class="logo">
+							<div class="bottom_overlap_logo"> <a href="<?php echo base_url();?>" class="logo">
 	                    <img src="<?php echo base_url();?>assets/frontend/images/logo.png" alt="">
 	                </a> </div>
 							<!-- header toggler --><span class="toggle_menu"><span></span></span>
@@ -44,7 +44,7 @@
 	                		</a>
 										<ul class="dropdown-menu" aria-labelledby="account-dropdown">
 											<li> <a href="<?php echo base_url()?>login">Sign In</a> </li>
-											<li> <a href="<?php echo base_url()?>/signup">Sign Up</a> </li>
+											<li> <a href="<?php echo base_url()?>registration">Sign Up</a> </li>
 										</ul>
 									</div>
 								</div>

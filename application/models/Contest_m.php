@@ -52,22 +52,21 @@ class Contest_m extends CI_Model {
 	}
 	/*Front End*/
 	public function current_contest_list($user_id){
-		$this->db->select("t1.id, t1.contestName, t1.description, t1.startDate, t1.endDate, t2.id AS levelID, t2.levelName, t3.userID");
+		$this->db->select("t1.id, t1.contestName, t1.description, t1.startDate, t1.endDate, t2.id AS levelID, t2.levelName, t3.userID, IFNULL(t3.userID, 0) AS isParticipated");
 		$this->db->from('master_contests t1');
 		$this->db->join('contest_levels t2', 't1.id = t2.contestID');
-		$this->db->join('users_contests_levels t3', 't1.id = t3.contestID ', 'left');
+		$this->db->join('users_contests_levels t3', 't1.id = t3.contestID AND t3.userID = '.$user_id, 'left');
 		$this->db->where('t1.isDeleted', '0');
 		$this->db->where('t2.isDeleted', '0');
 		$this->db->where('t2.status', 1);
 		$this->db->where('t2.isEnabled', 1);		
-		$this->db->where('startDate <=', date('Y-m-d'));
-		$this->db->where('endDate >=', date('Y-m-d'));
-	    //$this->db->where('endDate <', date('Y-m-d'));
-		//$this->db->where('t3.userID IS NULL');
-		
-		
+		#$this->db->where('startDate <=', date('Y-m-d'));
+		#$this->db->where('endDate >=', date('Y-m-d'));
+		$this->db->where('regStartDate <=', date('Y-m-d'));
+		$this->db->where('regEndDate >=', date('Y-m-d'));
 		$rs = $this->db->get();
 		
+		//echo $this->db->last_query();die;
 		if($rs->num_rows() == 0){
 				return false;
 		}

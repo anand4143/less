@@ -38,8 +38,9 @@
 							<div class="divided-content small-text greylinks color2">
 								<div>
 									<div class="dropdown">
+									
 									<?php 
-										if(isset($sessionData)){
+										if($this->session->userdata('logged_in') == TRUE){
 									?> 
 										<a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											My account<span class="caret"></span>
@@ -57,8 +58,8 @@
 										<ul class="dropdown-menu" aria-labelledby="account-dropdown">
 										<?php 
 										
-											if(isset($sessionData)){
-												if($sessionData['userID']){
+											if($this->session->userdata('logged_in') == TRUE){
+												if($this->session->userdata('userID')){
 										?>
 											<li> <a href="<?php echo base_url()?>user/profile">Profile</a> </li>
 											<li> <a href="<?php echo base_url()?>/login/logout">Logout</a> </li>

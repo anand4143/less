@@ -38,6 +38,7 @@ class User extends MY_Controller {
     }
     public function landing(){
         ///echo 'anand ';
+		//echo "<pre>";print_r($_SESSION);die;
         //redirect('frontend/users/lan');
         $userData['sessionData'] = $this->getSessionData();
         $this->load->view('frontend/users/landing',$userData);
@@ -58,27 +59,50 @@ class User extends MY_Controller {
     }
 
     public function register(){
-        echo "<pre>";print_r($this->input->post());
-        $data = array(
-            'firstName' => $this->input->post('firstName'),
-            'lastName' => $this->input->post('lastName'),
-            'email' => $this->input->post('email'),
-            'password' => md5($this->input->post('password')),
-            'gender' => $this->input->post('gender'),
-            'mobileno' => $this->input->post('mobileno'),
-            'address' => $this->input->post('address'),
-            'cityID' => $this->input->post('city'),
-            'state' => $this->input->post('state'),
-            'pincode' => $this->input->post('pincode')
-        );
-        $result = $this->users->registerUser($data);
-        if($result){
-            $this->session->set_flashdata('registerSuccess',"Please login with your credential");
-            redirect('login');
-        }else{
-            $this->session->set_flashdata('registerError',"Something went wrong. Please try later");
-            redirect('login');
-        }
+		//echo "<pre>";print_r($this->input->post());
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('firstName', 'First Name', 'required|trim');
+		$this->form_validation->set_rules('lastName', 'Last Name', 'required|trim');
+		$this->form_validation->set_rules('email', 'Email Address', 'required|trim|valid_email|is_unique[users.email]');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('confirmPassword', 'Confirm Password', 'required|matches[password]');
+		
+		$this->form_validation->set_rules('gender', 'Gender', 'required');
+		$this->form_validation->set_rules('mobileno', 'Mobile No.', 'required');
+		$this->form_validation->set_rules('address', 'Address', 'required');
+		$this->form_validation->set_rules('state', 'State', 'required');
+		$this->form_validation->set_rules('city', 'City', 'required');
+		$this->form_validation->set_rules('pincode', 'Pincode', 'required');
+		
+		$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+        $this->form_validation->set_message('required', 'Enter %s');
+ 
+		if($this->form_validation->run()) {
+			$data = array(
+				'firstName' => $this->input->post('firstName'),
+				'lastName' => $this->input->post('lastName'),
+				'email' => $this->input->post('email'),
+				'password' => md5($this->input->post('password')),
+				'userType' => 2,
+				'gender' => $this->input->post('gender'),
+				'mobileno' => $this->input->post('mobileno'),
+				'address' => $this->input->post('address'),
+				'cityID' => $this->input->post('city'),
+				'state' => $this->input->post('state'),
+				'pincode' => $this->input->post('pincode')
+			);
+			$result = $this->users->registerUser($data);
+			if($result) {
+				$this->session->set_flashdata('registerSuccess',"Please login with your credential");
+				redirect('login');
+			} else {
+				$this->session->set_flashdata('registerError',"Something went wrong. Please try later");
+				redirect('login');
+			}
+		}else {
+			$userData['states'] = $this->users->getState();
+			$this->load->view('frontend/login/registration',$userData);
+		}	
     }
 
     

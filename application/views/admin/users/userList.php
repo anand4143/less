@@ -27,6 +27,7 @@
 											</thead>
 											<tbody>
 											<?php
+											if($userList && count($userList)){
 											foreach($userList as $user){
 											?>
 												<tr>
@@ -47,7 +48,12 @@
 														<a href="<?php echo base_url('admin/user/delete/'.$user->id);?>" title="Remove Contest"><span class="fa fa-remove"></span></a>
 													</td>
 												</tr>
-											<?php } ?>
+											<?php }
+											}else{?>
+												<tr>
+													<td colspan="7" align="center">No record found!</td>
+												</tr>	
+											<?php }?>
 												
 											</tbody>
 										</table>

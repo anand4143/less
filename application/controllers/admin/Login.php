@@ -49,7 +49,7 @@ class Login extends MY_Controller {
             $username = $this->input->post('username');
             $password = md5($this->input->post('password'));
             
-            $isValid = $this->users->isValidate($username,$password,'admin');
+            $isValid = $this->users->isValidate($username,$password, 1);
             //echo "<pre>";print_r($isValid);die("i m her22222e");
             if($isValid){
                 $userData = array(

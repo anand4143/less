@@ -2,13 +2,10 @@
 
 class Users extends CI_Model{
 
-    public function isValidate($username,$password, $type = ''){
+    public function isValidate($username,$password, $type = 2){
         $this->db->where(['email' => $username, 'password' => $password] );
-		if($type == 'admin'){
-			$this->db->where('userType', 1 );
-		} else {
-			$this->db->where('userType !=', 1 );
-		}
+		$this->db->where('userType', $type);
+	
         $q = $this->db->get('users');
         if( $q->num_rows() ){
             $q = $this -> db
@@ -26,7 +23,7 @@ class Users extends CI_Model{
     }
 
     public function getUserList(){
-        $this->db->select('*')->from('users')->where('userType',2);
+        $this->db->select('*')->from('users')->where('userType', 2);
         
         $query = $this->db->get();
         //print_r($this->db->last_query()); die('hereereeeeee');
