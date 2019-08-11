@@ -98,7 +98,7 @@ class Judges extends CI_Model{
         // on t3.id = t2.contestID and t3.status=1
         // left join contest_levels t4
         // on t4.contestID = t3.id and t4.isEnabled=1');
-        //echo "<li>".$this->db->last_query();
+        echo "<li>".$this->db->last_query();
         return $query->result_array();
         //return $query->result();
     }
@@ -136,53 +136,6 @@ class Judges extends CI_Model{
 
 
        
-    }
-   public function saveJudgeParametersDB($data){
-       
-    //    $this->db->select('id');
-    //   $this->db->from('user_contest_report');
-    //    $this->db->where('userSmuleID',$data['userSmuleID']);
-    //    $q = $this->db->get();
-    //    if ($q->num_rows() > 0)
-    //     {
-    //         //$res = $q->row();
-    //         return 'exist';
-    //     }
-        $this->db->insert('user_contest_report',$data);
-        return $this->db->insert_id();
-    }
-
-    public function updateJudgeParametersDB($data){
-        $this->db->set('sur', $data['sur']);
-        $this->db->set('Taal', $data['Taal']);
-        $this->db->set('Emotion_Feel', $data['Emotion_Feel']);
-        $this->db->set('Voice_Quality_Nasal', $data['Voice_Quality_Nasal']);
-        $this->db->set('Soothing_Level', $data['Soothing_Level']);
-        $this->db->set('Copy_Or_Originality', $data['Copy_Or_Originality']);
-        $this->db->set('Variation', $data['Variation']);
-        $this->db->set('Diction', $data['Diction']);
-        $this->db->set('Murki_Vibratos', $data['Murki_Vibratos']);
-        $this->db->set('Alaap', $data['Alaap']);
-        $this->db->set('Sargam', $data['Sargam']);
-        $this->db->set('Judge_Score', $data['Judge_Score']);
-        $this->db->set('parameter1', $data['parameter1']);
-        $this->db->set('parameter2', $data['parameter2']);
-        $this->db->set('parameter3', $data['parameter3']);
-        $this->db->set('parameter4', $data['parameter4']);
-        $this->db->set('parameter5', $data['parameter5']);
-        $this->db->where('userSmuleID',$data['userSmuleID']);
-        return $this->db->update('user_contest_report');
-    }
-
-    public function isJudgementParamExists($smuleID){
-        $this->db->select('*');
-      $this->db->from('user_contest_report');
-       $this->db->where('userSmuleID',$smuleID);
-       $q = $this->db->get();
-       if ($q->num_rows() > 0)
-        {            
-            return $q->result();
-        }
     }
 
     public function deleteUserById($id){

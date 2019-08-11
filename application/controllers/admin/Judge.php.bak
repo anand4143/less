@@ -138,7 +138,7 @@ class Judge extends MY_Controller{
         $contestID  = $expolodeData[1];
         $levelID    = $expolodeData[2];
         $smuleID    = $expolodeData[3];
-        $loginID    = $this->getSessionData(); 
+        $loginID = $this->getSessionData(); 
       
         $data = array(
             "judgeID"       => $loginID['id'],

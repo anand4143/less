@@ -38,7 +38,7 @@ class User extends MY_Controller {
     }
     public function landing(){
         ///echo 'anand ';
-
+		//echo "<pre>";print_r($_SESSION);die;
         //redirect('frontend/users/lan');
         $userData['sessionData'] = $this->getSessionData();
         $this->load->view('frontend/users/landing',$userData);

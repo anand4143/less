@@ -29,7 +29,7 @@
 											</thead>
 											<tbody>
 											<?php
-											echo "<li>login Judge===> ".$judgeID = $session['id'];
+											$judgeID = $session['id'];
 											//echo "<pre>";print_r($allUserSongListOfRunningContests);
 											foreach($allUserSongListOfRunningContests as $user){
 											?>
@@ -112,7 +112,7 @@
             <div class="modal-body">
 				<p><i class="zmdi zmdi-alert-circle-o"></i>
 					You can't pic this song.Judgement in progression...
-					<span id="uname"></span>
+					
 			</p>
             </div>
             <div class="modal-footer">
@@ -126,7 +126,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalForms" tabindex="-1" role="dialog" aria-labelledby="exampleModalForms" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
             	<h5 class="modal-title">Judge's Parameter</h5>
@@ -135,17 +135,136 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form>
-                <div class="form-group">
-        			<label for="param1">Parameter 1</label>
-                    <input type="text" class="form-control" id="param1" placeholder="param1">
+            <?php echo form_open('judge/saveParameter');?>
+			<input type="hidden" id="userData">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="param1">Sur</label>
+							<?php echo form_input(['id'=>'sur','name'=>'sur','placeholder'=>'Sur','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="param1">Taal</label>
+							<?php echo form_input(['id'=>'taal','name'=>'taal','placeholder'=>'Taal','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="param1">Emotion Feel</label>
+							<?php echo form_input(['id'=>'emotionfeel','name'=>'emotionfeel','placeholder'=>'Emotion Feel','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="param1">Voice Quality Nasal</label>
+							<?php echo form_input(['id'=>'voicequalitynasal','name'=>'voicequalitynasal','placeholder'=>'Voice Quality Nasal','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="param1">Soothing Level</label>
+							<?php echo form_input(['id'=>'soothinglevel','name'=>'soothinglevel','placeholder'=>'Soothing Level','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="param1">Copy Or Originality</label>
+							<?php echo form_input(['id'=>'copyororiginality','name'=>'copyororiginality','placeholder'=>'Copy Or Originality','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="param1">Variation</label>
+							<?php echo form_input(['id'=>'variation','name'=>'variation','placeholder'=>'Variation','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="param1">Diction</label>
+							<?php echo form_input(['id'=>'diction','name'=>'diction','placeholder'=>'Diction','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="param1">Murki Vibratos</label>
+							<?php echo form_input(['id'=>'murkivibratos','name'=>'murkivibratos','placeholder'=>'Murki Vibratos','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="param1">Alaap</label>
+							<?php echo form_input(['id'=>'alaap','name'=>'alaap','placeholder'=>'Alaap','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="param1">Sargam</label>
+							<?php echo form_input(['id'=>'sargam','name'=>'sargam','placeholder'=>'Sargam','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="param1">Judge Score</label>
+							<?php echo form_input(['id'=>'judgescore','name'=>'judgescore','placeholder'=>'Judge Score','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+						<label for="param1">Parameter 1</label>
+						<?php echo form_input(['id'=>'param1','name'=>'param1','placeholder'=>'parameter1','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+						<label for="param1">Parameter 2</label>
+                        <?php echo form_input(['id'=>'param2' ,'name'=>'param2','placeholder'=>'parameter2','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+						<label for="param1">Parameter 3</label>
+                    	<?php echo form_input(['id'=>'param3' ,'name'=>'param3','placeholder'=>'parameter3','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+						<label for="param1">Parameter 4</label>
+                        <?php echo form_input(['id'=>'param4' ,'name'=>'param4','placeholder'=>'parameter4','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+						<label for="param2">Parameter 5</label>
+                        <?php echo form_input(['id'=>'param5' ,'name'=>'param5','placeholder'=>'parameter5','class'=>'form-control','onblur'=>' checkBetweenOneToTen(this)']);?>
+						</div>														
+					</div>					
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="saveResultBtn" class="btn btn-primary" onclick="saveJudgeParameters();">Save Result</button>
+					<button type="button" id="updateResultBtn" class="btn btn-primary" onclick="updateJudgeParameters();">Update Result</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
-                <div class="form-group">
-        			<label for="param2">Parameter 2</label>
-                    <input type="text" class="form-control" id="param2" placeholder="param2">
-                </div>
-            	<button type="button" class="btn btn-primary" onclick="saveJudgeParameters();">Save Result</button>
-            </form>
+            	
+            
             </div>
         </div>
     </div>
@@ -153,56 +272,288 @@
 
 <!-- end Modal -->
 
+<!-- Success Modal -->
+<div class="modal fade" id="exampleModalsuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalsuccess" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    	<div class="modal-content">
+        	<div class="modal-header">
+            	<h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                	<span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+				<p><i class="zmdi zmdi-alert-circle-o"></i>
+					<span id="msg"></span>
+					
+			</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end Success Modal -->
+
+<!-- 1 to 10 validation Modal -->
+<div class="modal fade" id="exampleModalvalidation" tabindex="-1" role="dialog" aria-labelledby="exampleModalvalidation" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    	<div class="modal-content">
+        	<div class="modal-header">
+            	<h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                	<span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+				<p><i class="zmdi zmdi-alert-circle-o"></i>
+					Please give me marks between 1 to 10.
+					
+			</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end1 to 10 validation Modal -->
+
 <?php  $this->view('templates/admin/judge/footer.php'); ?>
 
 
 <script>
-function parameterPopup(){
 
-}
 function openPopup(userID,contestID,levelID,smuleID,judgeID){
 	var allIDs = userID+"-"+contestID+"-"+levelID+"-"+smuleID+"-"+judgeID;
-	//alert("==> "+allIDs);
 	$("#userInfo").val(allIDs);
-	//$("#uname").html(fname);
 }
 function pickThisSongForJudge(){
 	var userInfo = $('#userInfo').val();
 	 var splitData = userInfo.split('-');
-	//  alert("userID"+splitData[0]);
-	//  alert("contestID"+splitData[1]);
-	//  alert("levelID"+splitData[2]);
-	//  alert("smuleID"+splitData[3]);
-	//  alert("current judgeID"+splitData[4]);
 	$.ajax({
 		type: "GET",
 		url: "<?php echo base_url()?>admin/judge/SongForJudge",
 		data: "ids="+userInfo,
 		cache : false,
 		success : function(res){
-			alert("last insert id===> "+res);
+			//alert("last insert id===> "+res);
 			$('#exampleModal').modal('hide');
-			$('#exampleModal3').modal('show');
-			//var an = res.search('-not allow');
-			// if( res == "not allow"){				
-			// 	$('#exampleModal').modal('hide');
-			// 	$('#exampleModal2').modal('show');
-				
-			// }else{
-			// 		$('#exampleModal3').modal('show');
-			// }
-			//location.reload();
+			$('#exampleModal3').modal('show');			
+			location.reload();
 		}
 	});
 
 	
 }
+function parameterPopup(userID,contestID,levelID,smuleID,judgeID){
+	var allIDs = userID+"-"+contestID+"-"+levelID+"-"+smuleID+"-"+judgeID;
+	$("#userData").val(allIDs);
 
+	$.ajax({
+		type: "GET",
+		url: "<?php echo base_url()?>admin/judge/isJudgementParamExists",
+		data: "smuleID="+smuleID,
+		cache : false,
+		success : function(res){
+			var json_obj = $.parseJSON(res);//parse JSON
+			
+			 if(json_obj != null){
+				 $('#saveResultBtn').css('display','none');
+				 $('#updateResultBtn').css('display','block');
+				$("#sur").val(json_obj[0].sur);
+				$("#taal").val(json_obj[0].Taal);
+				$("#emotionfeel").val(json_obj[0].Emotion_Feel);
+				$("#voicequalitynasal").val(json_obj[0].Voice_Quality_Nasal);
+				$("#soothinglevel").val(json_obj[0].Soothing_Level);
+				$("#copyororiginality").val(json_obj[0].Copy_Or_Originality);
+				$("#variation").val(json_obj[0].Variation);
+				$("#diction").val(json_obj[0].Diction);
+				$("#murkivibratos").val(json_obj[0].Murki_Vibratos);
+				$("#alaap").val(json_obj[0].Alaap);
+				$("#sargam").val(json_obj[0].Sargam);
+				$("#judgescore").val(json_obj[0].Judge_Score);
+				$("#param1").val(json_obj[0].parameter1);
+				$("#param2").val(json_obj[0].parameter2);
+				$("#param3").val(json_obj[0].parameter3);
+				$("#param4").val(json_obj[0].parameter4);
+				$("#param5").val(json_obj[0].parameter5);
+			 }else{
+				$('#updateResultBtn').css('display','none');
+				 $('#saveResultBtn').css('display','block');
+				$("#sur").val('');
+				$("#taal").val('');
+				$("#emotionfeel").val('');
+				$("#voicequalitynasal").val('');
+				$("#soothinglevel").val('');
+				$("#copyororiginality").val('');
+				$("#variation").val('');
+				$("#diction").val('');
+				$("#murkivibratos").val('');
+				$("#alaap").val('');
+				$("#sargam").val('');
+				$("#judgescore").val('');
+				$("#param1").val('');
+				$("#param2").val('');
+				$("#param3").val('');
+				$("#param4").val('');
+				$("#param5").val('');
+			 }
+				
+		}
+	});
+
+}
 
 function saveJudgeParameters(){
-		var param1 = $("#param1").val();
-		var param2 = $("#param2").val();
-		alert(param1);
-		alert(param2);
+	var userData = $("#userData").val();
+	
+	 var sur 				= $("#sur").val();
+	 var taal 				= $("#taal").val();
+	 var emotionfeel 		= $("#emotionfeel").val();
+	 var voicequalitynasal 	= $("#voicequalitynasal").val();
+	 var soothinglevel 		= $("#soothinglevel").val();
+	 var copyororiginality 	= $("#copyororiginality").val();
+	 var variation 			= $("#variation").val();
+	 var diction 			= $("#diction").val();
+	 var murkivibratos 		= $("#murkivibratos").val();
+	 var alaap 				= $("#alaap").val();
+	 var sargam 			= $("#sargam").val();
+	 var judgescore 		= $("#judgescore").val();
+	 var param1 			= $("#param1").val();
+	 var param2 			= $("#param2").val();
+	 var param3 			= $("#param3").val();
+	 var param4 			= $("#param4").val();
+	 var param5 			= $("#param5").val();
+
+
+	 $.ajax({
+		type: "GET",
+		url: "<?php echo base_url()?>admin/judge/saveJudgeParameters",
+		data: "ids="+userData+"&sur="+sur+"&taal="+taal+"&emotionfeel="+emotionfeel+"&voicequalitynasal="+voicequalitynasal+"&soothinglevel="+soothinglevel+"&copyororiginality="+copyororiginality+"&variation="+variation+"&diction="+diction+"&murkivibratos="+murkivibratos+"&alaap="+alaap+"&sargam="+sargam+"&judgescore="+judgescore+"&param1="+param1+"&param2="+param2+"&param3="+param3+"&param4="+param4+"&param5="+param5,
+		cache : false,
+		success : function(res){
+			alert("==> "+res);
+			// alert(res.indexOf("-"));
+
+			if(res>0){
+				$("#msg").text("Your data save successfully");
+				$('#exampleModalForms').modal('hide');
+				$('#exampleModalsuccess').modal('show');
+			}
+			// else if(res == 'exist'){
+			// 	$("#sur").val(res["sur"]);
+			// 	$("#taal").val(res["taal"]);
+			// 	$("#emotionfeel").val(res["emotionfeel"]);
+			// 	$("#voicequalitynasal").val(res["voicequalitynasal"]);
+			// 	$("#soothinglevel").val(res["soothinglevel"]);
+			// 	$("#copyororiginality").val(res["copyororiginality"]);
+			// 	$("#variation").val(res["variation"]);
+			// 	$("#diction").val(res["diction"]);
+			// 	$("#murkivibratos").val(res["murkivibratos"]);
+			// 	$("#alaap").val(res["alaap"]);
+			// 	$("#sargam").val(res["sargam"]);
+			// 	$("#judgescore").val(res["judgescore"]);
+			// 	$("#param1").val(res["parameter1"]);
+			// 	$("#param2").val(res["parameter2"]);
+			// 	$("#param3").val(res["parameter3"]);
+			// 	$("#param4").val(res["parameter4"]);
+			// 	$("#param5").val(res["parameter5"]);
+			// }
+			else{
+				$("#msg").text("Something went wrong.Please try later");
+				$('#exampleModalsuccess').modal('show');	
+			}		
+			//location.reload();
+		}
+	});
 	}
+
+	function updateJudgeParameters(){		
+		var userData = $("#userData").val();	
+		var sur 				= $("#sur").val();
+		var taal 				= $("#taal").val();
+		var emotionfeel 		= $("#emotionfeel").val();
+		var voicequalitynasal 	= $("#voicequalitynasal").val();
+		var soothinglevel 		= $("#soothinglevel").val();
+		var copyororiginality 	= $("#copyororiginality").val();
+		var variation 			= $("#variation").val();
+		var diction 			= $("#diction").val();
+		var murkivibratos 		= $("#murkivibratos").val();
+		var alaap 				= $("#alaap").val();
+		var sargam 				= $("#sargam").val();
+		var judgescore 			= $("#judgescore").val();
+		var param1 				= $("#param1").val();
+		var param2 				= $("#param2").val();
+		var param3 				= $("#param3").val();
+		var param4 				= $("#param4").val();
+		var param5 				= $("#param5").val();
+
+
+	$.ajax({
+	   type: "GET",
+	   url: "<?php echo base_url()?>admin/judge/updateJudgeParameters",
+	   data: "ids="+userData+"&sur="+sur+"&taal="+taal+"&emotionfeel="+emotionfeel+"&voicequalitynasal="+voicequalitynasal+"&soothinglevel="+soothinglevel+"&copyororiginality="+copyororiginality+"&variation="+variation+"&diction="+diction+"&murkivibratos="+murkivibratos+"&alaap="+alaap+"&sargam="+sargam+"&judgescore="+judgescore+"&param1="+param1+"&param2="+param2+"&param3="+param3+"&param4="+param4+"&param5="+param5,
+	   cache : false,
+	   success : function(res){
+		   alert("==> "+res);
+		   if(res>0){
+			   $("#msg").text("Your data updated successfully");
+			   $('#exampleModalForms').modal('hide');
+			   $('#exampleModalsuccess').modal('show');
+		   }
+		//    else if(res == 'exist'){
+		// 	   $("#sur").val(res["sur"]);
+		// 	   $("#taal").val(res["taal"]);
+		// 	   $("#emotionfeel").val(res["emotionfeel"]);
+		// 	   $("#voicequalitynasal").val(res["voicequalitynasal"]);
+		// 	   $("#soothinglevel").val(res["soothinglevel"]);
+		// 	   $("#copyororiginality").val(res["copyororiginality"]);
+		// 	   $("#variation").val(res["variation"]);
+		// 	   $("#diction").val(res["diction"]);
+		// 	   $("#murkivibratos").val(res["murkivibratos"]);
+		// 	   $("#alaap").val(res["alaap"]);
+		// 	   $("#sargam").val(res["sargam"]);
+		// 	   $("#judgescore").val(res["judgescore"]);
+		// 	   $("#param1").val(res["parameter1"]);
+		// 	   $("#param2").val(res["parameter2"]);
+		// 	   $("#param3").val(res["parameter3"]);
+		// 	   $("#param4").val(res["parameter4"]);
+		// 	   $("#param5").val(res["parameter5"]);
+		//    }
+		   else{
+			   $("#msg").text("Something went wrong.Please try later");
+			   $('#exampleModalsuccess').modal('show');	
+		   }		
+		   //location.reload();
+	   }
+   });
+	}
+
+	function checkBetweenOneToTen(inputvalue){
+		//alert(inputvalue.value);
+		var x = inputvalue.value;
+		if(x != ''){
+		if ( x < 1 ||  x > 10) {
+			//alert(x);
+				$("#exampleModalvalidation").modal('show');
+				
+			
+		} 
+		}
+	}
+// $(document).ready(function(){
+// 	$("input").keypress(function(event) {
+//     if (event.which == 13) {
+//         event.preventDefault();
+//        FoodDispaly();
+//     }
+// });
+
+// });
+	
+
 </script>

@@ -23,7 +23,7 @@ class Login extends MY_Controller {
        $password = md5($this->input->post('password'));
        
        $isValid = $this->users->isValidate($username,$password, 2);
-       var_dump($isValid );die;
+       //var_dump($isValid );die;
        if($isValid){
            $userData = array(
             'userID'    => $isValid['id'],
