@@ -48,7 +48,7 @@
 					
 					<div class="col-sm-6">
 						<div class="dashboardboxes apsc-instagram-icon">
-						<a href="<?php  base_url();?>/user/profile">
+						<a href="<?php  echo base_url();?>/user/profile">
 						<i class="fa fa-user"></i>
 						User Profile
 							</a>

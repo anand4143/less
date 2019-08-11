@@ -52,6 +52,7 @@ class Contest_m extends CI_Model {
 	}
 	/*Front End*/
 	public function current_contest_list($user_id){
+		
 		$this->db->select("t1.id, t1.contestName, t1.description, t1.startDate, t1.endDate, t2.id AS levelID, t2.levelName, t3.userID, IFNULL(t3.userID, 0) AS isParticipated");
 		$this->db->from('master_contests t1');
 		$this->db->join('contest_levels t2', 't1.id = t2.contestID');
