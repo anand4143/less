@@ -45,6 +45,20 @@
 					   <?php echo form_error('lastName', '<span class="help-block text-danger">', '</span>'); ?>
 					</div>
 				 </div>
+				 <div class="form-group row">
+					<label class="col-md-3 col-form-label" for="text-input">Password</label>
+					<div class="col-md-9">
+					   <input class="form-control" type="password" id="password"  name="password" value="<?php echo set_value('password'); ?>" maxlength="128" placeholder="Enter password">
+					   <?php echo form_error('password', '<span class="help-block text-danger">', '</span>'); ?>
+					</div>
+				 </div>
+				 <div class="form-group row">
+					<label class="col-md-3 col-form-label" for="text-input">Confirm Password</label>
+					<div class="col-md-9">
+					   <input class="form-control" type="password" id="confirmPassword"  name="confirmPassword" value="<?php echo set_value('confirmPassword'); ?>" maxlength="128" placeholder="Enter confirm password">
+					   <?php echo form_error('confirmPassword', '<span class="help-block text-danger">', '</span>'); ?>
+					</div>
+				 </div>
 				 
 				 
 				 <div class="form-group row">
@@ -87,6 +101,12 @@ $(document).ready(function() {
             },
             lastName: {
 				required: true
+			},
+            password: {
+				required: true
+			},
+            confirmPassword: {
+				required: true
 			}
 		},
 		messages: {
@@ -98,6 +118,12 @@ $(document).ready(function() {
 			},
 			lastName: {
 				required: "Please Enter user last name"
+			},
+			password: {
+				required: "Please Enter password"
+			},
+			confirmPassword: {
+				required: "Please Enter confirm password"
 			}
 		},
 		errorPlacement: function(error, element) {

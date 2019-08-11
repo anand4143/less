@@ -28,9 +28,14 @@ class Judge extends MY_Controller{
     public function saveJudge(){
         if($this->input->post()){
             $this->load->library('form_validation');
-            $this->form_validation->set_rules('email','user email','trim|required|valid_email');
+            $this->form_validation->set_rules('email','user email','trim|required|valid_email|is_unique[master_judge.email]');
             $this->form_validation->set_rules('firstName', 'First name','trim|required|min_length[2]|max_length[128]');
             $this->form_validation->set_rules('lastName', 'Last name','trim|required|min_length[2]|max_length[128]');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+            $this->form_validation->set_rules('confirmPassword', 'Confirm Password', 'required|matches[password]');
+            // $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+            // $this->form_validation->set_message('required', 'Enter %s');
+
             if($this->form_validation->run() == FALSE){
                 $this->load->view('admin/judge/add');
             }else{
@@ -38,15 +43,19 @@ class Judge extends MY_Controller{
                 $email = $this->input->post('email');
                 $firstName = $this->input->post('firstName');
                 $lastName = $this->input->post('lastName');
+                $lastName = $this->input->post('lastName');
                 $aboutUser = $this->input->post('aboutUser');
+                $password = md5($this->input->post('password'));
                 $newData = array(
                     'userName'=> $userName,
                     'email'=> $email,
                     'firstName'=> $firstName,
                     'lastName'=> $lastName,
+                    'password'=> $password,
                     'aboutJudge' => $aboutUser,
                     'isActive' => '1'
                 );
+                
                 $result = $this->judges->saveJudge($newData);
                 $message = $result ? 'Judge added successfully': 'something went wrong try later';
                 $this->session->set_flashdata('Judgemessage',$message);
@@ -88,11 +97,13 @@ class Judge extends MY_Controller{
                 $firstName  = $this->input->post('firstName');
                 $lastName   = $this->input->post('lastName');
                 $aboutJudge   = $this->input->post('aboutJudge');
+                $password = md5($this->input->post('password'));
                 $userData   = array(
                     'userName'  => $userName,
                     'email'     => $email,
                     'firstName' => $firstName,
                     'lastName'  => $lastName,
+                    'password'  => $password,
                     'aboutJudge'=> $aboutJudge
                 );
                 $result     = $this->judges->updateUser($id,$userData);
