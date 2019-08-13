@@ -56,7 +56,7 @@ class Smule_m extends CI_Model {
 		if($rs->num_rows() == 0){
 			return TRUE;
 		}
-		return $rs->row()->num_rows > 5 ? TRUE : FALSE;
+		return $rs->row()->num_rows >= 5 ? TRUE : FALSE;
 	}
 	
 	public function get_data($id){

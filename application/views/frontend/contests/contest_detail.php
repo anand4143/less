@@ -103,7 +103,7 @@
 
 <?php  $this->view('templates/frontend/footer.php'); ?>
 
-<div id="uploadSong" class="modal fade" role="dialog">
+<div id="uploadSong" class="modal fade" role="dialog" style="z-index: 9999;">
 <?php 
 	$attributes = array('class' => 'form-horizontal', 'id' => 'frmUploadSong', 'name' => 'frmUploadSong');
 	echo form_open('contests/upload_song/'.$c_data->id.'/'.$c_data->levelID, $attributes);
@@ -206,6 +206,9 @@ $(document).ready(function() {
 				setTimeout(function(){
 					$("#btnSubmit").attr("disabled", false); 
 					$("#resp_msg").html("");
+					if(response.resp_status == 'success') {
+						window.location.reload();
+					}
 				}, 2000); 
 			},
 			error: function(e) {
