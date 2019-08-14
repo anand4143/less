@@ -1,0 +1,2 @@
+ALTER TABLE `users_contests_levels` ADD `isCurrentLevel` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `contestID`;
+ALTER TABLE `users_contests_levels` ADD `isLevelCompleted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0' AFTER `isCurrentLevel`;
