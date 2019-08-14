@@ -222,6 +222,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="<?php echo site_url('admin/user/assignUserToJudges'); ?>">Assign Users To Judges</a>
                                         </li>
+										<li class="nav-item">
+                                            <a class="nav-link" href="<?php echo site_url('admin/user_contests/'); ?>">Users Contest Level Move</a>
+                                        </li>
                                         
                                     </ul>
                                 </li>
@@ -246,7 +249,7 @@
                             </ul>
                         </li>
 						
-						 <li class="nav-item">
+						<li class="nav-item">
                             <a class="nav-link" href="<?php echo site_url('admin/contests') ?>" data-toggle="collapse" data-target="#pages_drp">
                                 <span class="feather-icon"><i data-feather="file-text"></i></span>
                                 <span class="nav-link-text">Manage Contests Level</span>
