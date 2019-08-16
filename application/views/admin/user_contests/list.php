@@ -1,5 +1,5 @@
 <?php $this->view('templates/admin/header.php'); ?>
-
+<link href="<?php echo base_url();?>assets/vendors/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 
  <!-- Row -->
  <div class="row">
