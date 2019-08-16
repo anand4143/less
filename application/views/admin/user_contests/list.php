@@ -174,8 +174,8 @@ function reloadDataTable() {
 
 function loadDataTable(){ 
         dataTbl = jQuery('#tableUserContests').dataTable({
-                "pageLength": 15,
-                "iDisplayLength": 15,
+                "pageLength": 2,
+                "iDisplayLength": 2,
                 "bProcessing" : true,
                 "bServerSide" : true,
                 "sAjaxSource" : "<?php echo base_url(); ?>admin/user_contests/get_user_contest_grid",

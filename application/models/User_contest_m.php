@@ -30,7 +30,7 @@ class User_contest_m extends CI_Model {
                 $sql .= " )";
              }
              
-             $sql .= " GROUP BY t1.userID ORDER BY t2.firstName, t2.lastName ASC ";
+             $sql .= " ORDER BY t2.firstName, t2.lastName ASC ";
              
              if($type == 'result') {
                $sql .= " LIMIT ".$offset.", ".$limit;
