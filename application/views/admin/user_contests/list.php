@@ -45,7 +45,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">User Levels : <small id="contestNameId"></small> </h5>
+        <h5 class="modal-title" id="exampleModalLabel">User Levels : <small id="userNameId"></small> </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -72,10 +72,11 @@
 
 <script type="text/javascript">
 function show_user_contest_level(obj){
+	var uname = $(obj).attr('data-uname');
 	var uclId = $(obj).attr('data-id');
 	var ucId = $(obj).attr('data-cid');
 	var ulId = $(obj).attr('data-lid');
-    //$('#contestNameId').html($(this).attr('data-cname'));	
+    $('#userNameId').html(uname);	
 	var post_url = '<?php echo base_url();?>admin/levels/get_contest_levels/'+ucId;
 	
 	let reqHeader = new Headers();
@@ -115,9 +116,10 @@ function show_user_contest_level(obj){
 function update_current_level(objThis){
 //$('.current-level').on('click', function() {
 	var obj = $(objThis);
-	var uclId = obj.attr('data-cid');
+	var uclId = obj.attr('data-uclid');
 	var cId = obj.attr('data-cid');
 	var lId = obj.val();
+	
 	var ele_txt = $('#loadingTxt'+lId).text();
 	$('#loadingTxt'+lId).text('Processing....');
 	var post_url = '<?php echo base_url();?>admin/user_contests/change_user_current_level/'+uclId+'/'+cId+'/'+lId;
@@ -149,7 +151,7 @@ function update_current_level(objThis){
 		setTimeout(function(){
 			$('#resp_msg').html('');
 			reloadDataTable();
-		},2000);
+		},1000);
 		
 	})
 	.catch(function (err) {
