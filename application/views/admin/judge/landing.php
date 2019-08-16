@@ -342,7 +342,7 @@ function pickThisSongForJudge(){
 		success : function(res){
 			//alert("last insert id===> "+res);
 			$('#exampleModal').modal('hide');
-			$('#exampleModal3').modal('show');			
+			//$('#exampleModal3').modal('show');			
 			location.reload();
 		}
 	});
@@ -360,7 +360,7 @@ function parameterPopup(userID,contestID,levelID,smuleID,judgeID){
 		cache : false,
 		success : function(res){
 			var json_obj = $.parseJSON(res);//parse JSON
-			
+			alert(json_obj);
 			 if(json_obj != null){
 				 $('#saveResultBtn').css('display','none');
 				 $('#updateResultBtn').css('display','block');

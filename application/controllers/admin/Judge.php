@@ -172,6 +172,111 @@ class Judge extends MY_Controller{
             echo "allow";
        
     }
+    public function isJudgementParamExists(){
+        $smuleID = $this->input->get('smuleID');
+        $res = $this->judges->isJudgementParamExists($smuleID);
+        print_r( json_encode($res));
+    }
+
+    public function saveJudgeParameters(){
+        //print_r($this->input->get());
+        $ids  = $this->input->get('ids');
+        $expIds = explode('-',$ids);//userID+"-"+contestID+"-"+levelID+"-"+smuleID+"-"+judgeID
+       $sur = $this->input->get('sur');
+       $taal = $this->input->get('taal');
+       $emotionfeel = $this->input->get('emotionfeel');
+       $voicequalitynasal = $this->input->get('voicequalitynasal');
+       $soothinglevel = $this->input->get('soothinglevel');
+       $copyororiginality = $this->input->get('copyororiginality');
+       $variation = $this->input->get('variation');
+       $diction = $this->input->get('diction');
+       $murkivibratos = $this->input->get('murkivibratos');
+       $alaap = $this->input->get('alaap');
+       $sargam = $this->input->get('sargam');
+       $judgescore = $this->input->get('judgescore');
+       $param1 = $this->input->get('param1');
+       $param2 = $this->input->get('param2');
+       $param3 = $this->input->get('param3');
+       $param4 = $this->input->get('param4');
+       $param5 = $this->input->get('param5');
+       $data = array(
+           'userID'=> $expIds[0],
+           'contestID'=> $expIds[1],
+           'levelsID'=> $expIds[2],
+           'userSmuleID'=> $expIds[3],
+           'judgeID'=> $expIds[4],
+           'sur'=> $sur,
+           'Taal' => $taal,
+           'Emotion_Feel' => $emotionfeel,
+           'Voice_Quality_Nasal' => $voicequalitynasal,
+          'Soothing_Level' => $soothinglevel,
+           'Copy_Or_Originality' => $copyororiginality,
+           'Variation' => $variation,
+           'Diction' =>  $diction,
+             'Murki_Vibratos' => $murkivibratos,
+           'Alaap' => $alaap,
+           'Sargam' => $sargam,
+           'Judge_Score' => $judgescore,
+           'parameter1' => $param1,
+           'parameter2' => $param2,
+           'parameter3' => $param3,
+           'parameter4' => $param4,
+           'parameter5' => $param1
+       );
+       $saveResult = $this->judges->saveJudgeParametersDB($data);
+      print_r($saveResult);
+    }
+
+    public function updateJudgeParameters(){
+        //print_r($this->input->get());
+        $ids  = $this->input->get('ids');
+        $expIds = explode('-',$ids);//userID+"-"+contestID+"-"+levelID+"-"+smuleID+"-"+judgeID
+       $sur = $this->input->get('sur');
+       $taal = $this->input->get('taal');
+       $emotionfeel = $this->input->get('emotionfeel');
+       $voicequalitynasal = $this->input->get('voicequalitynasal');
+       $soothinglevel = $this->input->get('soothinglevel');
+       $copyororiginality = $this->input->get('copyororiginality');
+       $variation = $this->input->get('variation');
+       $diction = $this->input->get('diction');
+       $murkivibratos = $this->input->get('murkivibratos');
+       $alaap = $this->input->get('alaap');
+       $sargam = $this->input->get('sargam');
+       $judgescore = $this->input->get('judgescore');
+       $param1 = $this->input->get('param1');
+       $param2 = $this->input->get('param2');
+       $param3 = $this->input->get('param3');
+       $param4 = $this->input->get('param4');
+       $param5 = $this->input->get('param5');
+       $data = array(
+           'userID'=> $expIds[0],
+           'contestID'=> $expIds[1],
+           'levelsID'=> $expIds[2],
+           'userSmuleID'=> $expIds[3],
+           'judgeID'=> $expIds[4],
+           'sur'=> $sur,
+           'Taal' => $taal,
+           'Emotion_Feel' => $emotionfeel,
+           'Voice_Quality_Nasal' => $voicequalitynasal,
+          'Soothing_Level' => $soothinglevel,
+           'Copy_Or_Originality' => $copyororiginality,
+           'Variation' => $variation,
+           'Diction' =>  $diction,
+             'Murki_Vibratos' => $murkivibratos,
+           'Alaap' => $alaap,
+           'Sargam' => $sargam,
+           'Judge_Score' => $judgescore,
+           'parameter1' => $param1,
+           'parameter2' => $param2,
+           'parameter3' => $param3,
+           'parameter4' => $param4,
+           'parameter5' => $param1
+       );
+       $saveResult = $this->judges->updateJudgeParametersDB($data);
+      print_r($saveResult);
+    }
+    
+
     
 
     public function delete(){
