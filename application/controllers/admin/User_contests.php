@@ -46,7 +46,7 @@ class User_contests extends MY_Controller {
 				$id = $rs['id'];   
 				//$ccw_link = '<a id="assignWeightageIcon'.$criteria_id.'" href="javascript:void(0);" class="assignWeightage"  data-cid="'.$criteria_id.'"  data-type="'.$rs['criteria_type'].'" data-toggle="modal" data-target="#assignWeightageModal" data-loading="<i class=\'fa fa-spinner\' aria-hidden=\'true\'></i>" ><i class="glyphicon glyphicon-plus" title="Assign Weightage" aria-hidden="true"></i></a>';
 				//$del_link = '<a id="delIcassign_weightageon'.$criteria_id.'" href="javascript:void(0);" onclick="removeCriteria(this)" class="removeCriteria"  data-cid="'.$criteria_id.'" data-loading="<i class=\'fa fa-spinner\' aria-hidden=\'true\'></i>"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a>';
-				$level_link = '<a href="javascript:void(0);" onclick="show_user_contest_level(this);" id="levelListingId'.$id.'" class="contest-level-list" data-id="'.$id.'" data-cid="'.$rs['contestID'].'" data-lid="'.$rs['levelID'].'" data-uname="'.$rs['name'].'" data-toggle="modal" data-target="#levelModal" title="View User Content Level List" >'.$rs['contestName'].' <i class="fa fa-list" aria-hidden="true"></i></a>';
+				$level_link = '<a href="javascript:void(0);" onclick="show_user_contest_level(this);" id="levelListingId'.$id.'" class="contest-level-list" data-id="'.$id.'" data-cid="'.$rs['contestID'].'" data-lid="'.$rs['levelID'].'" data-uname="'.$rs['name'].'" data-toggle="modal" data-target="#levelModal" title="View User Content Level List" >'.$rs['levelName'].' <i class="fa fa-list" aria-hidden="true"></i></a>';
 				$trans_arr[] = (object)array(
 					$sno,
 					$rs['name'],

@@ -5,7 +5,7 @@
 	<div class="col-xl-12">
 		<div class="d-flex align-items-center justify-content-between mt-40 mb-20">
 			<h4>Edit Contest</h4>
-			<a href="<?php echo base_url('admin/contests');?>" class="btn btn-sm btn-link">Content List</a>
+			<a href="<?php echo base_url('admin/contests');?>" class="btn btn-sm btn-link">Contest List</a>
 		</div>
 		 <?php 
 				$attributes = array('class' => 'form-horizontal', 'id' => 'frmContest', 'name' => 'frmContest');
@@ -68,7 +68,7 @@
 		   <div class="card-footer ">
 			  <button class="btn btn-sm btn-primary" type="submit">
 			  <i class="fa fa-dot-circle-o"></i> Submit</button>
-			  <button type="button" class="btn btn-light" onClick="javascript: window.history.go(-1);">Back</button>
+			  <button type="button" class="btn btn-sm btn-light" onClick="javascript: window.history.go(-1);"><i class="fa fa-arrow-left"></i> Back</button>
 		   </div>
 		</div>
 		 <?php echo form_close();?>

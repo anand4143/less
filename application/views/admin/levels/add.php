@@ -5,7 +5,7 @@
 	<div class="col-xl-12">
 		<div class="d-flex align-items-center justify-content-between mt-40 mb-20">
 			<h4>Add New Level</h4>
-			<a href="<?php echo base_url('admin/levels');?>" class="btn btn-sm btn-link">Content List</a>
+			<a href="<?php echo base_url('admin/levels');?>" class="btn btn-sm btn-link">Level List</a>
 		</div>
 		 <?php 
 				$attributes = array('class' => 'form-horizontal', 'id' => 'frmLevel', 'name' => 'frmLevel');
@@ -52,8 +52,8 @@
 		   <div class="card-footer ">
 			  <button class="btn btn-sm btn-primary" type="submit">
 			  <i class="fa fa-dot-circle-o"></i> Submit</button>
-			  <button class="btn btn-sm btn-danger" type="reset">
-			  <i class="fa fa-ban"></i> Reset</button>
+			   <a  href="<?php echo base_url('admin/levels');?>" class="btn btn-sm btn-default" >
+			  <i class="fa fa-arrow-left"></i> Back</a>
 		   </div>
 		</div>
 		 <?php echo form_close();?>
