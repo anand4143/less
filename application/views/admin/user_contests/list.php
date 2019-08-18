@@ -19,7 +19,7 @@
 										<th>Name</th>
 										<th>Email</th>
 										<th>Contest Name</th>
-										<th>Current Level</th>
+										<th>Change User Level</th>
 									</tr>
 								</thead>
 								<tbody>
