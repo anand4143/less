@@ -56,18 +56,36 @@ class Judges extends CI_Model{
         return $row = $q->row();
     }
     public function checkUserAssignToJudge($id,$contestId,$levelId){
-        $this->db->select('judge_id');
+        $this->db->select('judgeID');
         $this->db->from('users_judge');
-        $this->db->where('user_id',$id);
-        $this->db->where('contest_id',$contestId);
-        $this->db->where('levels_id',$levelId);
+        $this->db->where('userID',$id);
+        $this->db->where('contestID',$contestId);
+        $this->db->where('levelsID',$levelId);
         $q = $this->db->get();
         
         //echo $this->db->last_query();
         if ($q->num_rows() > 0)
         {
             $ret = $q->row();
-            return $ret->judge_id;
+            return $ret->judgeID;
+        }
+        return 0;
+        
+    }
+
+    public function checkJudgeAssignToContestLevels($id,$contestId,$levelId){
+        $this->db->select('judgeID');
+        $this->db->from('judge_contest_levels');
+        $this->db->where('judgeID',$id);
+        $this->db->where('contestID',$contestId);
+        $this->db->where('levelID',$levelId);
+        $q = $this->db->get();
+        
+        //echo $this->db->last_query();
+        if ($q->num_rows() > 0)
+        {
+            $ret = $q->row();
+            return $ret->judgeID;
         }
         return 0;
         
@@ -90,7 +108,9 @@ class Judges extends CI_Model{
         left join contest_levels t4
         on t4.contestID = t3.id and t4.isEnabled=1
         left join users_judge t5
-        on t5.userSmuleID = t2.id');
+        on t5.userSmuleID = t2.id 
+        left join judge_contest_levels t6
+		on t2.contestID = t6.contestID and t2.levelID=t6.levelID where t5.judgeID IS NOT NULL');
         // $query = $this->db->query('SELECT t1.id as userID,t1.email as userEmail,t3.id as contestID,t3.contestName,t2.id as smuleID,t2.smuleUrl, t4.id as levelID,t4.levelName FROM users t1
         // right join user_smule t2 
         // on t2.userID = t1.id
@@ -98,7 +118,7 @@ class Judges extends CI_Model{
         // on t3.id = t2.contestID and t3.status=1
         // left join contest_levels t4
         // on t4.contestID = t3.id and t4.isEnabled=1');
-        //echo "<li>".$this->db->last_query();
+        echo "<li>".$this->db->last_query();
         return $query->result_array();
         //return $query->result();
     }
@@ -183,6 +203,26 @@ class Judges extends CI_Model{
         {            
             return $q->result();
         }
+    }
+
+    public function getJudgeListWithContestsAndLevel(){
+        $query = $this->db->query('select t1.id,t1.firstName,t1.lastName,t1.email,t2.contestId,t2.contestName,t2.levelname,t2.levelId from master_judge t1 
+        left join (
+            select t3.judgeID,t5.contestName,t5.id as contestId,t4.id as levelId,t4.levelName as levelname 
+            from judge_contest_levels t3             
+            left join contest_levels t4 on t4.contestID = t3.contestID and t4.id=t3.levelID            
+            LEFT join master_contests t5 on t5.id=t4.contestID) t2 on t1.id= t2.judgeID');
+        return $query->result();
+
+    }
+    public function  saveTableJudgeContestLevels($judgeID,$contestID,$levelID){
+        $data = array(
+            'judgeID' =>  $judgeID,
+            'contestID' =>  $judgeID,
+            'levelID' =>  $judgeID,
+        );
+        $this->db->insert('judge_contest_levels',$data);
+        return $this->db->insert_id();
     }
 
     public function deleteUserById($id){

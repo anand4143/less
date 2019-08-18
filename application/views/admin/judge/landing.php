@@ -52,14 +52,17 @@
 												 <?php 
 												 	if($user['assginJudge'] && ($user['assginJudge'] != $judgeID) ){
 												 ?>
-												 Judgement in progress
-													 <?php }else if($user['assginJudge'] && ($user['assginJudge'] == $judgeID)){?>
-												  <a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModalForms" onClick="parameterPopup(<?php echo $user['userID']?>,<?php echo $user['contestID']?>,<?php echo $user['levelID']?>,<?php echo $user['smuleID']?>,<?php echo $judgeID ?>);">
+												 
+												 <a href="javascript:void(0);" title="Allready in judging by other judge"  onClick="allreadyJudge();">
 												  <i class='fa fa-balance-scale' style='font-size:30px;color:red'></i></a>
+
+													 <?php }else if($user['assginJudge'] && ($user['assginJudge'] == $judgeID)){?>
+												  <a href="javascript:void(0);" title="You are judging this song" data-toggle="modal" data-target="#exampleModalForms" onClick="parameterPopup(<?php echo $user['userID']?>,<?php echo $user['contestID']?>,<?php echo $user['levelID']?>,<?php echo $user['smuleID']?>,<?php echo $judgeID ?>);">
+												  <i class='fa fa-balance-scale songID<?php echo $user['smuleID']?>' style='font-size:30px;color:orange'></i></a>
 												  
 												  <?php }else{?>
-													<a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModal" onClick="openPopup(<?php echo $user['userID']?>,<?php echo $user['contestID']?>,<?php echo $user['levelID']?>,<?php echo $user['smuleID']?>,<?php echo $judgeID ?>);">
-												  <i class='fa fa-balance-scale' style='font-size:30px;color:red'></i></a> 
+													<a href="javascript:void(0);" title="You can pic this song" data-toggle="modal" data-target="#exampleModal" onClick="openPopup(<?php echo $user['userID']?>,<?php echo $user['contestID']?>,<?php echo $user['levelID']?>,<?php echo $user['smuleID']?>,<?php echo $judgeID ?>);">
+												  <i class='fa fa-balance-scale' style='font-size:30px;color:green'></i></a> 
 												  <?php } ?>
 												  </td>
 												</tr>
@@ -326,7 +329,9 @@
 
 
 <script>
-
+function allreadyJudge(){
+alert("This song is already in judging.");
+}
 function openPopup(userID,contestID,levelID,smuleID,judgeID){
 	var allIDs = userID+"-"+contestID+"-"+levelID+"-"+smuleID+"-"+judgeID;
 	$("#userInfo").val(allIDs);
@@ -360,7 +365,7 @@ function parameterPopup(userID,contestID,levelID,smuleID,judgeID){
 		cache : false,
 		success : function(res){
 			var json_obj = $.parseJSON(res);//parse JSON
-			alert(json_obj);
+			//alert(json_obj);
 			 if(json_obj != null){
 				 $('#saveResultBtn').css('display','none');
 				 $('#updateResultBtn').css('display','block');
@@ -410,7 +415,7 @@ function parameterPopup(userID,contestID,levelID,smuleID,judgeID){
 
 function saveJudgeParameters(){
 	var userData = $("#userData").val();
-	
+	var splitData = userData.split('-');
 	 var sur 				= $("#sur").val();
 	 var taal 				= $("#taal").val();
 	 var emotionfeel 		= $("#emotionfeel").val();
@@ -436,10 +441,11 @@ function saveJudgeParameters(){
 		data: "ids="+userData+"&sur="+sur+"&taal="+taal+"&emotionfeel="+emotionfeel+"&voicequalitynasal="+voicequalitynasal+"&soothinglevel="+soothinglevel+"&copyororiginality="+copyororiginality+"&variation="+variation+"&diction="+diction+"&murkivibratos="+murkivibratos+"&alaap="+alaap+"&sargam="+sargam+"&judgescore="+judgescore+"&param1="+param1+"&param2="+param2+"&param3="+param3+"&param4="+param4+"&param5="+param5,
 		cache : false,
 		success : function(res){
-			alert("==> "+res);
+			//alert("==> "+res);
 			// alert(res.indexOf("-"));
 
 			if(res>0){
+				$("#songID"+splitData[3]).css("color",'orange');
 				$("#msg").text("Your data save successfully");
 				$('#exampleModalForms').modal('hide');
 				$('#exampleModalsuccess').modal('show');

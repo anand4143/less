@@ -7,6 +7,8 @@ class Judge extends MY_Controller{
         $this->load->helper('url');
         $this->load->model('users');
         $this->load->model('judges');
+        $this->load->model('contest_m');
+        $this->load->model('level_m');
         $this->load->library('session');
 		$this->auth();
     }
@@ -274,6 +276,57 @@ class Judge extends MY_Controller{
        );
        $saveResult = $this->judges->updateJudgeParametersDB($data);
       print_r($saveResult);
+    }
+
+    public function assignJudgeToContest(){
+        $data = array();
+        $userdata = $this->judges->getJudgeListWithContestsAndLevel();
+        $data['judgeListWithContestLevel'] = $userdata;
+        //echo "<pre>";print_r($data);die('hello');
+        for($i=0; $i<count($data['judgeListWithContestLevel']); $i++){
+            $getJudgeId = $this->judges->checkJudgeAssignToContestLevels($data['judgeListWithContestLevel'][$i]->id,$data['judgeListWithContestLevel'][$i]->contestId,$data['judgeListWithContestLevel'][$i]->levelId);
+            if($getJudgeId){
+                $judgeFLName = $this->judges->getJudgeById($getJudgeId);
+                $data['judgeListWithContestLevel'][$i]->judgeid = $getJudgeId;
+                $data['judgeListWithContestLevel'][$i]->judgeName = $judgeFLName->firstName.' '.$judgeFLName->lastName;
+            }else{
+                $data['judgeListWithContestLevel'][$i]->judgeid = 0;
+            }
+        }
+
+       
+        $res =  $this->judges->getJudgeList();        
+        $data['judgeList'] = $res;
+        
+        $data['contests'] = $this->contest_m->get_results();
+        //echo "<pre>";print_r($data);die('hello');
+        $this->load->view('admin/judge/judgeContest',$data);
+    }
+    public function getLevels(){
+        $contestId = $this->input->get('id');
+        $levels = $this->level_m->getLevelByContestId($contestId);
+        //echo "<pre>";echo "<li>====> ".count($levels);die;
+        echo '<option value="">Select Levels</option>';
+        if(!$levels){
+            echo '<option value="">Levels not available</option>';
+        }else{
+            for($i = 0; $i < count($levels); $i++){
+                echo '<option value="'.$levels[$i]->id.'">'.$levels[$i]->levelName.'</option>';
+            }
+        }
+    
+    }
+
+    public function assignJudge(){
+        //echo $this->input->get('ids');
+        $expolodeData = explode('-',$this->input->get('ids'));
+        // print_r($expolodeData);
+         $judgeID     = $expolodeData[0];
+         $contestID  = $expolodeData[1];
+         $levelID    = $expolodeData[2];
+         
+         $res = $this->judges->saveTableJudgeContestLevels($judgeID,$contestID,$levelID);
+         print_r($res);
     }
     
 

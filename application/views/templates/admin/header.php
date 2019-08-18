@@ -222,6 +222,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="<?php echo site_url('admin/user/assignUserToJudges'); ?>">Assign Users To Judges</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo site_url('admin/judge/assignJudgeToContest'); ?>">Assign Judge To Contest</a>
+                                        </li>
 										<li class="nav-item">
                                             <a class="nav-link" href="<?php echo site_url('admin/user_contests/'); ?>">Users Contest Level Move</a>
                                         </li>
