@@ -31,7 +31,8 @@
 											<?php
 											$judgeID = $session['id'];
 											//echo "<pre>";print_r($allUserSongListOfRunningContests);
-											foreach($allUserSongListOfRunningContests as $user){
+											if($allUserSongListOfRunningContests):
+											foreach($allUserSongListOfRunningContests as $user):
 											?>
 												<tr>
 													<td>
@@ -66,8 +67,10 @@
 												  <?php } ?>
 												  </td>
 												</tr>
-											<?php } ?>
-												
+												<?php endforeach;
+												else:?>
+												  <tr><td  align="center" colspan="9">No record found!</td></tr>
+												<?php endif;?>
 											</tbody>
 										</table>
 									</div>

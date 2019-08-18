@@ -100,17 +100,32 @@ class Judges extends CI_Model{
     } 
 
     public function allUserSongListOfRunningContests(){
-        $query = $this->db->query('SELECT t1.id as userID,t1.email as userEmail,t3.id as contestID,t3.contestName,t2.id as smuleID,t2.smuleUrl, t4.id as levelID,t4.levelName,t5.judgeID as assginJudge FROM users t1
+        $query = $this->db->query('SELECT t1.id as userID,t1.email as userEmail,t3.id as contestID,t3.contestName,t2.id as smuleID,t2.smuleUrl, t4.id as levelID,t4.levelName,t6.judgeID as assginJudge FROM users t1
         right join user_smule t2 
         on t2.userID = t1.id
         left join master_contests t3 
         on t3.id = t2.contestID and t3.status=1
         left join contest_levels t4
         on t4.contestID = t3.id and t4.isEnabled=1
-        left join users_judge t5
-        on t5.userSmuleID = t2.id 
+        
         left join judge_contest_levels t6
-		on t2.contestID = t6.contestID and t2.levelID=t6.levelID where t5.judgeID IS NOT NULL');
+		on t2.contestID = t6.contestID and t2.levelID=t6.levelID and t3.id = t6.contestID and t4.id = t6.levelID
+        
+        where t6.judgeID IS NOT NULL');
+
+        // $query = $this->db->query('SELECT t1.id as userID,t1.email as userEmail,t3.id as contestID,t3.contestName,t2.id as smuleID,t2.smuleUrl, t4.id as levelID,t4.levelName,t5.judgeID as assginJudge FROM users t1
+        // right join user_smule t2 
+        // on t2.userID = t1.id
+        // left join master_contests t3 
+        // on t3.id = t2.contestID and t3.status=1
+        // left join contest_levels t4
+        // on t4.contestID = t3.id and t4.isEnabled=1
+        // left join users_judge t5
+        // on t5.userSmuleID = t2.id 
+        // left join judge_contest_levels t6
+		// on t2.contestID = t6.contestID and t2.levelID=t6.levelID and t3.id = t6.contestID and t4.id = t6.levelID
+        
+        // where t5.judgeID IS NOT NULL');
         // $query = $this->db->query('SELECT t1.id as userID,t1.email as userEmail,t3.id as contestID,t3.contestName,t2.id as smuleID,t2.smuleUrl, t4.id as levelID,t4.levelName FROM users t1
         // right join user_smule t2 
         // on t2.userID = t1.id
@@ -118,7 +133,7 @@ class Judges extends CI_Model{
         // on t3.id = t2.contestID and t3.status=1
         // left join contest_levels t4
         // on t4.contestID = t3.id and t4.isEnabled=1');
-        echo "<li>".$this->db->last_query();
+        //echo "<li>".$this->db->last_query();
         return $query->result_array();
         //return $query->result();
     }
