@@ -41,7 +41,7 @@
 									<td><?php echo $user->lastName;?></td>
 									<td><?php echo $user->email;?></td>
 									<td>
-                                    <select id="contestID" name="contestID" class="form-control contestCls" data-id="<?php echo $user->id?>">
+                                    <select id="contestID<?php echo $user->id?>" name="contestID" class="form-control contestCls" data-id="<?php echo $user->id?>">
                                         <option value="">Select Contest</option>
                                         <?php if(count($contests)) :
                                             foreach($contests as $row):?>
@@ -120,9 +120,9 @@
 $('.contestCls').change(function() {    
     var item=$(this);
     var contestID = item.val();
-	//alert("contestID"+contestID);
+	alert("contestID===> "+contestID);
     var judgeID = item.attr("data-id");
-	//alert("judgeID"+judgeID);
+	//alert("judgeID===> "+judgeID);
     $.ajax({
 		type: "GET",
 		url: "<?php echo base_url()?>admin/judge/getLevels",
@@ -141,14 +141,17 @@ $('.contestCls').change(function() {
 $('.currentLevel').change(function() {    
     var item=$(this);
     var levelId  = item.val();
-	//alert(levelId);
+	//alert("level change line ===> "+levelId);
     
 });
 
 
 function managePopup(judgeId){    
-    let selectedContestId 	= $("#contestID").val();	
+    let selectedContestId 	= $("#contestID"+judgeId).val();	
     let selectedLevelId 	= $(".currentLevel").val();	
+	//alert("managePopup judgeId "+judgeId);
+	//alert("managePopup selectedContestId "+selectedContestId);
+	//alert("managePopup selectedLevelId "+selectedLevelId);
 	$("#allvalue").val(judgeId+'-'+selectedContestId+'-'+selectedLevelId);
    
 }
@@ -157,15 +160,16 @@ function managePopup(judgeId){
 
 function assignJudge(){
 var allIds = $("#allvalue").val();
-//alert(allIds);
+alert(allIds);
 $.ajax({
 		type: "GET",
 		url: "<?php echo base_url()?>admin/judge/assignJudge",
 		data: "ids="+allIds,
 		cache : false,
 		success : function(data){
-			location.reload();
+			
 			//alert(data);
+			location.reload();
             //console.log(data);
             //$("#levelDropdown"+judgeID).html(data);          
             //$(".currentLevel").html(data);          

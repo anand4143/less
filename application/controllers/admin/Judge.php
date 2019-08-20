@@ -320,13 +320,13 @@ class Judge extends MY_Controller{
     public function assignJudge(){
         //echo $this->input->get('ids');
         $expolodeData = explode('-',$this->input->get('ids'));
-        // print_r($expolodeData);
+        //print_r($expolodeData);
          $judgeID     = $expolodeData[0];
          $contestID  = $expolodeData[1];
          $levelID    = $expolodeData[2];
          
-         $res = $this->judges->saveTableJudgeContestLevels($judgeID,$contestID,$levelID);
-         print_r($res);
+        $res = $this->judges->saveTableJudgeContestLevels($judgeID,$contestID,$levelID);
+        print_r($res);
     }
     
 
