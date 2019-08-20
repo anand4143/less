@@ -120,7 +120,7 @@
 $('.contestCls').change(function() {    
     var item=$(this);
     var contestID = item.val();
-	alert("contestID===> "+contestID);
+	//alert("contestID===> "+contestID);
     var judgeID = item.attr("data-id");
 	//alert("judgeID===> "+judgeID);
     $.ajax({
@@ -160,7 +160,7 @@ function managePopup(judgeId){
 
 function assignJudge(){
 var allIds = $("#allvalue").val();
-alert(allIds);
+//alert(allIds);
 $.ajax({
 		type: "GET",
 		url: "<?php echo base_url()?>admin/judge/assignJudge",
