@@ -1,0 +1,1 @@
+ALTER TABLE `lesssuperstars`.`trans_votings` CHANGE `ratings` `ipAddress` VARCHAR(16) NOT NULL, ADD COLUMN `deviceID` VARCHAR(64) NULL AFTER `ipAddress`; 

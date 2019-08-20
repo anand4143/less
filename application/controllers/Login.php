@@ -22,8 +22,8 @@ class Login extends MY_Controller {
        $username = $this->input->post('username');
        $password = md5($this->input->post('password'));
        
-       $isValid = $this->users->isValidate($username,$password, 2);
-       //var_dump($isValid );die;
+       $isValid = $this->users->isValidate($username,$password, array(2, 3));
+       var_dump($isValid );die;
        if($isValid){
            $userData = array(
             'userID'    => $isValid['id'],
@@ -34,7 +34,7 @@ class Login extends MY_Controller {
             'logged_in' => TRUE
           );        
           $this->setSessionData($userData);
-          redirect('dashboard/participants');
+          redirect('user/landing');
        } else {
             $this->session->set_flashdata('error',"Invalid username or password!");
             redirect('login');

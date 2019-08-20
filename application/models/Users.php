@@ -4,8 +4,11 @@ class Users extends CI_Model{
 
     public function isValidate($username,$password, $type = 2){
         $this->db->where(['email' => $username, 'password' => $password] );
-		$this->db->where('userType', $type);
-	
+		if(is_array($type)){
+			 $this->db->where_in('userType', $type);
+		} else {
+		  $this->db->where('userType', $type);
+	    }
         $q = $this->db->get('users');
         if( $q->num_rows() ){
             $q = $this -> db

@@ -17,7 +17,7 @@ class User extends MY_Controller {
     public function dashboard(){
         $email = $this->input->post('email');
         $password =  md5($this->input->post('password'));
-        $isValid = $this->users->isValidate($email,$password);
+        $isValid = $this->users->isValidate($email,$password, array(2, 3));
         if($isValid){            
             $userData = array(
                 'userID'    => $isValid['id'],
