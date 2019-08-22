@@ -101,6 +101,19 @@ class Users extends CI_Model{
             return $query->result();
         }   
     }
+	
+	/*Scope: Frontend*/
+	public function get_user_detail_by_email($email, $user_type = 3){
+		  $rs = $this->db->select('*')
+                    ->where('userType', $user_type)
+					->where('email', $email)
+					->limit(1)
+					->get('users');
+		if($rs->num_rows() == 0){
+		   return false;	
+		}			
+        return $rs->row();
+	}
 }
 
 

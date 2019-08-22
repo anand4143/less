@@ -83,3 +83,19 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+/*
+* Social Login
+*/
+
+define('GOOGLE_APP_NAME', 'less-dev');
+define('GOOGLE_CLIENT_ID', '372036897860-msis6oc2grti3ng8ah7e31smvhhmlam5.apps.googleusercontent.com');
+define('GOOGLE_CLIENT_SECRET', 'KFY5SVbwAZx8Ei5PaeLuECNx');
+define('GOOGLE_REDIRECT_URL', 'http://lesssuperstars-dev.com/login/google_login');
+#define('GOOGLE_REDIRECT_URL', 'http://satendraclasses.com/less/login/google_login');
+
+define('FB_APP_NAME', 'less-dev');
+define('FB_APP_ID', '727784194334934');
+define('FB_SECRET', '3450f79cba1b2cb02fbd4d3104b5fc7c');
+define('FB_REDIRECT_URL', 'http://satendraclasses.com/less/login/fb_login');

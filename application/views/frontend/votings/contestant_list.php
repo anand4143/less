@@ -114,7 +114,7 @@ function vote(obj){
 			}
 			$('#vote_msg').html(data.resp_msg);
 			setTimeout(function(){
-				$('#vote_msg').html('');
+				window.location.reload();
 			},1000);
 			
 		})
