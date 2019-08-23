@@ -11,7 +11,7 @@ class Votings extends MY_Controller {
         $this->load->model('voting_m');
         // Session
         $this->load->library('session');
-		$this->auth();
+		
 		$this->auth_token = $this->auth_token.strtotime(date('Y-m-d'));
     }
 
@@ -22,6 +22,8 @@ class Votings extends MY_Controller {
     }
 	
 	public function contestants($contest_id, $level_id) {
+		$this->auth();
+		
 		$data = array();
 		$sess_user_id = $this->getSessionData('userID');
 		$data['contestants'] = $this->voting_m->get_contestants($contest_id, $sess_user_id);
@@ -30,6 +32,8 @@ class Votings extends MY_Controller {
     }
 	
 	public function do_vote() {
+		$this->auth();
+		
 		$resp_data = array();
 		if ($this->input->method() === 'post') {
 			

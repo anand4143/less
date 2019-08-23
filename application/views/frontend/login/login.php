@@ -48,13 +48,13 @@
 								<div class="col-sm-12">
 									<div class="contact-form-submit topmargin_10 text-center">
 										<button type="submit" id="contact_form_submit" name="contact_submit" class="theme_button btn-block color min_width_button">Signin</button>
-										<a href="<?php echo base_url('login/google_login');?>" id="googleLogin" class="theme_button btn-block color min_width_button">Google Login</a>
+										
 									</div>
 								</div>
 								<div class="col-sm-12 text-center">
 								Don't Have Account Please <a href="<?php echo base_url();?>registration">Signup</a>
 								</div>
-							<!-- </form> -->
+						<?php echo form_close();?>	
 					</div>
 				</div>
 			</section>

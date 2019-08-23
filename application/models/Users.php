@@ -14,6 +14,7 @@ class Users extends CI_Model{
             $q = $this -> db
            -> select('*')
            -> where('email', $username)
+		   -> where('userType', $type)
            -> limit(1)
            -> get('users');
            $row = $q->row_array();

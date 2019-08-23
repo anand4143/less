@@ -3,12 +3,12 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6 text-center text-md-left">
-							<h2 class="small">Vote for Your Favorite contestant</h2>
+							<h2 class="small">Vote for Your Favorite contestant to Win</h2>
 						</div>
 						<div class="col-md-6 text-center text-md-right">
 							<ol class="breadcrumb">
 								<li> <a href="<?php echo base_url('user/landing');?>">Dashboard</a> </li>
-								<li> <a href="#">Contestants</a> </li>
+								<li> <a href="#">Vote for Contestant</a> </li>
 								
 							</ol>
 						</div>

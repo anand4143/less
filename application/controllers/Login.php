@@ -22,8 +22,8 @@ class Login extends MY_Controller {
        $username = $this->input->post('username');
        $password = md5($this->input->post('password'));
        
-       $isValid = $this->users->isValidate($username,$password, array(2, 3));
-       var_dump($isValid );die;
+       $isValid = $this->users->isValidate($username,$password, 2);
+       
        if($isValid){
            $userData = array(
             'userID'    => $isValid['id'],
@@ -34,12 +34,46 @@ class Login extends MY_Controller {
             'logged_in' => TRUE
           );        
           $this->setSessionData($userData);
-          redirect('user/landing');
+		  redirect('user/landing');
        } else {
             $this->session->set_flashdata('error',"Invalid username or password!");
             redirect('login');
        }
       
+    }
+	
+	public function voter_login() {
+	   $resp = array();
+	   
+	   if ($this->input->is_ajax_request()) {
+		   $email = trim($this->input->post('email'));
+		   $password = md5(trim($this->input->post('password')));
+		   
+		   $isValid = $this->users->isValidate($email, $password, 3);
+		   
+		   if($isValid){
+			   $userData = array(
+				'userID'    => $isValid['id'],
+				'email'     => $isValid['email'],
+				'firstName' => $isValid['firstName'],
+				'lastName'  => $isValid['lastName'],
+				'userType'  => $isValid['userType'],
+				'logged_in' => TRUE
+			  );        
+			  $this->setSessionData($userData);
+			   //redirect('votings');
+			  $resp['resp_status'] = 'success';
+			  $resp['resp_msg'] = 'Login Successfully';
+		   } else {
+				 $resp['resp_status'] = 'error';
+				 $resp['resp_msg'] = 'Invalid username or password!';
+				//redirect('login');
+		   }
+	   } else {
+		  $resp['resp_status'] = 'Error';
+		  $resp['resp_msg'] = 'Invalid Request!';
+	   }
+       echo json_encode($resp);
     }
 	
 	public function google_login(){
@@ -75,9 +109,7 @@ class Login extends MY_Controller {
 					'lastName'  => $rs->lastName,
 					'userType'  => $rs->userType,
 					'logged_in' => TRUE
-				);        
-				$this->setSessionData($userData);
-				redirect('user/landing');
+				);			
 			} else {
 			    $new_data = array(
 					'firstName' => $guser_info['given_name'],
@@ -86,14 +118,25 @@ class Login extends MY_Controller {
 					'password' => md5('123456'),
 					'userType' => 3,
 					'gender' => isset($guser_info['gender']) ? $guser_info['gender'] : '',
+					'isPasswordSet' => 0,
 					'mobileno' => '',
 					'address' => '',
 					'cityID' => 0,
 					'state' => 0,
 					'pincode' => ''
 			   );
-			   $result = $this->users->registerUser($new_data);
+			   $user_id = $this->users->registerUser($new_data);
+			   $userData = array(
+					'userID'    => $user_id,
+					'email'     => $guser_info['email'],
+					'firstName' => $guser_info['given_name'],
+					'lastName'  => $guser_info['family_name'],
+					'userType'  => 3,
+					'logged_in' => TRUE
+				);
 			}
+			$this->setSessionData($userData);
+			redirect('votings');
         } else {
             $url = $gClient->createAuthUrl();
 		    header("Location: $url");
@@ -156,6 +199,7 @@ class Login extends MY_Controller {
 	}
 
     public function logout(){
+		$uset_type = $this->getSessionData('userType');
 		$this->session->unset_userdata('logged_in');
 		$this->session->unset_userdata('userSession');
         $this->session->sess_destroy();
@@ -169,6 +213,10 @@ class Login extends MY_Controller {
 			$gClient->setClientSecret(GOOGLE_CLIENT_SECRET);
 			$gClient->setRedirectUri(GOOGLE_REDIRECT_URL);
 			$gClient->revokeToken();
+		}
+		
+		if($uset_type == 3){
+			redirect('home');
 		}
         redirect('login');
     }
