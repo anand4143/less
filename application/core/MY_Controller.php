@@ -16,15 +16,27 @@
 		    return !empty($key) ? $this->session->userdata($key) : $this->session->userdata();			
         }
 		
-	   
-		
 		public function auth(){
-			if(!$this->session->userdata('email') || $this->session->userdata('logged_in') !== TRUE){
-			  $segment = $this->uri->segment(1);
+			$segment = $this->uri->segment(1);
+			if(!$this->session->userdata('email') || $this->session->userdata('logged_in') !== TRUE){			 
 			  if($segment == 'admin'){
 				  redirect('admin');
 			  }
 			  redirect('login');
+			} else if($this->session->userdata('logged_in') === TRUE) {
+				$user_type = $this->getSessionData('userType');				
+				$voter_allow = array('home', 'home/index', 'votings', 'votings/index', 'votings/contestants', 'votings/index', 'votings/do_vote');
+				$participant_allow = array('user/landing', 'contests/current_contests', 'contests/contest_details');
+				$call_mothod = $this->router->fetch_class().'/'.$this->router->fetch_method();
+				if($segment == 'admin' && $user_type != '1'){
+					redirect('home');
+				}
+				
+				if($user_type == '3' && !in_array($call_mothod, $voter_allow)){
+					redirect('home');
+				}else if(in_array($call_mothod, $voter_allow) && $user_type != '3'){
+					redirect('home');
+				}
 			}
 		}
 		

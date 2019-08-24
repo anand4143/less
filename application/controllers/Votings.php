@@ -79,7 +79,7 @@ class Votings extends MY_Controller {
 			}
 		} else {
 			$resp_data['resp_status'] = 'error'; 
-			$resp_data['resp_msg'] = 'Invalid Post Request Data#'.$this->input->is_ajax_request().'#'.$this->input->method(); 
+			$resp_data['resp_msg'] = 'Invalid Post Request Data';
 		}		
 		echo json_encode($resp_data);
     }

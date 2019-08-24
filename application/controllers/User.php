@@ -17,7 +17,7 @@ class User extends MY_Controller {
     public function dashboard(){
         $email = $this->input->post('email');
         $password =  md5($this->input->post('password'));
-        $isValid = $this->users->isValidate($email,$password, array(2, 3));
+        $isValid = $this->users->isValidate($email,$password, 2);
         if($isValid){            
             $userData = array(
                 'userID'    => $isValid['id'],
@@ -37,9 +37,7 @@ class User extends MY_Controller {
         }
     }
     public function landing(){
-        ///echo 'anand ';
-
-        //redirect('frontend/users/lan');
+        $this->auth();
         $userData['sessionData'] = $this->getSessionData();
         $this->load->view('frontend/users/landing',$userData);
     }
