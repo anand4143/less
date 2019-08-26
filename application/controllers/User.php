@@ -102,6 +102,43 @@ class User extends MY_Controller {
 			$this->load->view('frontend/login/registration',$userData);
 		}	
     }
+	
+	public function voter_register(){
+		$resp_data = array();
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('su_fname', 'First Name', 'required|trim');
+		$this->form_validation->set_rules('su_lname', 'Last Name', 'required|trim');
+		$this->form_validation->set_rules('su_email', 'Email Address', 'required|trim|valid_email|is_unique[users.email]');
+		$this->form_validation->set_rules('su_password', 'Password', 'required');
+        $this->form_validation->set_rules('su_confirm_password', 'Confirm Password', 'required|matches[su_password]');
+		
+		$this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+        $this->form_validation->set_message('required', 'Enter %s');
+ 
+		if($this->form_validation->run()) {
+			$data = array(
+				'firstName' => $this->input->post('su_fname'),
+				'lastName' => $this->input->post('su_lname'),
+				'email' => $this->input->post('su_email'),
+				'password' => md5($this->input->post('su_password')),
+				'userType' => 3
+			);
+			$result = $this->users->registerUser($data);
+			if($result) {
+				$resp_data['resp_status'] = 'success';
+				$resp_data['resp_msg'] = 'Registered successfully, Please login with your credential';
+			} else {
+				$resp_data['resp_status'] = 'error';
+				$resp_data['resp_msg'] = 'Something went wrong. Please try later';
+			}
+		} else {
+			$resp_data['resp_status'] = 'errors';
+			foreach($_POST as $key => $value){
+				$resp_data['messages'][$key] = form_error($key);
+			}
+		}
+		echo json_encode($resp_data);
+    }
 
     
 
