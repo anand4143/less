@@ -27,7 +27,7 @@ class Votings extends MY_Controller {
 		$data = array();
 		$sess_user_id = $this->getSessionData('userID');
 		$data['contestants'] = $this->voting_m->get_contestants($contest_id, $sess_user_id);
-		$data['your_recored_vote'] = $this->voting_m->get_your_recorded_vote($contest_id, $level_id, $sess_user_id);
+		$data['your_recored_vote'] = $this->voting_m->get_your_recorded_vote($contest_id, $sess_user_id);
 		$this->load->view('frontend/votings/contestant_list', $data);
     }
 	

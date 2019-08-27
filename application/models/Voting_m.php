@@ -42,9 +42,10 @@ class Voting_m extends CI_Model {
 					 LEFT JOIN contest_levels t4 ON(t1.levelID = t4.id ) 
 					 WHERE t2.isActive = 1 AND t2.isDeleted = 0
 					 AND t3.status = 1 AND t3.isDeleted = 0
-					 AND t4.status = 1 AND t4.isDeleted = 0
+					 AND t4.status = 1 AND t4.isDeleted = 0 AND t4.isEnabled = 1
 					 AND t3.id = '".$contest_id."'
-				ORDER BY t2.firstName, t2.lastName ASC ";
+				ORDER BY received_votes DESC";
+				//echo $sql;die;
              $rs = $this->db->query($sql);
              if($rs->num_rows() == 0) {
                 return false;
@@ -65,8 +66,16 @@ class Voting_m extends CI_Model {
 		 }
 	}
 	
-	public function get_your_recorded_vote($contest_id, $level_id, $sess_userid){
-		 $sql = "SELECT v3.participantID FROM trans_votings v3 WHERE v3.isDeleted = 0 AND v3.isActive = 1 AND v3.contestID = '".$contest_id."' AND v3.contestLevelID = '".$level_id."' AND v3.votedByUserID = '".$sess_userid."' ";
+	public function get_your_recorded_vote($contest_id, $sess_userid){
+		// $sql = "SELECT v3.participantID FROM trans_votings v3 WHERE v3.isDeleted = 0 AND v3.isActive = 1 AND v3.contestID = '".$contest_id."' AND v3.contestLevelID = '".$level_id."' AND v3.votedByUserID = '".$sess_userid."' ";
+		$sql = "SELECT t1.participantID FROM trans_votings t1 
+		 LEFT JOIN master_contests t2 ON(t1.contestID = t2.id ) 
+		 LEFT JOIN contest_levels t3 ON(t1.contestLevelID = t3.id ) 
+		 WHERE t1.isDeleted = 0 AND t1.isActive = 1 
+		 AND t2.status = 1 AND t2.isDeleted = 0
+		 AND t3.status = 1 AND t3.isDeleted = 0
+		 AND t2.id = '".$contest_id."' AND t3.isEnabled = 1 AND t1.votedByUserID = '".$sess_userid."' ";
+		 
 		 $rs = $this->db->query($sql);
 		 if($rs->num_rows() == 0) {
 			return false;
