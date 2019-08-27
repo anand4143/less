@@ -25,7 +25,7 @@
 						<div class="contestlistBLog">
 							<div class="contestName"><?php echo $row->contestName;?></div>
 							<?php if($this->session->userdata('logged_in') && $this->session->userdata('userType') == 3):?>
-							<div class="btnView"><a href="<?php echo base_url('votings/contestants/'.$row->id.'/'.$row->levelID);?>" class="btn btn-default">View</a></div>
+							<div class="btnView"><a href="<?php echo base_url('votings/contestants/'.$row->id);?>" class="btn btn-default">View</a></div>
 							<?php else:?>
 							<div class="btnView"><a href="#voterLoginModal" data-toggle="modal" class="btn btn-default">View</a></div>
 							<?php endif;?>

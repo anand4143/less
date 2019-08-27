@@ -21,7 +21,7 @@ class Votings extends MY_Controller {
 		$this->load->view('frontend/votings/voting_contest_list', $data);
     }
 	
-	public function contestants($contest_id, $level_id) {
+	public function contestants($contest_id) {
 		$this->auth();
 		
 		$data = array();
