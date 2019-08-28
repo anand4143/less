@@ -6,7 +6,7 @@
         <div class="col-xl-12">
 			<?php echo $this->session->flashdata('resp_msg'); ?>
 			<div class="d-flex align-items-center justify-content-between mt-40 mb-20">
-				<h4>User Report</h4>
+				<h4>User Score</h4>
 			</div>
 			<div class="card">
 				<div class="card-body pa-0">
@@ -20,7 +20,7 @@
 										<th>Email</th>
 										<th>Contest Name</th>
 										<th>Level</th>
-										<th>Report</th>
+										<th>Score</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -43,26 +43,15 @@
 
 <!--Level Modal -->
 <div class="modal fade" id="levelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-fluid"  role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">User Levels : <small id="userNameId"></small> </h5>
+        <h5 class="modal-title w-100" id="exampleModalLabel">Score : <small id="userNameId"></small> </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="contestLevelId">
-          <table class="table table-sm table-hover mb-0">
-			<thead>
-				<tr>
-					<th><strong>Level Name</strong></th>
-					<th class="w-5">Current Level</th>
-				</tr>
-			</thead>
-			<tbody id="tBodyLevelListingId">
-			</tbody>
-		  </table>
-      </div>
+      <div class="modal-body " id="songReport"> </div>
       <div class="modal-footer">
 	    <div id="resp_msg" class="text-left"></div>
         <div class="text-right "><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
@@ -73,13 +62,16 @@
 
 <script type="text/javascript">
 function show_user_contest_level(obj){
+	console.log("====>",obj);
     
 	var uname = $(obj).attr('data-uname');
 	var uclId = $(obj).attr('data-id');
+	var smuleID = $(obj).attr('data-smuleid');
 	var ucId = $(obj).attr('data-cid');
 	var ulId = $(obj).attr('data-lid');
     $('#userNameId').html(uname);	
-	var post_url = '<?php echo base_url();?>admin/levels/get_contest_levels/'+ucId;
+	// var post_url = '<?php echo base_url();?>admin/levels/get_contest_levels/'+smuleID;
+	var post_url = '<?php echo base_url();?>admin/userranking/get_contest_levels/'+smuleID;
 	
 	let reqHeader = new Headers();
 	reqHeader.append('Content-Type', 'text/json');
@@ -92,21 +84,92 @@ function show_user_contest_level(obj){
 		return response.json();
 	})
 	.then(function (data) {
+		console.log("----> ",data);
 		let html = '';
 		if(data.resp_status == 'success'){
-			$.each(data.list, function( index, row ) {
-				let isChecked = row.id == ulId ? "checked='checked'" : "";
-				html +="<tr>";
-				html +=" <td>"+row.levelName+"</td>";
-				html +=" <td><button id='btnCurrentLelvelId"+row.id+"' class='btn btn-sm btn-primary' type='button'><label style='margin-bottom: 0px;'><input type='radio' id='isEnabled"+row.id+"' name='isEnabled' value='"+row.id+"' data-cid='"+row.contestID+"' data-uclid='"+uclId+"' onclick='update_current_level(this);' class='current-level' "+isChecked+" > <span id='loadingTxt"+row.id+"'>Current Level</span><label></button></td>";	
-				html +="</tr>";
-			});
+			//console.log(data.list[0].id)
+			html += '<div class="row">';
+			html +='<div class="col-sm-3">Sur</div>';
+			html +='<div class="col-sm-3">'+data.list[0].sur+"</div>";
+			html +='<div class="col-sm-3">Taal</div>';
+			html +='<div class="col-sm-3">'+data.list[0].Taal+"</div>";
+			html += '</div>';
+			html += '<div class="row"><div class="col-sm-12"><hr/></div></div>';
+
+			html += '<div class="row">';
+			html +='<div class="col-sm-3">Emotion Feel</div>';
+			html +='<div class="col-sm-3">'+data.list[0].Emotion_Feel+"</div>";
+			html +='<div class="col-sm-3">Voice Quality Nasal</div>';
+			html +='<div class="col-sm-3">'+data.list[0].Voice_Quality_Nasal+"</div>";
+			html += '</div>';
+			html += '<div class="row"><div class="col-sm-12"><hr/></div></div>';
+
+			html += '<div class="row">';
+			html +='<div class="col-sm-3">Soothing Level</div>';
+			html +='<div class="col-sm-3">'+data.list[0].Soothing_Level+"</div>";
+			html +='<div class="col-sm-3">Copy Or Originality</div>';
+			html +='<div class="col-sm-3">'+data.list[0].Copy_Or_Originality+"</div>";
+			html += '</div>';
+			html += '<div class="row"><div class="col-sm-12"><hr/></div></div>';
+
+			html += '<div class="row">';
+			html +='<div class="col-sm-3">Variation</div>';
+			html +='<div class="col-sm-3">'+data.list[0].Variation+"</div>";
+			html +='<div class="col-sm-3">Diction</div>';
+			html +='<div class="col-sm-3">'+data.list[0].Diction+"</div>";
+			html += '</div>';
+			html += '<div class="row"><div class="col-sm-12"><hr/></div></div>';
+
+			html += '<div class="row">';
+			html +='<div class="col-sm-3">Murki Vibratos"</div>';
+			html +='<div class="col-sm-3">'+data.list[0].Murki_Vibratos+"</div>";
+			html +='<div class="col-sm-3">Alaap</div>';
+			html +='<div class="col-sm-3">'+data.list[0].Alaap+"</div>";
+			html += '</div>';
+			html += '<div class="row"><div class="col-sm-12"><hr/></div></div>';
+
+			html += '<div class="row">';
+			html +='<div class="col-sm-3">Sargam</div>';
+			html +='<div class="col-sm-3">'+data.list[0].Sargam+"</div>";
+			html +='<div class="col-sm-3">Judge Score</div>';
+			html +='<div class="col-sm-3">'+data.list[0].Judge_Score+"</div>";
+			html += '</div>';
+			html += '<div class="row"><div class="col-sm-12"><hr/></div></div>';
+
+			html += '<div class="row">';
+			html +='<div class="col-sm-3">parameter1</div>';
+			html +='<div class="col-sm-3">'+data.list[0].parameter1+"</div>";
+			html +='<div class="col-sm-3">parameter2</div>';
+			html +='<div class="col-sm-3">'+data.list[0].parameter2+"</div>";
+			html += '</div>';
+			html += '<div class="row"><div class="col-sm-12"><hr/></div></div>';
+
+			html += '<div class="row">';
+			html +='<div class="col-sm-3">parameter3</div>';
+			html +='<div class="col-sm-3">'+data.list[0].parameter3+"</div>";
+			html +='<div class="col-sm-3">parameter4</div>';
+			html +='<div class="col-sm-3">'+data.list[0].parameter4+"</div>";
+			html += '</div>';
+			html += '<div class="row"><div class="col-sm-12"><hr/></div></div>';
+			html += '<div class="row">';
+			html +='<div class="col-sm-3">parameter5 </div>';
+			html +='<div class="col-sm-3">'+data.list[0].parameter5+"</div>";
+			html += '</div>';
+
+			// $.each(data.list, function( index, row ) {
+			// 	//let isChecked = row.id == ulId ? "checked='checked'" : "";
+			// 	html +="<tr>";
+			// 	html +=" <td>"+row.levelName+"</td>";
+			// 	html +=" <td><button id='btnCurrentLelvelId"+row.id+"' class='btn btn-sm btn-primary' type='button'><label style='margin-bottom: 0px;'><input type='radio' id='isEnabled"+row.id+"' name='isEnabled' value='"+row.id+"' data-cid='"+row.contestID+"' data-uclid='"+uclId+"' onclick='update_current_level(this);' class='current-level' "+isChecked+" > <span id='loadingTxt"+row.id+"'>Current Level</span><label></button></td>";	
+			 	//html +="</div>";
+			// });
 		} else {
 			html +="<tr>";
 			html +=" <td colspan='3' align='center'>No Level Assing Now!</td>";
 			html +="</tr>";
 		}
-		$('#tBodyLevelListingId').html(html);
+		// $('#tBodyLevelListingId').html(html);
+		$('#songReport').html(html);
 	})
 	.catch(function (err) {
 		console.log("Something went wrong!", err);
@@ -185,7 +248,7 @@ function loadDataTable(){
                      //your script;
                 },
                 "aoColumns" : [
-                        {"sWidth" : "5%","bSortable" : true },
+                        {"sWidth" : "5%","bSortable"  : true },
                         {"sWidth" : "20%","bSortable" : true },
                         {"sWidth" : "25%","bSortable" : true },
                         {"sWidth" : "20%","bSortable" : true },

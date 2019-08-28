@@ -43,6 +43,7 @@ class Userranking extends MY_Controller {
 		$search = $this->input->get('sSearch', TRUE);
 
 		$result = $this->userranking_m->get_result('result', $search, $offset, $limit);
+		//print_r($result);
 		$total_count = $this->userranking_m->get_result('count', $search, $offset, $limit);
 		if($result == false) {
 			$data = [
@@ -55,11 +56,11 @@ class Userranking extends MY_Controller {
 			$trans_arr = array();
 			$sno = $offset + 1;
 			foreach($result as $rs) {                                 
-				$id = $rs['id'];   
+				$smuleID = $rs['smuleID'];   
 				//$ccw_link = '<a id="assignWeightageIcon'.$criteria_id.'" href="javascript:void(0);" class="assignWeightage"  data-cid="'.$criteria_id.'"  data-type="'.$rs['criteria_type'].'" data-toggle="modal" data-target="#assignWeightageModal" data-loading="<i class=\'fa fa-spinner\' aria-hidden=\'true\'></i>" ><i class="glyphicon glyphicon-plus" title="Assign Weightage" aria-hidden="true"></i></a>';
 				//$del_link = '<a id="delIcassign_weightageon'.$criteria_id.'" href="javascript:void(0);" onclick="removeCriteria(this)" class="removeCriteria"  data-cid="'.$criteria_id.'" data-loading="<i class=\'fa fa-spinner\' aria-hidden=\'true\'></i>"><i class="glyphicon glyphicon-remove" aria-hidden="true"></i></a>';
                 $level_link = $rs['levelName'];
-                $report = '<a href="javascript:void(0);" onclick="show_user_contest_level(this);" id="levelListingId'.$id.'" class="contest-level-list" data-id="'.$id.'" data-cid="'.$rs['contestID'].'" data-lid="'.$rs['levelID'].'" data-uname="'.$rs['name'].'" data-toggle="modal" data-target="#levelModal" title="View User Content Level List" ><i class="fa fa-list" aria-hidden="true"></i></a>';
+                $report = '<a href="javascript:void(0);" onclick="show_user_contest_level(this);" id="levelListingId'.$smuleID.'" class="contest-level-list" data-smuleid="'.$smuleID.'" data-cid="'.$rs['contestID'].'" data-lid="'.$rs['levelID'].'" data-uname="'.$rs['name'].'" data-toggle="modal" data-target="#levelModal" title="View User Content Level List" ><i class="fa fa-list" aria-hidden="true"></i></a>';
 				$trans_arr[] = (object)array(
 					$sno,
 					$rs['name'],
@@ -78,6 +79,23 @@ class Userranking extends MY_Controller {
 		}
 		echo json_encode($data);
 	}
+
+
+	public function get_contest_levels($smuleID){
+		$data = array();
+		//$rs = $this->level_m->get_results($contest_id); 
+		$rs = $this->userranking_m->get_results($smuleID); 
+		if($rs){
+			$data['resp_status'] = 'success';
+			$data['list'] = $rs;
+			$data['num_rows'] = count($rs);
+		} else {
+			$data['resp_status'] = 'error';
+			$data['list'] = array();
+		}
+		echo json_encode($data);
+	}
+
 
 
 }

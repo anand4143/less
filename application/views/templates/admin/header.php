@@ -282,7 +282,7 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">                                        
                                         <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo site_url('admin/userranking') ?>">User List</a>
+                                            <a class="nav-link" href="<?php echo site_url('admin/userranking') ?>">User Score</a>
                                         </li>                                      
                                     </ul>
                                 </li>
