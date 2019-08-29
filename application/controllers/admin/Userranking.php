@@ -21,7 +21,9 @@ class Userranking extends MY_Controller {
         $this->load->helper('form');
         // Model
         $this->load->model('user_contest_m');
-        $this->load->model('userranking_m');
+		$this->load->model('userranking_m');
+		$this->load->model('contest_m');
+		$this->load->model('level_m');
         // Session
         $this->load->library('session');
 		//check login auth
@@ -95,6 +97,23 @@ class Userranking extends MY_Controller {
 		}
 		echo json_encode($data);
 	}
+
+	public function contestList(){
+		$data = array();
+		$data['contests'] = $this->contest_m->get_results();
+		$this->load->view('admin/userranking/contestList', $data);
+	}
+
+	public function levelList(){
+		$data = array();
+		echo $this->input->get('id');
+		$rs = $this->level_m->get_results($this->input->get('id')); 
+		//echo "<pre>";print_r($rs);
+		$data['levelList'] = $rs;
+		$this->load->view('admin/userranking/levelList', $data);
+	}
+
+	
 
 
 

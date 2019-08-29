@@ -283,6 +283,9 @@
                                     <ul class="nav flex-column">                                        
                                         <li class="nav-item">
                                             <a class="nav-link" href="<?php echo site_url('admin/userranking') ?>">User Score</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo site_url('admin/userranking/contestList') ?>">User Ranking</a>
                                         </li>                                      
                                     </ul>
                                 </li>
