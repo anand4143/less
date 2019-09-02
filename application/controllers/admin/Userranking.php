@@ -180,6 +180,7 @@ class Userranking extends MY_Controller {
 		$data['report'][$i]->averageJudge_Score =  $averageJudge_Score;
 		$data['report'][$i]->total_Score =  $averageSur + $averageTaal + $averageEmotion_Feel + $averageVoice_Quality_Nasal + $averageSoothing_Level + $averageCopy_Or_Originality + $averageVariation + $averageDiction + $averageMurki_Vibratos + $averageAlaap + $averageSargam + $averageJudge_Score ;
 		$data['report'][$i]->totalSupport =  $totalSupport[0]->tRow/100;
+		
 
 		}
 	}
