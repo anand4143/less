@@ -272,7 +272,7 @@ class Judge extends MY_Controller{
            'parameter2' => $param2,
            'parameter3' => $param3,
            'parameter4' => $param4,
-           'parameter5' => $param1
+           'parameter5' => $param5
        );
        $saveResult = $this->judges->updateJudgeParametersDB($data);
       print_r($saveResult);

@@ -30,13 +30,14 @@
 											<tbody>
 											<?php
 											$judgeID = $session['id'];
+											$sno = 1;
 											//echo "<pre>";print_r($allUserSongListOfRunningContests);
 											if($allUserSongListOfRunningContests):
 											foreach($allUserSongListOfRunningContests as $user):
 											?>
 												<tr>
-													<td>
-													<img class="img-fluid rounded" src="<?php echo base_url();?>assets/dist/img/logo1.jpg" alt="icon"></td>
+													<td><?php echo $sno; ?>
+													</td>
 													<td><?php echo $user['contestName'];?></td>
 													<!-- <td><?php //echo $user['contestID'];?></td> -->
 													<td><?php echo $user['levelName'];?></td>
@@ -67,7 +68,7 @@
 												  <?php } ?>
 												  </td>
 												</tr>
-												<?php endforeach;
+												<?php $sno++; endforeach;
 												else:?>
 												  <tr><td  align="center" colspan="9">No record found!</td></tr>
 												<?php endif;?>

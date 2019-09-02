@@ -179,6 +179,7 @@ class Judges extends CI_Model{
     }
 
     public function updateJudgeParametersDB($data){
+        //print_r($data);die("ddddd");
         $this->db->set('sur', $data['sur']);
         $this->db->set('Taal', $data['Taal']);
         $this->db->set('Emotion_Feel', $data['Emotion_Feel']);
