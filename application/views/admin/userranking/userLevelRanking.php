@@ -5,7 +5,18 @@
  <div class="row">
         <div class="col-xl-12">
 					<div class="d-flex align-items-center justify-content-between mt-40 mb-20">
-						<h4><?php echo $report[0]->contestName; ?> Level <?php echo $report[0]->levelName; ?></h4>
+                        <h4>
+                        <?php 
+                        if(isset($report[0]->contestName)){
+                            echo $report[0]->contestName;
+                        }                   
+                         
+                         if(isset($report[0]->levelName)){
+                            echo $report[0]->levelName;
+                        }
+                       
+                        ?>
+                        </h4>
 					</div>
 						<div class="card">
 							<div class="card-body pa-0">
@@ -15,9 +26,7 @@
 											<thead>
 												<tr>
 													<th>User Name</th>
-													<th>Email</th>
-                                                    <th class="w-5">Ranking</th>
-													<th class="w-5">Total</th>													
+													<th>Email</th>													
 													<th>Sur</th>													
 													<th>Taal</th>													
 													<th>Emotion Feel</th>													
@@ -29,7 +38,9 @@
 													<th>Murki Vibratos</th>													
 													<th>Alaap</th>													
 													<th>Sargam</th>													
-													<th>Judge Score</th>													
+													<th>Judge Score</th>
+                                                    <th class="w-5">Ranking</th>
+													<th class="w-5">Total</th>													
 													
 												</tr>
 											</thead>
@@ -37,36 +48,131 @@
                                                 <?php 
                                                 $i =1;
                                                    //echo "<pre>"; print_r($report);
-                                                if($report):
+                                                if(isset($report)){
 													foreach($report as $row):                                                    
                                                 ?>
 												<tr>
 													<td><?php echo $row->fullName;?></td>
 													<td><?php echo $row->email;?></td>
+                                                    
+                                                    <td><?php 
+                                                    if(isset($row->averageSur)){
+                                                        echo $row->averageSur;
+                                                    }else{
+                                                        echo "NA";
+                                                    }
+                                                    ?></td>
+													<td><?php 
+                                                    if(isset($row->averageTaal)){
+                                                        echo $row->averageTaal;
+                                                    }else{
+                                                        echo "NA";
+                                                    }
+                                                    ?>
+                                                    </td>
+                                                    <td><?php 
+                                                    if(isset($row->averageEmotion_Feel)){
+                                                        echo $row->averageEmotion_Feel;
+                                                    }else{
+                                                        echo "NA";
+                                                    }
+                                                    ?>                                                   
+                                                    </td>
+													<td><?php 
+                                                    if(isset($row->averageVoice_Quality_Nasal)){
+                                                        echo $row->averageVoice_Quality_Nasal;
+                                                    }else{
+                                                        echo "NA";
+                                                    }
+                                                    ?> 
+                                                    </td>
+													<td><?php 
+                                                    if(isset($row->averageSoothing_Level)){
+                                                        echo $row->averageSoothing_Level;
+                                                    }else{
+                                                        echo "NA";
+                                                    }
+                                                    ?></td>
+													<td><?php 
+                                                    if(isset($row->averageCopy_Or_Originality)){
+                                                        echo $row->averageCopy_Or_Originality;
+                                                    }else{
+                                                        echo "NA";
+                                                    }
+                                                    ?>
+                                                    </td>
+													<td><?php 
+                                                    if(isset($row->averageVariation)){
+                                                        echo $row->averageVariation;
+                                                    }else{
+                                                        echo "NA";
+                                                    }
+                                                    ?>
+                                                    </td>
+													<td><?php 
+                                                    if(isset($row->averageDiction)){
+                                                        echo $row->averageDiction;
+                                                    }else{
+                                                        echo "NA";
+                                                    }
+                                                    ?></td>
+													<td><?php 
+                                                    if(isset($row->averageMurki_Vibratos)){
+                                                        echo $row->averageMurki_Vibratos;
+                                                    }else{
+                                                        echo "NA";
+                                                    }
+                                                    ?>
+                                                    </td>
+													<td><?php 
+                                                    if(isset($row->averageAlaap)){
+                                                        echo $row->averageAlaap;
+                                                    }else{
+                                                        echo "NA";
+                                                    }
+                                                    ?>
+                                                    </td>
+													<td><?php 
+                                                    if(isset($row->averageSargam)){
+                                                        echo $row->averageSargam;
+                                                    }else{
+                                                        echo "NA";
+                                                    }
+                                                    ?>
+                                                    </td>
+													<td><?php 
+                                                    if(isset($row->averageJudge_Score)){
+                                                        echo $row->averageJudge_Score;
+                                                    }else{
+                                                        echo "NA";
+                                                    }
+                                                    ?>
+                                                    </td>
                                                     <td>
                                                     Rank
-                                                    <?php echo $i; ?>
+                                                    <?php 
+                                                    if(isset($row->total_Score)){
+                                                        echo $i;
+                                                    }else{
+                                                        echo "NA";
+                                                    } 
+                                                    ?>                                                    
                                                     </td>
                                                     <td>                                                  
-                                                    <?php echo $row->total_Score;?>
+                                                    <?php 
+                                                    if(isset($row->total_Score)){
+                                                        echo $row->total_Score;
+                                                    }else{
+                                                        echo "NA";
+                                                    }
+                                                    ?>
                                                     </td>
-													<td><?php echo $row->averageSur;?></td>
-													<td><?php echo $row->averageTaal;?></td>
-													<td><?php echo $row->averageEmotion_Feel;?></td>
-													<td><?php echo $row->averageVoice_Quality_Nasal;?></td>
-													<td><?php echo $row->averageSoothing_Level;?></td>
-													<td><?php echo $row->averageCopy_Or_Originality;?></td>
-													<td><?php echo $row->averageVariation;?></td>
-													<td><?php echo $row->averageDiction;?></td>
-													<td><?php echo $row->averageMurki_Vibratos;?></td>
-													<td><?php echo $row->averageAlaap;?></td>
-													<td><?php echo $row->averageSargam;?></td>
-													<td><?php echo $row->averageJudge_Score;?></td>
 													
 												</tr>
 												<?php $i++;endforeach;
-												endif;?>
-												
+												}else{?>
+                                                <td colspan='16' align='center'>No Level found!</td>
+												<?php }?>
 											</tbody>
 										</table>
 									</div>

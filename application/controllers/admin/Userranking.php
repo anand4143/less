@@ -119,8 +119,13 @@ class Userranking extends MY_Controller {
 		 $contestId = 	$this->input->get('cId');
 		 $levelId 	=   $this->input->get('lId');
 		$rs = $this->userranking_m->get_contest_participants($contestId,$levelId); 
-		//echo "<pre>";print_r($rs);
-		//echo "<hr>";
+		 //echo "<pre>";print_r($rs);
+		// echo "<hr>";
+		// echo "<li>".$a = is_array($rs);
+		//die('dddd');
+		if(is_array($rs)){
+
+		
 		$data['report'] = $rs;
 		$sur = 0;$Taal=0; $Emotion_Feel=0;$Voice_Quality_Nasal=0;$Soothing_Level=0;$Copy_Or_Originality=0;$Variation=0;
 		$Diction=0;$Murki_Vibratos=0;$Alaap=0;$Sargam=0;$Judge_Score=0;
@@ -129,8 +134,9 @@ class Userranking extends MY_Controller {
 			$res1 = $this->userranking_m->get_participants_reports($rs[$i]->userID,$rs[$i]->contestId,$rs[$i]->levelId);
 			//echo "<pre>totalSupport ";print_r($totalSupport);
 			//echo "<pre>res1 ";print_r($res1);
-			$counterTotal = count($res1);
+			if(is_array($res1)){		
 			
+			$counterTotal = count($res1);			
 			for($j=0; $j< count($res1); $j++){
 				
 				$sur 					= $sur + $res1[$j]->sur;
@@ -176,9 +182,13 @@ class Userranking extends MY_Controller {
 		$data['report'][$i]->totalSupport =  $totalSupport[0]->tRow/100;
 
 		}
+	}
+	}
+	
+	
 		
-
-		$this->load->view('admin/userranking/userLevelRanking', $data);
+		//echo "<pre>";print_r($data['report']);
+	$this->load->view('admin/userranking/userLevelRanking', $data);
 
 	}
 

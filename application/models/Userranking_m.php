@@ -88,7 +88,8 @@ class Userranking_m extends CI_Model{
 		//$this->db->where('t2.status', 1);
 		$this->db->where('t3.id', $contest_id);
 		$this->db->where('t4.id', $levelId);
-		$rs = $this->db->get();
+      $rs = $this->db->get();
+      //echo "<li>===".$rs->num_rows();
 		//echo $this->db->last_query();die;
 		if($rs->num_rows() == 0){
 			return false;
