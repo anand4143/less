@@ -12,7 +12,7 @@
                         }                   
                          
                          if(isset($report[0]->levelName)){
-                            echo $report[0]->levelName;
+                            echo "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;".$report[0]->levelName;
                         }
                        
                         ?>
@@ -40,6 +40,7 @@
 													<th>Sargam</th>													
 													<th>Judge Score</th>
                                                     <th class="w-5">Ranking</th>
+                                                    <th class="w-5">Support</th>
 													<th class="w-5">Total</th>													
 													
 												</tr>
@@ -158,6 +159,17 @@
                                                     } 
                                                     ?>                                                    
                                                     </td>
+
+                                                    <td>                                                
+                                                    <?php 
+                                                    if(isset($row->totalSupport)){
+                                                        echo $row->totalSupport;
+                                                    }else{
+                                                        echo "NA";
+                                                    } 
+                                                    ?>                                                    
+                                                    </td>
+
                                                     <td>                                                  
                                                     <?php 
                                                     if(isset($row->total_Score)){

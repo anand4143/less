@@ -18,12 +18,12 @@
 												<tr>
 													<th>S no</th>
 													<th>Contest Name</th>
-													<th>Contest id</th>
+													<!-- <th>Contest id</th> -->
 													<th>Level Name</th>
-													<th>Level id</th>
+													<!-- <th>Level id</th>
 													<th>user id</th>
 													<th>smule id</th>
-													<th>assign Judge id</th>
+													<th>assign Judge id</th> -->
 													<th class="w-20">Action</th>
 												</tr>
 											</thead>
@@ -38,12 +38,12 @@
 													<td>
 													<img class="img-fluid rounded" src="<?php echo base_url();?>assets/dist/img/logo1.jpg" alt="icon"></td>
 													<td><?php echo $user['contestName'];?></td>
-													<td><?php echo $user['contestID'];?></td>
+													<!-- <td><?php //echo $user['contestID'];?></td> -->
 													<td><?php echo $user['levelName'];?></td>
-													<td><?php echo $user['levelID'];?></td>
-													<td><?php echo $user['userID'];?></td>
-													<td><?php echo $user['smuleID'];?></td>
-													<td><?php echo $user['assginJudge'];?></td>
+													<!-- <td><?php //echo $user['levelID'];?></td>
+													<td><?php //echo $user['userID'];?></td>
+													<td><?php //echo $user['smuleID'];?></td>
+													<td><?php //echo $user['assginJudge'];?></td> -->
 													<td>												
 														<a href="<?php echo $user['smuleUrl'];?>" target="_blank" class="btn btn-info btn-lg">
 														<i class="fa fa-music" aria-hidden="true"></i> 

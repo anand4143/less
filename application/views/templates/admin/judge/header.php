@@ -22,7 +22,7 @@
 	<div class="hk-wrapper hk-horizontal-nav">
         <!-- Top Navbar -->
         <nav class="navbar navbar-expand-xl navbar-dark fixed-top hk-navbar">
-            <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><span class="feather-icon"><i data-feather="menu"></i></span></a>
+            <!-- <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><span class="feather-icon"><i data-feather="menu"></i></span></a> -->
             <a class="navbar-brand" href="javascript:void(0);">
                 <!-- <img class="brand-img d-inline-block" src="<?php echo base_url();?>assets/dist/img/logo-dark.png" alt="brand" /> -->
                 Less Superstar
@@ -66,7 +66,7 @@
             </ul>
         </nav>
          <!--Horizontal Nav-->
-         <nav class="hk-nav hk-nav-light">
+         <!-- <nav class="hk-nav hk-nav-light">
             <a href="javascript:void(0);" id="hk_nav_close" class="hk-nav-close"><span class="feather-icon"><i data-feather="x"></i></span></a>
             <div class="nicescroll-bar">
                 <div class="navbar-nav-wrap">
@@ -82,80 +82,15 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="<?php echo site_url('admin/user'); ?>">Users</a>
                                         </li>
-                                        <!-- <li class="nav-item active">
-                                            <a class="nav-link" href="<?php echo site_url('admin/judge'); ?>">Judge</a>
-                                        </li>										
-                                        <li class="nav-item active">
-                                            <a class="nav-link" href="<?php echo base_url('admin/contests'); ?>">Contests</a>
-                                        </li>										 -->
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link link-with-indicator" href="<?php echo site_url('admin/user'); ?>" data-toggle="collapse" data-target="#app_drp">
-                                <span class="feather-icon"><span class="badge badge-primary badge-indicator badge-indicator-sm badge-pill"></span><i data-feather="package"></i></span>
-                                <span class="nav-link-text">Users</span>
-                            </a>
-                            <ul id="app_drp" class="nav flex-column collapse collapse-level-1">
-                                <li class="nav-item">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo site_url('admin/user'); ?>">User List</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo site_url('admin/judge/'); ?>">Judge List</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo site_url('admin/user/assignUserToJudges'); ?>">Assign Users To Judges</a>
-                                        </li>
-                                        
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li> -->
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('Admin/contests') ?>" data-toggle="collapse" data-target="#pages_drp">
-                                <span class="feather-icon"><i data-feather="file-text"></i></span>
-                                <span class="nav-link-text">Manage Contests</span>
-                            </a>
-                            <ul id="pages_drp" class="nav flex-column collapse collapse-level-1">
-                                <li class="nav-item">
-                                    <ul class="nav flex-column">                                        
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo site_url('admin/contests') ?>">Contests List</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo site_url('admin/contests/add') ?>">Create Contest</a>
-                                        </li>                                       
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li> -->
-						
-						 <!-- <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('Admin/contests') ?>" data-toggle="collapse" data-target="#pages_drp">
-                                <span class="feather-icon"><i data-feather="file-text"></i></span>
-                                <span class="nav-link-text">Manage Contests Level</span>
-                            </a>
-                            
-							<ul id="pages_drp" class="nav flex-column collapse collapse-level-1">
-                                <li class="nav-item">
-                                    <ul class="nav flex-column">                                        
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo site_url('Admin/levels') ?>">Contests Level List</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo site_url('Admin/levels/add') ?>">Create Contest Level</a>
-                                        </li>                                       
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li> -->
+                        
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> -->
         <div id="hk_nav_backdrop" class="hk-nav-backdrop"></div>
         <!--/Horizontal Nav-->
 
