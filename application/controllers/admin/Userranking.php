@@ -180,6 +180,8 @@ class Userranking extends MY_Controller {
 		$data['report'][$i]->averageJudge_Score =  $averageJudge_Score;
 		$data['report'][$i]->total_Score =  $averageSur + $averageTaal + $averageEmotion_Feel + $averageVoice_Quality_Nasal + $averageSoothing_Level + $averageCopy_Or_Originality + $averageVariation + $averageDiction + $averageMurki_Vibratos + $averageAlaap + $averageSargam + $averageJudge_Score ;
 		$data['report'][$i]->totalSupport =  $totalSupport[0]->tRow/100;
+		$data['report'][$i]->totalScore =  $data['report'][$i]->total_Score + $data['report'][$i]->totalSupport;
+		
 		
 
 		}
@@ -187,10 +189,23 @@ class Userranking extends MY_Controller {
 	}
 	
 	
-		
-		//echo "<pre>";print_r($data['report']);
+    $data['report'] = $this->_sort_data($data['report']);
 	$this->load->view('admin/userranking/userLevelRanking', $data);
 
+	}
+	
+	private function _sort_data($arr){
+		$len = count($arr);
+		for ($i = ($len - 1); $i >= 0; $i--){
+			for ($j = 1; $j <= $i; $j++){				
+				if ($arr[$j]->totalScore > $arr[$j-1]->totalScore ){
+				  $temp = $arr[$j];
+				  $arr[$j] = $arr[$j-1];
+				  $arr[$j-1] = $temp;
+				} 
+			}
+		}
+		return $arr;
 	}
 
 	
