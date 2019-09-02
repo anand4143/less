@@ -28,7 +28,7 @@
 									<div><strong>Name :</strong> <?php echo $user->userName;?> </div>									
 									<div><strong>Email :</strong> <?php echo $user->email;?></div>
 									<div><strong>Contest :</strong> <?php echo $c_data->contestName?> </div>
-									<div><strong>Lavel :</strong> <?php echo $c_data->levelName?> </div>
+									<div><strong>Level :</strong> <?php echo $c_data->levelName?> </div>
 									</div>
 								</div>
 								<div class="col-sm-6 text-right">
