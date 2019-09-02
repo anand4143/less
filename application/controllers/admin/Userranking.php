@@ -113,8 +113,75 @@ class Userranking extends MY_Controller {
 		$this->load->view('admin/userranking/levelList', $data);
 	}
 
+	public function userLevelRanking(){
 	
+		$data = array();
+		 $contestId = 	$this->input->get('cId');
+		 $levelId 	=   $this->input->get('lId');
+		$rs = $this->userranking_m->get_contest_participants($contestId,$levelId); 
+		//echo "<pre>";print_r($rs);
+		//echo "<hr>";
+		$data['report'] = $rs;
+		$sur = 0;$Taal=0; $Emotion_Feel=0;$Voice_Quality_Nasal=0;$Soothing_Level=0;$Copy_Or_Originality=0;$Variation=0;
+		$Diction=0;$Murki_Vibratos=0;$Alaap=0;$Sargam=0;$Judge_Score=0;
+		for($i=0; $i<count($rs); $i++){
+			$totalSupport = $this->userranking_m->get_participants_support($rs[$i]->userID,$rs[$i]->contestId,$rs[$i]->levelId);
+			$res1 = $this->userranking_m->get_participants_reports($rs[$i]->userID,$rs[$i]->contestId,$rs[$i]->levelId);
+			//echo "<pre>totalSupport ";print_r($totalSupport);
+			//echo "<pre>res1 ";print_r($res1);
+			$counterTotal = count($res1);
+			
+			for($j=0; $j< count($res1); $j++){
+				
+				$sur 					= $sur + $res1[$j]->sur;
+				$Taal 					= $Taal + $res1[$j]->Taal;
+				$Emotion_Feel 			= $Emotion_Feel + $res1[$j]->Emotion_Feel;
+				$Voice_Quality_Nasal 	= $Voice_Quality_Nasal + $res1[$j]->Voice_Quality_Nasal;
+				$Soothing_Level 		= $Soothing_Level + $res1[$j]->Soothing_Level;
+				$Copy_Or_Originality 	= $Copy_Or_Originality + $res1[$j]->Copy_Or_Originality;
+				$Variation 				= $Variation + $res1[$j]->Variation;
+				$Diction 				= $Diction + $res1[$j]->Diction;
+				$Murki_Vibratos 		= $Murki_Vibratos + $res1[$j]->Murki_Vibratos;
+				$Alaap 					= $Alaap + $res1[$j]->Alaap;
+				$Sargam 				= $Sargam + $res1[$j]->Sargam;
+				$Judge_Score 			= $Judge_Score + $res1[$j]->Judge_Score;
+			
+			}
+		
+		$averageSur = ($sur/$counterTotal) ;		
+		$averageTaal = ($Taal/$counterTotal) ;
+		$averageEmotion_Feel = ($Emotion_Feel/$counterTotal) ;
+		$averageVoice_Quality_Nasal = ($Voice_Quality_Nasal/$counterTotal) ;
+		$averageSoothing_Level = ($Soothing_Level/$counterTotal) ;
+		$averageCopy_Or_Originality = ($Copy_Or_Originality/$counterTotal) ;
+		$averageVariation = ($Variation/$counterTotal) ;
+		$averageDiction = ($Diction/$counterTotal) ;
+		$averageMurki_Vibratos = ($Murki_Vibratos/$counterTotal) ;
+		$averageAlaap = ($Alaap/$counterTotal) ;
+		$averageSargam = ($Sargam/$counterTotal) ;
+		$averageJudge_Score= ($Judge_Score/$counterTotal) ;
+		$data['report'][$i]->averageSur =  $averageSur;
+		$data['report'][$i]->averageTaal =  $averageTaal;
+		$data['report'][$i]->averageEmotion_Feel =  $averageEmotion_Feel;
+		$data['report'][$i]->averageVoice_Quality_Nasal =  $averageVoice_Quality_Nasal;
+		$data['report'][$i]->averageSoothing_Level =  $averageSoothing_Level;
+		$data['report'][$i]->averageCopy_Or_Originality =  $averageCopy_Or_Originality;
+		$data['report'][$i]->averageVariation =  $averageVariation;
+		$data['report'][$i]->averageDiction =  $averageDiction;
+		$data['report'][$i]->averageMurki_Vibratos =  $averageMurki_Vibratos;
+		$data['report'][$i]->averageAlaap =  $averageAlaap;
+		$data['report'][$i]->averageSargam =  $averageSargam;
+		$data['report'][$i]->averageJudge_Score =  $averageJudge_Score;
+		$data['report'][$i]->total_Score =  $averageSur + $averageTaal + $averageEmotion_Feel + $averageVoice_Quality_Nasal + $averageSoothing_Level + $averageCopy_Or_Originality + $averageVariation + $averageDiction + $averageMurki_Vibratos + $averageAlaap + $averageSargam + $averageJudge_Score ;
+		$data['report'][$i]->totalSupport =  $totalSupport[0]->tRow/100;
 
+		}
+		
 
+		$this->load->view('admin/userranking/userLevelRanking', $data);
 
+	}
+
+	
 }
+

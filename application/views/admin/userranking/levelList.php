@@ -20,13 +20,13 @@
 											</thead>
 											<tbody>
                                                 <?php 
-                                                   // print_r($contests);
+                                                   //echo "<pre>"; print_r($levelList);
                                                 if($levelList):
 													foreach($levelList as $row):                                                    
                                                 ?>
 												<tr>
 													<td><?php echo $row->levelName;?></td>
-													<td><a href="/userRanking">View Ranking</a></td>
+													<td><a href="/admin/userRanking/userLevelRanking/?cId=<?php echo $row->contestID?>&lId=<?php echo $row->id?>" >View Ranking</a></td>
 												</tr>
 												<?php endforeach;
 												endif;?>

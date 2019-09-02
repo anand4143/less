@@ -74,7 +74,57 @@ class Userranking_m extends CI_Model{
 				return false;
 		}
 		return $rs->result();
-	}
+   }
+   
+
+   public function get_contest_participants($contest_id,$levelId){
+		$this->db->select("t1.userID, t2.userName, t2.email, CONCAT(t2.firstName, ' ', t2.lastName) AS fullName, t3.id as contestId ,t3.contestName, t4.id as levelId,t4.levelName");
+		$this->db->from('users_contests_levels t1');
+		$this->db->join('users t2', 't1.userID = t2.id');
+		$this->db->join('master_contests t3', 't1.contestID = t3.id');
+		$this->db->join('contest_levels t4', 't1.levelID = t4.id');
+		$this->db->where('t3.isDeleted', '0');
+		$this->db->where('t4.isDeleted', '0');
+		//$this->db->where('t2.status', 1);
+		$this->db->where('t3.id', $contest_id);
+		$this->db->where('t4.id', $levelId);
+		$rs = $this->db->get();
+		//echo $this->db->last_query();die;
+		if($rs->num_rows() == 0){
+			return false;
+		}
+		return $rs->result();
+   }
+   
+   public function get_participants_reports($userId,$contestId,$levelId){
+      $this->db->select("t1.*");
+		$this->db->from('user_contest_report t1');
+		$this->db->where('t1.userID', $userId);
+		$this->db->where('t1.contestID', $contestId);
+		$this->db->where('t1.levelsID', $levelId);
+		$rs = $this->db->get();
+		//echo $this->db->last_query();die;
+		if($rs->num_rows() == 0){
+			return false;
+		}
+		return $rs->result();
+
+   }
+
+   public function get_participants_support($userId,$contestId,$levelId){
+      $this->db->select("COUNT(*) as tRow");
+		$this->db->from('trans_votings');
+		$this->db->where('participantID', $userId);
+		$this->db->where('contestID', $contestId);
+		$this->db->where('contestLevelID', $levelId);
+		$rs = $this->db->get();
+      //echo $this->db->last_query();
+      //echo "<li>=hhhhh===> ".$rs->num_rows();
+		if($rs->num_rows() == 0){
+			return false;
+		}
+		return $rs->result();
+   }
     
     
 }
