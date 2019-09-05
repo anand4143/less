@@ -89,6 +89,21 @@ class Contest_m extends CI_Model {
 		return $rs->result();
 	}
 	
+	public function previous_contest_list(){
+		$this->db->select('id, contestName, description,  startDate, endDate');
+		$this->db->where('isDeleted', '0');
+		$this->db->where('status', 1);
+		//$this->db->where('DATE(startDate)', date('Y-m-d'), false);
+		//$this->db->where('regStartDate >=', date('Y-m-d'));
+	    $this->db->where('endDate <=', date('Y-m-d'));
+		$rs = $this->db->get('master_contests');
+		
+		if($rs->num_rows() == 0){
+				return false;
+		}
+		return $rs->result();
+	}
+	
 	/*Front End */
 	public function get_contest_data($contest_id) {
 		$this->db->select("t1.id, t1.contestName, t1.description, t2.id AS levelID, t2.levelName");

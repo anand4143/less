@@ -3,12 +3,12 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6 text-center text-md-left">
-							<h2 class="small">Upcoming Contests</h2>
+							<h2 class="small">Previous Contests</h2>
 						</div>
 						<div class="col-md-6 text-center text-md-right">
 							<ol class="breadcrumb">
 								<li> <a href="<?php echo base_url('user/landing');?>">Dashboard</a> </li>
-								<li> <a href="#">Upcoming Contests</a> </li>
+								<li> <a href="#">Previous Contests</a> </li>
 								
 							</ol>
 						</div>
@@ -24,8 +24,8 @@
 							  <tbody>
 								<tr>
 								  <th style="width: 30%"><strong>Contest Name</strong></th>
-								  <th style="width: 25%"><strong>Registration Start Date</strong></th>
-								  <th style="width: 25%"><strong>Registration End Date</strong></th>
+								  <th style="width: 25%"><strong> Start Date</strong></th>
+								  <th style="width: 25%"><strong> End Date</strong></th>
 								  <th style="width: 20%"><strong></strong></th>
 								</tr>
 								<?php 
@@ -34,14 +34,14 @@
 								?>	
 								<tr>
 								  <td><?php echo $row->contestName;?></td>
-								  <td><?php echo date('d-m-Y', strtotime($row->regStartDate));?></td>
-								  <td><?php echo date('d-m-Y', strtotime($row->regEndDate));?></td>
-								  <td><a class="theme_button color" href="javascript:void(0);" data-url="" >Comming Soon...</a></td>
+								  <td><?php echo date('d-m-Y', strtotime($row->startDate));?></td>
+								  <td><?php echo date('d-m-Y', strtotime($row->endDate));?></td>
+								  <td><a class="theme_button color" href="javascript:void(0);" data-url="" >Closed</a></td>
 								</tr>
 								<?php endforeach;
 								else :?>
 								<tr>
-								  <td colspan="4"  align="center">No upcoming constest found!</td>
+								  <td colspan="4" align="center">No previous constest found!</td>
 								</tr>
 								<?php
 								endif;?> 

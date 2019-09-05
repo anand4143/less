@@ -35,6 +35,14 @@ class Contests extends MY_Controller {
         $this->load->view('frontend/contests/upcoming_contests', $data);
     }
 	
+	public function previous_contests() {
+		$data = array();
+		$this->load->model('contest_m');
+		$data['upcoming_contests'] = $this->contest_m->previous_contest_list();
+		//echo "<pre>";print_r($data);die;
+        $this->load->view('frontend/contests/previous_contests', $data);
+    }
+	
 	public function contest_details($contest_id) {
 		$user_id = $this->getSessionData('userID');
 		
