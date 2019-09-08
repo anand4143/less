@@ -21,7 +21,7 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="dashboardboxes apsc-facebook-icon">
-						<a href="#">
+						<a href="<?php echo base_url('contests/previous_contests');?>">
 						<i class="fa fa-users"></i>
 							Previous Contest
 						</a>
