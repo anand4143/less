@@ -30,7 +30,7 @@
                                                 ?>
 												<tr>
 													<td><?php echo $row->levelName;?></td>
-													<td><a href="/userRanking/userLevelRanking/?cId=<?php echo $row->contestID?>&lId=<?php echo $row->id?>" >View Ranking</a></td>
+													<td><a href="<?php echo base_url('userranking/userLevelRanking');?>/?cId=<?php echo $row->contestID?>&lId=<?php echo $row->id?>" >View Ranking</a></td>
 												</tr>
 												<?php endforeach;
 												endif;?>
