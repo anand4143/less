@@ -46,12 +46,12 @@
 											My account<span class="caret"></span>
 	                					</a>
 									<?php }else{ ?>
-										<a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<a href="#0" id="account-dropdown1" data-toggle="dropdown1" aria-haspopup="true" aria-expanded="false">
 											Running Contests
 	                					</a>
-										<a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<!--<a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											SIGN IN / SIGN UP<span class="caret"></span>
-	                					</a>
+	                					</a>--->
 									<?php 
 										}
 									?>
@@ -92,7 +92,7 @@
 						<div class="col-sm-12" style="z-index: 9999;">
 							<nav class="mainmenu_wrapper">
 								<ul class="mainmenu nav sf-menu">
-									<li class="active"> <a href="#">Services</a>
+									<!-- <li class="active"> <a href="#">Services</a>
 										<ul>
 											<li> <a href="#">Audio Production</a> </li>
 											<li> <a href="#">Video Production</a> </li>
@@ -102,8 +102,8 @@
 											<li> <a href="#">Launches, Distribution And Market Release</a> </li>
 											<li> <a href="#">Events And Talent Management​</a> </li>
 										</ul>
-									</li>
-									
+									</li> -->
+									<li><a class="active" href="<?php echo site_url('userranking/contestList') ?>">Ranking</a></li>
 									<li> <a href="#">About</a>
 										<ul>
 											<li> <a href="#">About Us</a> </li>

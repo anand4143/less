@@ -39,9 +39,10 @@
 						<div class="col-sm-5 text-left text-sm-right">
 							<div class="divided-content small-text greylinks color2">
 								<div>
-									<div class="dropdown"> <a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My account
-								<span class="caret"></span>
-	                		</a>
+									<div class="dropdown"> 
+										<a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											My account<span class="caret"></span>
+	                					</a>
 										<ul class="dropdown-menu" aria-labelledby="account-dropdown">
 											<li> <a href="<?php echo base_url()?>login">Sign In</a> </li>
 											<li> <a href="<?php echo base_url()?>registration">Sign Up</a> </li>
@@ -61,7 +62,8 @@
 							<nav class="mainmenu_wrapper">
 								<ul class="mainmenu nav sf-menu">
 								   
-									<li class="active"> <a href="#">Services</a>
+									<li class="active"> 
+										<a href="#">Services</a>
 										<ul>
 											<li> <a href="#">Audio Production</a> </li>
 											<li> <a href="#">Video Production</a> </li>
@@ -71,6 +73,10 @@
 											<li> <a href="#">Launches, Distribution And Market Release</a> </li>
 											<li> <a href="#">Events And Talent Management​</a> </li>
 										</ul>
+									</li>
+									<li class=""> 
+									<a class="nav-link" href="<?php echo site_url('userranking/contestList') ?>">Ranking</a>
+										
 									</li>
 									
 									<li> <a href="#">About</a>

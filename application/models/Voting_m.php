@@ -19,7 +19,7 @@ class Voting_m extends CI_Model {
 		//$this->db->where('t1.regStartDate <=', date('Y-m-d'));
 		//$this->db->where('t1.regEndDate >=', date('Y-m-d'));
 		$rs = $this->db->get();
-		
+		//echo "<li>".$this->db->last_query();
 		if($rs->num_rows() == 0){
 				return false;
 		}

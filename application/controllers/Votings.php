@@ -18,6 +18,7 @@ class Votings extends MY_Controller {
     public function index() {
 		$data = array();
 		$data['contest_list'] = $this->voting_m->voting_contest_list();
+		//echo "<pre>";print_r($data);
 		$this->load->view('frontend/votings/voting_contest_list', $data);
     }
 	
