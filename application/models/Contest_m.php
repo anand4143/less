@@ -61,10 +61,13 @@ class Contest_m extends CI_Model {
 		$this->db->where('t2.isDeleted', '0');
 		$this->db->where('t2.status', 1);
 		$this->db->where('t2.isEnabled', 1);		
-		#$this->db->where('startDate <=', date('Y-m-d'));
-		#$this->db->where('endDate >=', date('Y-m-d'));
+		$this->db->where('startDate <=', date('Y-m-d'));
+		$this->db->where('endDate >=', date('Y-m-d'));
 		$this->db->where('regStartDate <=', date('Y-m-d'));
-		$this->db->where('regEndDate >=', date('Y-m-d'));
+		$this->db->where('regEndDate <=', date('Y-m-d'));
+		
+		#$this->db->where('regStartDate <=', date('Y-m-d'));
+		#$this->db->where('regEndDate >=', date('Y-m-d'));
 		$rs = $this->db->get();
 		
 		//echo $this->db->last_query();die;
@@ -79,8 +82,11 @@ class Contest_m extends CI_Model {
 		$this->db->where('isDeleted', '0');
 		$this->db->where('status', 1);
 		//$this->db->where('DATE(startDate)', date('Y-m-d'), false);
+		
 		$this->db->where('regStartDate >=', date('Y-m-d'));
-	    //$this->db->where('endDate <=', date('Y-m-d'));
+		$this->db->where('regEndDate >=', date('Y-m-d'));
+		$this->db->where('startDate >', date('Y-m-d'));
+	    $this->db->where('endDate >', date('Y-m-d'));
 		$rs = $this->db->get('master_contests');
 		
 		if($rs->num_rows() == 0){
@@ -95,7 +101,11 @@ class Contest_m extends CI_Model {
 		$this->db->where('status', 1);
 		//$this->db->where('DATE(startDate)', date('Y-m-d'), false);
 		//$this->db->where('regStartDate >=', date('Y-m-d'));
-	    $this->db->where('endDate <=', date('Y-m-d'));
+	    
+		$this->db->where('endDate <', date('Y-m-d'));
+		$this->db->where('startDate <', date('Y-m-d'));		
+		$this->db->where('regEndDate <', date('Y-m-d'));
+		$this->db->where('regStartDate <', date('Y-m-d'));
 		$rs = $this->db->get('master_contests');
 		
 		if($rs->num_rows() == 0){
