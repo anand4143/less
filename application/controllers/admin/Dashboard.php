@@ -54,9 +54,10 @@ class Dashboard extends MY_Controller {
     }
     public function judgelanding(){
         $currentUser = $this->getSessionData(); 
-       // echo "<pre>";print_r($currentUser);die('here');      
+    //echo "<pre>";print_r($currentUser);   die('here');   
         $data['session'] = $currentUser;
-        $data['allUserSongListOfRunningContests'] = $this->judges->allUserSongListOfRunningContests();
+       $judgeId = $currentUser['id'];
+        $data['allUserSongListOfRunningContests'] = $this->judges->allUserSongListOfRunningContests( $judgeId);
     //     $data['songAssignToJudge'] = $this->judges->getAllSongAssignToJudges();
     //     echo "<pre>";print_r($data);
     //    die('judge landing');

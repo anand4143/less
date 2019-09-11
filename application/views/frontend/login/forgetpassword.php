@@ -3,7 +3,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6 text-center text-md-left">
-							<h2 class="small">Signin</h2>
+							<h2 class="small">Forget Password</h2>
 						</div>
 						<div class="col-md-6 text-center text-md-right">
 							<!-- <ol class="breadcrumb">
@@ -39,20 +39,20 @@
                                         ?>
 									</div>
 								</div>
-								<div class="col-sm-12">
+								<!-- <div class="col-sm-12">
 									<div class="row">
 										<div class="col-sm-6">&nbsp;&nbsp;&nbsp;&nbsp;</div>
-										<div class="col-sm-6 text-right"><a href="<?php echo base_url('login/forgetpassword');?>">Forgot Password?</a></div>
+										<div class="col-sm-6 text-right"><a href="#">Forgot Password?</a></div>
 									</div>
-								</div>
+								</div> -->
 								<div class="col-sm-12">
 									<div class="contact-form-submit topmargin_10 text-center">
-										<button type="submit" id="contact_form_submit" name="contact_submit" class="theme_button btn-block color min_width_button">Signin</button>
+										<button type="submit" id="contact_form_submit" name="contact_submit" class="theme_button btn-block color min_width_button">Change Password</button>
 										
 									</div>
 								</div>
 								<div class="col-sm-12 text-center">
-								Don't Have Account Please <a href="<?php echo base_url();?>registration">Signup</a>
+								Don't Have Account Please <a href="<?php echo base_url('login/index');?>">Sign In</a>
 								</div>
 						<?php echo form_close();?>	
 					</div>

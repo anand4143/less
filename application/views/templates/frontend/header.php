@@ -104,6 +104,7 @@
 										</ul>
 									</li> -->
 									<li><a class="active" href="<?php echo site_url('userranking/contestList') ?>">Ranking</a></li>
+									<li><a class="" href="<?php echo site_url('votings/index') ?>">Voting</a></li>
 									<li> <a href="#">About</a>
 										<ul>
 											<li> <a href="#">About Us</a> </li>

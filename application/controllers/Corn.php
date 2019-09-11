@@ -21,7 +21,7 @@ class Corn extends CI_Controller
         $res =  $this->cron_model->selectRows();
         echo "<pre>";print_r($res);
 		for($i=0; $i<count($res); $i++){
-			//$affectedRows =  $this->cron_model->deleteRows($res[$i]->id);
+			$affectedRows =  $this->cron_model->deleteRows($res[$i]->id);
 		}
         
     }

@@ -328,7 +328,32 @@
 </div>
 
 <!-- end1 to 10 validation Modal -->
+<!-- not allow other song to pic for same contest and same lavel Modal -->
+<div class="modal fade" id="othersong" tabindex="-1" role="dialog" aria-labelledby="othersong" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    	<div class="modal-content">
+        	<div class="modal-header">
+            	<h5 class="modal-title" id="othersong">Alert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                	<span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+				<p><i class="zmdi zmdi-alert-circle-o"></i>	
+				You already pic one song for judgement				
+			    </p>
+				<p><i class="zmdi zmdi-alert-circle-o"></i>	
+				First finish then pic another song				
+			    </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- end not allow other song to pic for same contest and same lavel Modal -->
 <?php  $this->view('templates/admin/judge/footer.php'); ?>
 
 
@@ -350,9 +375,17 @@ function pickThisSongForJudge(){
 		cache : false,
 		success : function(res){
 			//alert("last insert id===> "+res);
-			$('#exampleModal').modal('hide');
-			//$('#exampleModal3').modal('show');			
-			location.reload();
+			if(res=='not allow'){
+				$('#exampleModal').modal('hide');
+				$('#othersong').modal('show');
+			}else{
+				$('#exampleModal').modal('show');
+				location.reload();
+			}
+			
+			
+						
+		
 		}
 	});
 
@@ -509,7 +542,7 @@ function saveJudgeParameters(){
 	   data: "ids="+userData+"&sur="+sur+"&taal="+taal+"&emotionfeel="+emotionfeel+"&voicequalitynasal="+voicequalitynasal+"&soothinglevel="+soothinglevel+"&copyororiginality="+copyororiginality+"&variation="+variation+"&diction="+diction+"&murkivibratos="+murkivibratos+"&alaap="+alaap+"&sargam="+sargam+"&judgescore="+judgescore+"&param1="+param1+"&param2="+param2+"&param3="+param3+"&param4="+param4+"&param5="+param5,
 	   cache : false,
 	   success : function(res){
-		   alert("==> "+res);
+		   //alert("==> "+res);
 		   if(res>0){
 			   $("#msg").text("Your data updated successfully");
 			   $('#exampleModalForms').modal('hide');

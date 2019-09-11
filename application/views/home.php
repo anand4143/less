@@ -76,6 +76,7 @@
 									</li>
 									<li class=""> 
 									<a class="nav-link" href="<?php echo site_url('userranking/contestList') ?>">Ranking</a>
+									<li><a class="" href="<?php echo site_url('votings/index') ?>">Voting</a></li>
 										
 									</li>
 									

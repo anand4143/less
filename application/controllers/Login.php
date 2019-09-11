@@ -219,7 +219,12 @@ class Login extends MY_Controller {
 			redirect('home');
 		}
         redirect('login');
-    }
+	}
+	
+	public function forgetPassword(){
+		//$this->load->view('frontend/login/login');
+		$this->load->view('frontend/login/forgetpassword');
+	}
 
     
 }

@@ -55,6 +55,10 @@
 								<div class="auth-form w-xxl-55 w-xl-75 w-sm-90 w-xs-100">
 									<h1 class="display-4 mb-10">Welcome Back :)</h1>
 									<p class="mb-30">Sign in to your account and enjoy.</p>
+                                    <p class="help-block text-danger">
+                                    <?php
+                                     echo $this->session->flashdata('error');?>
+                                    </p>
 <!-- 									
 										<span id="loginButton">
 											<div class="form-row">
@@ -74,14 +78,18 @@
 											<?php echo form_open('admin/login/login'); ?>
 											<div class="form-group">
 												<?php echo form_input(['class' => 'form-control', 'name' => 'username', 'type' => 'email', 'placeholder' => 'Email']);?>
+                                                <?php echo form_error('username', '<span class="help-block text-danger">', '</span>'); ?>
 											</div>
 											<div class="form-group">
 												<div class="input-group">
 													<?php echo form_input(['class' => 'form-control', 'placeholder' => 'Password', 'id' => 'password', 'name' => 'password', 'type' => 'password']); ?>
 													<div class="input-group-append">
 														<span class="input-group-text"><span class="feather-icon"><i data-feather="eye-off"></i></span></span>
+                                                        
 													</div>
+                                                   
 												</div>
+                                                <?php echo form_error('password', '<span class="help-block text-danger">', '</span>'); ?>
                                             </div>
                                             <div class="form-group">
 

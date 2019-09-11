@@ -99,7 +99,7 @@ class Judges extends CI_Model{
 
     } 
 
-    public function allUserSongListOfRunningContests(){
+    public function allUserSongListOfRunningContests( $judgeId){
 
         $query = $this->db->query(
             'SELECT t1.id as userID,t1.email as userEmail,t3.id as contestID,t3.contestName,t2.id as smuleID,t2.smuleUrl, t4.id as levelID,t4.levelName,t5.judgeID as assginJudge FROM users t1
@@ -114,8 +114,8 @@ class Judges extends CI_Model{
         on t4.contestID = t3.id and t4.isEnabled=1
         left join users_judge t5
         on t5.userSmuleID = t2.id 
-        where t2.contestID = t6.contestID
-        ');
+        where t2.contestID = t6.contestID and t6.judgeID=
+        '. $judgeId);
         //left join judge_contest_levels t6	on t2.contestID = t6.contestID and t2.levelID=t6.levelID and t3.id = t6.contestID and t4.id = t6.levelID
         // $query = $this->db->query('SELECT t1.id as userID,t1.email as userEmail,t3.id as contestID,t3.contestName,t2.id as smuleID,t2.smuleUrl, t4.id as levelID,t4.levelName FROM users t1
         // right join user_smule t2 
@@ -142,22 +142,22 @@ class Judges extends CI_Model{
         //$this->db->select('userSmuleID,judgeID');
         $this->db->select('judgeID');
         $this->db->from('users_judge');
-        //$this->db->where('judgeID',$data['judgeID']);
-        $this->db->where('userID',$data['userID']);
+        $this->db->where('judgeID',$data['judgeID']);
+        //$this->db->where('userID',$data['userID']);
         $this->db->where('contestID',$data['contestID']);
         $this->db->where('levelsID',$data['levelsID']);
-        $this->db->where('userSmuleID',$data['userSmuleID']);
+       // $this->db->where('userSmuleID',$data['userSmuleID']);
         $q = $this->db->get();
         //return $this->db->last_query();exit;
-        //$row = $q->result();
-       // print_r($q->num_rows());exit;
-    //    if($q->num_rows() > 0){
-    //         $ret = $q->row();       
-    //         return "not allow";
-    //    }else{
+        $row = $q->result();
+       //print_r($q->num_rows());exit;
+       if($q->num_rows() > 0){
+            $ret = $q->row();       
+            return "not allow";
+       }else{
         $this->db->insert('users_judge',$data);
         return $this->db->insert_id();
-      // }
+       }
 
 
 
@@ -175,7 +175,11 @@ class Judges extends CI_Model{
     //         return 'exist';
     //     }
         $this->db->insert('user_contest_report',$data);
-        return $this->db->insert_id();
+        $lastInsertedID = $this->db->insert_id();
+        $this->db->set("userContestReportID",$lastInsertedID);
+        $this->db->where('userSmuleID',$data['userSmuleID']);
+        $this->db->update('users_judge');
+        return $lastInsertedID;
     }
 
     public function updateJudgeParametersDB($data){
@@ -231,6 +235,18 @@ class Judges extends CI_Model{
         //return $data;
         $this->db->insert('judge_contest_levels',$data);
         return $this->db->insert_id();
+    }
+
+    public function  updateTableJudgeContestLevels($judgeID,$contestID,$levelID,$newContestID,$newlevelID){
+        $this->db->set('contestID', $newContestID);
+        $this->db->set('levelID', $newlevelID);
+
+        $this->db->where('judgeID', $judgeID);
+        $this->db->where('contestID', $contestID);
+        $this->db->where('levelID', $levelID);
+        
+        return $this->db->update('judge_contest_levels');
+        //return $this->db->insert_id();
     }
 
     public function deleteUserById($id){
