@@ -6,11 +6,11 @@
 							<h2 class="small">Contest Rank</h2>
 						</div>
 						<div class="col-md-6 text-center text-md-right">
-							<!-- <ol class="breadcrumb">
-								<li> <a href="<?php //echo base_url('user/landing');?>">Dashboard</a> </li>
-								<li> <a href="#">Current Contests</a> </li>
+							<ol class="breadcrumb">
+								<li> <a href="<?php echo base_url('userranking/contestList');?>">Ranking</a> </li>
+								<li> <a href="<?php echo base_url('userranking/contestList');?>">Contests</a> </li>
 								
-							</ol> -->
+							</ol>
 						</div>
 					</div>
 				</div>
@@ -24,28 +24,35 @@
 							<table width="100%" class="table table-hover" border="0" cellspacing="0" cellpadding="0">
 								  <tbody>
 									<tr>
+									  <th><strong>S No</strong></th>
 									  <th><strong>Contest Name</strong></th>
 									  <th><strong>Start Date</strong></th>
 									  <th><strong>End Date</strong></th>
 									  <th><strong>Created Date</strong></th>
-									  <th><strong>Status</strong></th>
+									  <th><strong>Rank</strong></th>
 									</tr>
 									<?php 
-                                                   // print_r($contests);
+												   // print_r($contests);
+												   $i = 1;
                                                 if($contests):
 													foreach($contests as $row):
 													 $status = $row->status == 1 ? 'Active' : 'Inactive';
 													 $class = $row->status == 1 ? 'badge-success' : 'badge-danger';?>
 
-									<tr data-href="levelList/?id=<?php echo $row->id?>" style="cursor:pointer;">
+									<tr>
+									<td><?php echo $i;?></td>
 									<td><?php echo $row->contestName;?></td>
-													<td><?php echo date('d-m-Y', strtotime($row->startDate));?></td>
-													<td><?php echo date('d-m-Y', strtotime($row->endDate));?></td>
-													<td><?php echo $row->createdDate;?></td>
-													<td><span class="badge <?php echo $class;?>"><?php echo $status;?></span></td>
+									<td><?php echo date('d-m-Y', strtotime($row->startDate));?></td>
+									<td><?php echo date('d-m-Y', strtotime($row->endDate));?></td>
+									<td><?php echo $row->createdDate;?></td>
+									<!-- <td><span class="badge <?php //echo $class;?>"><?php echo $status;?></span></td> -->
+									<td><a href="<?php echo base_url('userranking/levelList');?>/?id=<?php echo $row->id?>" >Click here</a></td>
 									</tr>
-									<?php endforeach;
-								else :?>
+									<?php 
+										$i++;
+										endforeach;
+										else :
+									?>
 								<tr>
 								  <td colspan="4">Data not found!</td>
 								</tr>

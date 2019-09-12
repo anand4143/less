@@ -140,17 +140,18 @@ class Judges extends CI_Model{
 
     public function saveDataUserSmuleTable($data){
         //$this->db->select('userSmuleID,judgeID');
-        $this->db->select('judgeID');
+        $this->db->select('id');
         $this->db->from('users_judge');
         $this->db->where('judgeID',$data['judgeID']);
         //$this->db->where('userID',$data['userID']);
         $this->db->where('contestID',$data['contestID']);
         $this->db->where('levelsID',$data['levelsID']);
-       // $this->db->where('userSmuleID',$data['userSmuleID']);
+        //$this->db->where('userContestReportID' 'IS NULL');
+        $this->db->where(array('userContestReportID' => NULL));
         $q = $this->db->get();
-        //return $this->db->last_query();exit;
+       // echo  $this->db->last_query();
         $row = $q->result();
-       //print_r($q->num_rows());exit;
+       //echo "<li>===> ".$q->num_rows();exit;
        if($q->num_rows() > 0){
             $ret = $q->row();       
             return "not allow";

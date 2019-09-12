@@ -6,11 +6,11 @@
 							<h2 class="small">Voting Open</h2>
 						</div>
 						<div class="col-md-6 text-center text-md-right">
-							<ol class="breadcrumb">
-								<li> <a href="<?php echo base_url('user/landing');?>">Dashboard</a> </li>
+							<!-- <ol class="breadcrumb">
+								<li> <a href="<?php //echo base_url('user/landing');?>">Dashboard</a> </li>
 								<li> <a href="#">Voting Open</a> </li>
 								
-							</ol>
+							</ol> -->
 						</div>
 					</div>
 				</div>

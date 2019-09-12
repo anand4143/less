@@ -6,11 +6,11 @@
 				<h2 class="small">Contest Rank</h2>
 			</div>
 			<div class="col-md-6 text-center text-md-right">
-			<?php echo $levelList[0]->contestName; ?> Level List
-				<!-- <ol class="breadcrumb">
-						<li> <a href="<?php //echo base_url('user/landing');?>">Dashboard</a> </li>
-						<li> <a href="#">Current Contests</a> </li>
-					</ol> -->
+				<ol class="breadcrumb">
+						<li> <a href="<?php echo base_url('userranking/contestList');?>">Ranking</a> </li>
+						<li> <a href="<?php echo base_url('userranking/contestList/');?>">Contest</a> </li>
+						<li> <a href="<?php echo base_url('userranking/levelList/?id=');?><?php echo $levelList[0]->id;?>">Levels</a> </li>
+					</ol>
 			</div>
 		</div>
 	</div>
@@ -19,6 +19,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="cucontest table-responsive">
+						<div style="padding:10px;margin:10px 0px 0px 0px;"> <h3><?php echo $levelList[0]->contestName; ?></h3></div>
 							<table width="100%" class="table table-hover" border="0" cellspacing="0" cellpadding="0">
 							<tbody>
 								<th><strong>Level Name</strong></th>

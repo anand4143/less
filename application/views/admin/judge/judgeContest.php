@@ -27,7 +27,7 @@
 							</thead>
 							<tbody>
 								<?php
-								echo "<pre>";print_r($judgeListWithContestLevel);
+								//echo "<pre>";print_r($judgeListWithContestLevel);
 								$i = 1; 
 								if($judgeList):
 									foreach($judgeListWithContestLevel as $judge):
@@ -67,7 +67,7 @@
 									</td>  
                                     <td class="w-10">
 									<?php if($judge->contestId){?>
-										<button type="button" id="edit<?php echo $judge->id?>" onClick="editJudgefuntion(<?php echo $judge->id;?>,<?php echo $judge->contestId;?>,<?php echo $judge->levelId;?>,'<?php echo $judge->firstName;?>','<?php echo $judge->lastName;?>','<?php echo $judge->email;?>')" data-toggle="modal" data-target="#editModal" class="btn btn-outline-primary">Edit Judge</button>
+										<button type="button" id="edit<?php echo $judge->id?>" onClick="editJudgefuntion(<?php echo $judge->id;?>,<?php echo $judge->contestId;?>,<?php echo $judge->levelId;?>,'<?php echo $judge->firstName;?>','<?php echo $judge->lastName;?>','<?php echo $judge->email;?>')" data-toggle="modal" data-target="#editModal" class="btn btn-outline-primary" style="min-width:120px;">Edit Judge</button>
 										<?php }else{?> 
 											<button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-primary"  onClick="managePopup(<?php echo $judge->id;?>)">Assign Judge</button>
 										<?php }?>                     

@@ -7,19 +7,22 @@
 			</div>
 			<div class="col-md-6 text-center text-md-right">
             <?php 
-                        if(isset($report[0]->contestName)){
-                            echo $report[0]->contestName;
-                        }                   
+                        // if(isset($report[0]->contestName)){
+                        //     echo $report[0]->contestName;
+                        // }                   
                          
-                         if(isset($report[0]->levelName)){
-                            echo "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;".$report[0]->levelName;
-                        }
+                        //  if(isset($report[0]->levelName)){
+                        //     echo "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;".$report[0]->levelName;
+                        // }
                        
             ?>
-				<!-- <ol class="breadcrumb">
-						<li> <a href="<?php //echo base_url('user/landing');?>">Dashboard</a> </li>
-						<li> <a href="#">Current Contests</a> </li>
-					</ol> -->
+				<ol class="breadcrumb">
+						<li> <a href="<?php echo base_url('userranking/contestList');?>">Ranking</a> </li>
+						<li> <a href="<?php echo base_url('userranking/contestList');?>">Contests</a> </li>
+						<li> <a href="<?php echo base_url('userranking/contestList');?>">Level</a> </li>
+						<li> <a href="void:javascript(0);">Rank</a></li>
+						
+					</ol>
 			</div>
 		</div>
 	</div>
@@ -54,7 +57,7 @@
                                                 <?php 
                                                 $i =1;
                                                    //echo "<pre>"; print_r($report);
-                                                if(isset($report)){
+                                                if(isset($report) && count($report) > 0){
 													foreach($report as $row):                                                    
                                                 ?>
 												<tr>
@@ -187,7 +190,7 @@
 													
 												</tr>
 												<?php $i++;endforeach;
-												}else{?>
+												}else{ ?>
                                                 <td colspan='16' align='center'>No Level found!</td>
 												<?php }?>
 											</tbody>
