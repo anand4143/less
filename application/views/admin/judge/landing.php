@@ -55,14 +55,20 @@
 												 	if($user['assginJudge'] && ($user['assginJudge'] != $judgeID) ){
 												 ?>
 												 
-												 <a href="javascript:void(0);" title="Allready in judging by other judge"  onClick="allreadyJudge();">
+												 <a href="javascript:void(0);" title="judging in progress"  onClick="allreadyJudge();">
 												  <i class='fa fa-balance-scale' style='font-size:30px;color:red'></i></a>
 
-													 <?php }else if($user['assginJudge'] && ($user['assginJudge'] == $judgeID)){?>
+													 <?php }else if($user['assginJudge'] && ($user['assginJudge'] == $judgeID) && $user['userContestReportID'] == 0){?>
 												  <a href="javascript:void(0);" title="You are judging this song" data-toggle="modal" data-target="#exampleModalForms" onClick="parameterPopup(<?php echo $user['userID']?>,<?php echo $user['contestID']?>,<?php echo $user['levelID']?>,<?php echo $user['smuleID']?>,<?php echo $judgeID ?>);">
 												  <i class='fa fa-balance-scale songID<?php echo $user['smuleID']?>' style='font-size:30px;color:orange'></i></a>
 												  
-												  <?php }else{?>
+												  <?php 
+												  	}else if($user['userContestReportID'] != 0 ){												  
+												 ?>
+												  <a href="javascript:void(0);" title="judgement completed" data-toggle="modal" data-target="#exampleModalForms" onClick="parameterPopup(<?php echo $user['userID']?>,<?php echo $user['contestID']?>,<?php echo $user['levelID']?>,<?php echo $user['smuleID']?>,<?php echo $judgeID ?>);">
+												  <i class='fa fa-balance-scale songID<?php echo $user['smuleID']?>' style='font-size:30px;color:#130CFC'></i></a>
+
+													  <?php }else{?>
 													<a href="javascript:void(0);" title="You can pic this song" data-toggle="modal" data-target="#exampleModal" onClick="openPopup(<?php echo $user['userID']?>,<?php echo $user['contestID']?>,<?php echo $user['levelID']?>,<?php echo $user['smuleID']?>,<?php echo $judgeID ?>);">
 												  <i class='fa fa-balance-scale' style='font-size:30px;color:green'></i></a> 
 												  <?php } ?>
@@ -510,7 +516,7 @@ function saveJudgeParameters(){
 				$("#msg").text("Something went wrong.Please try later");
 				$('#exampleModalsuccess').modal('show');	
 			}		
-			//location.reload();
+			location.reload();
 		}
 	});
 	}
@@ -571,7 +577,7 @@ function saveJudgeParameters(){
 			   $("#msg").text("Something went wrong.Please try later");
 			   $('#exampleModalsuccess').modal('show');	
 		   }		
-		   //location.reload();
+		   location.reload();
 	   }
    });
 	}

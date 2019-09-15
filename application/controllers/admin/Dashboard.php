@@ -59,7 +59,7 @@ class Dashboard extends MY_Controller {
        $judgeId = $currentUser['id'];
         $data['allUserSongListOfRunningContests'] = $this->judges->allUserSongListOfRunningContests( $judgeId);
     //     $data['songAssignToJudge'] = $this->judges->getAllSongAssignToJudges();
-    //     echo "<pre>";print_r($data);
+         //echo "<pre>";print_r($data);
     //    die('judge landing');
         $this->load->view('admin/judge/landing',$data);
         

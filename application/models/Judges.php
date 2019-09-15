@@ -102,7 +102,7 @@ class Judges extends CI_Model{
     public function allUserSongListOfRunningContests( $judgeId){
 
         $query = $this->db->query(
-            'SELECT t1.id as userID,t1.email as userEmail,t3.id as contestID,t3.contestName,t2.id as smuleID,t2.smuleUrl, t4.id as levelID,t4.levelName,t5.judgeID as assginJudge FROM users t1
+            'SELECT t1.id as userID,t1.email as userEmail,t3.id as contestID,t3.contestName,t2.id as smuleID,t2.smuleUrl, t4.id as levelID,t4.levelName,t5.judgeID as assginJudge,t5.userContestReportID,t5.id FROM users t1
         right join user_smule t2 
         on t2.userID = t1.id
         left join judge_contest_levels t6
@@ -115,7 +115,7 @@ class Judges extends CI_Model{
         left join users_judge t5
         on t5.userSmuleID = t2.id 
         where t2.contestID = t6.contestID and t6.judgeID=
-        '. $judgeId);
+        '. $judgeId.' order by t5.id desc');
         //left join judge_contest_levels t6	on t2.contestID = t6.contestID and t2.levelID=t6.levelID and t3.id = t6.contestID and t4.id = t6.levelID
         // $query = $this->db->query('SELECT t1.id as userID,t1.email as userEmail,t3.id as contestID,t3.contestName,t2.id as smuleID,t2.smuleUrl, t4.id as levelID,t4.levelName FROM users t1
         // right join user_smule t2 
@@ -147,7 +147,7 @@ class Judges extends CI_Model{
         $this->db->where('contestID',$data['contestID']);
         $this->db->where('levelsID',$data['levelsID']);
         //$this->db->where('userContestReportID' 'IS NULL');
-        $this->db->where(array('userContestReportID' => NULL));
+        $this->db->where(array('userContestReportID' => 0));
         $q = $this->db->get();
        // echo  $this->db->last_query();
         $row = $q->result();

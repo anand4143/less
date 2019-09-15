@@ -10,7 +10,7 @@ class Cron_model extends CI_Model{
   public function selectRows(){
         $this->db->select("*");
         $this->db->from('users_judge');
-        $this->db->where(array('userContestReportID' => NULL));
+        $this->db->where(array('userContestReportID' => 0));
         $this->db->where('judgementTime <=Date_sub(now(),interval 1 hour)');
 		//$this->db->where('judgementTime <=Date_sub(now(),interval 5 minute)');
         $query = $this->db->get();
