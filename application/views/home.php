@@ -33,8 +33,15 @@
 	                </a> </div>
 							<!-- header toggler --><span class="toggle_menu"><span></span></span>
 						</div>
-						<div class="col-sm-5 col-sm-pull-2 hidden-xs"> <span class="small-text rightpadding_20 hidden-sm">follow us:</span> <span class="divided-content">
-					<span><a class="social-icon socicon-facebook" href="#" title="Facebook"></a></span> <span><a class="social-icon socicon-twitter" href="#" title="Twitter"></a></span> <span><a class="social-icon socicon-linkedin" href="#" title="linkedin"></a></span>							 </span>
+						<div class="col-sm-5 col-sm-pull-2 hidden-xs"> 
+							<span class="small-text rightpadding_20 hidden-sm">follow us:</span> 
+							<span class="divided-content">
+								<span>
+									<a class="social-icon socicon-facebook" href="#" title="Facebook"></a>
+								</span>
+								<span><a class="social-icon socicon-twitter" href="#" title="Twitter"></a></span> 
+								<span><a class="social-icon socicon-linkedin" href="#" title="linkedin"></a></span>
+							</span>
 						</div>
 						<div class="col-sm-5 text-left text-sm-right">
 							<div class="divided-content small-text greylinks color2">
@@ -75,19 +82,20 @@
 										</ul>
 									</li>
 									<li class=""> 
-									<a class="nav-link" href="<?php echo site_url('userranking/contestList') ?>">Ranking</a>
-									<li><a class="" href="<?php echo site_url('votings/index') ?>">Voting</a></li>
+									<a class="nav-link" href="<?php echo site_url('meraganacontest') ?>">Mera Gana Contest</a>
+									<!-- <a class="nav-link" href="<?php //echo site_url('userranking/contestList') ?>">Ranking</a> -->
+									<!-- <li><a class="" href="<?php //echo site_url('votings/index') ?>">Voting</a></li> -->
 										
 									</li>
 									
-									<li> <a href="#">About</a>
+									<!-- <li> <a href="#">About</a>
 										<ul>
 											<li> <a href="#">About Us</a> </li>
 											<li> <a href="#">Career</a> </li>
 											<li> <a href="#">Gallery</a> </li>
 										</ul>
 									</li>
-									<li class=""> <a href="<?php echo base_url('votings');?>">Voting</a></li>
+									<li class=""> <a href="<?php echo base_url('votings');?>">Voting111111111111</a></li> -->
 								</ul>
 							</nav>
 						</div>
@@ -112,13 +120,13 @@
 												<div class="intro-layer" data-animation="fadeInUp">
 													<p class="small-text bannertxt"> We Are No Super stars<br> We Are No Less<br>Either!</p>
 												</div>
-												<div class="intro-layer" data-animation="fadeInUp">
+												<!-- <div class="intro-layer" data-animation="fadeInUp">
 													<p class="topmargin_30">
 														<a href="#0" class="theme_button inverse min_width_button bannerbtn" >
 															Become A Lesssuperstar
 														</a>
 											</p>
-												</div>
+												</div> -->
 											</div>
 											
 										</div>
@@ -143,8 +151,8 @@
 						<div class="col-md-5 col-md-pull-7">
 							<h2 class="section_header"> <span class="small">Mera Gaana</span> Contest </h2>
 							<hr class="header_divider">
-							<p> Smule Sing! In association with LessSuperstars has brought a once in a life time opportunity for you. Few simple steps to follow and you’re ready to sore high in the sky.</p>
-							<div class="content-justify vertical-center content-margins topmargin_25"> <a href="about.html" class="theme_button color min_width_button">Read more</a>
+							<p> Smule Sing! In association with LessSuperstars has brought a once in a life time opportunity for you. Few simple steps to follow and you’re ready to sore high in the sky. Read more about the contest.</p>
+							<div class="content-justify vertical-center content-margins topmargin_25"> <a href="<?php echo base_url('meraganacontest')?>" class="theme_button color min_width_button">CLICK HERE</a>
 							</div>
 						</div>
 					</div>
@@ -165,7 +173,7 @@
 										<div class="entry-content">
 											<div class="toppadding_20">
 												<p class="content-3lines-ellipsis"> Ever thought of recording a cover version or thought of doing a Karaoke to impress someone? Are you a Singer / Song writer then you must have thought about recording your own </p>
-												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">Read More</a> </p>
+												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">CLICK HERE</a> </p>
 											</div>
 										</div>
 									</div>
@@ -178,7 +186,7 @@
 										<div class="entry-content">
 											<div class="toppadding_20">
 												<p class="content-3lines-ellipsis">Our services include creation of music videos for individual songs or complete album, shooting of commercial films, ads/commercials or documentary for your video production. With our expert industrial videographers and video editor</p>
-												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">Read More</a> </p>
+												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">CLICK HERE</a> </p>
 											</div>
 										</div>
 									</div>
@@ -191,7 +199,7 @@
 										<div class="entry-content">
 											<div class="toppadding_20">
 												<p class="content-3lines-ellipsis">We have a team of professionals who will make sure that the output you get is nothing less than WOW. We specialize in concept based shoots, model portfolios, wedding shoots, cake...</p>
-												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">Read More</a> </p>
+												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">CLICK HERE</a> </p>
 											</div>
 										</div>
 									</div>
@@ -204,7 +212,7 @@
 										<div class="entry-content">
 											<div class="toppadding_20">
 												<p class="content-3lines-ellipsis">Science, technology, progress: they bring us great boons. But often, the new is complex and unfamiliar – and very difficult to explain. That idea that might change the world can sometimes...</p>
-												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">Read More</a> </p>
+												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">CLICK HERE</a> </p>
 											</div>
 										</div>
 									</div>
@@ -217,7 +225,7 @@
 										<div class="entry-content">
 											<div class="toppadding_20">
 												<p class="content-3lines-ellipsis">We have different range of promotional packages for your album/video/film or any audio/video project. We have options of traditional media, which includes newspaper ...</p>
-												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">Read More</a> </p>
+												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">CLICK HERE</a> </p>
 											</div>
 										</div>
 									</div>
@@ -230,7 +238,7 @@
 										<div class="entry-content">
 											<div class="toppadding_20">
 												<p class="content-3lines-ellipsis">We host many talent hunt events and even gives opportunity to talents to register with us, to perform on events and shows. We hold regular auditions for singers, musicians and actors for different productions and event shows...</p>
-												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">Read More</a> </p>
+												<p class="topmargin_30"> <a href="team-single.html" class="theme_button inverse min_width_button margin_0">CLICK HERE</a> </p>
 											</div>
 										</div>
 									</div>

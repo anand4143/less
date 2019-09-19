@@ -138,7 +138,50 @@ class User extends MY_Controller {
 			}
 		}
 		echo json_encode($resp_data);
-    }
+	}
+	
+
+	public function forgetPassword(){
+		$data = array();
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('email', 'Email Address', 'required|trim|valid_email');
+		//$this->form_validation->set_rules('oldpassword', 'Old password', 'trim|required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('confirmPassword', 'Confirm Password', 'required|matches[password]');
+		if($this->form_validation->run() == FALSE){		
+			$this->load->view('frontend/login/forgetpassword');
+		}else{
+			//echo "<pre>";
+			//print_r($this->input->post());
+			$email = $this->input->post('email');
+			//$email = $this->input->post('oldpassword');
+			$password = $this->input->post('password');
+			$confirmPassword = $this->input->post('confirmPassword');
+			if($password == $confirmPassword){
+				$password = md5($this->input->post('password'));
+				$data = array(
+					"email" => $email,
+					"password" => $password
+				);
+				$result = $this->users->forgetPassword($data);
+				//print($result) ;die('dddd');
+				if($result) {
+					$this->session->set_flashdata('changePasswordSuccess',"Your password change successfully");
+					redirect('login');
+				} else {
+					$this->session->set_flashdata('Error',"Something went wrong. Please try later");
+					//redirect('login');
+					redirect('login/forgetpassword');
+					//$this->load->view('frontend/login/forgetpassword');
+				}
+			}else{
+				echo "success";
+			}
+			
+
+			
+		}
+	}
 
     
 

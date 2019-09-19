@@ -114,7 +114,13 @@ class Users extends CI_Model{
 		   return false;	
 		}			
         return $rs->row();
-	}
+    }
+    
+    public function forgetPassword($data){
+        $this->db->where('email', $data['email']);
+		return $this->db->update('users', $data);
+		//$this->db->update('users', $data);
+    }
 }
 
 

@@ -21,6 +21,8 @@
 				<?php echo $this->session->flashdata('error'); ?>
 				<?php echo $this->session->flashdata('registerSuccess'); ?>
 				<?php echo $this->session->flashdata('registerError'); ?>
+				<span class="text-green text-success"><?php echo $this->session->flashdata('changePasswordSuccess'); ?></span>
+				
                 <!-- <form class="contact-form row columns_padding_5" method="post" action="http://webdesign-finder.com/html/thecrowd/"> -->
                     <?php echo form_open('user/dashboard',['class'=>'contact-form row columns_padding_5']);?>
 								<div class="col-sm-12">
