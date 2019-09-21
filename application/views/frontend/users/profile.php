@@ -1,38 +1,57 @@
 <?php  $this->view('templates/frontend/header.php');?>
+<?php 
+	if(isset($userProfileImage->profileImageName)){
+		$pImage = $userProfileImage->profileImageName;
+	}else{
+		$pImage = 'profile.png';
+	}
+	if(isset($userProfileImage->coverImageName)){
+		$cImage = $userProfileImage->coverImageName;
+				
+	}else{
+		$cImage = 'cover.jpg';				
+	}
+	
+?>
 <div class="container">
-			<div class="coverimgcontainer">
-				<img src="<?php echo base_url('assets/frontend/images/cover.jpg');?>"/>
-				<div class="profileimage"><img src="<?php echo base_url('assets/frontend/images/profile.jpg');?>"/></div>
+			<div class="coverimgcontainer">				
+				<img src="<?php echo base_url('assets/profileImages/crop/').$cImage;?>"/>
+				<div class="profileimage"><img src="<?php echo base_url('assets/profileImages/').$pImage;?>"/>
 			</div>
+			</div>
+			<form enctype="multipart/form-data" id="image_submit" method="POST">
 			<div class="editimgbutton">
 				<div class="row">
 					<div class="col-sm-5 imguptxt">
 					Update Cover/Profile Image
 					<ul class="list-inline">
 							<li><div class="radio"> <label>
-								<input type="radio" name="optionsRadios"> Profile Image
+								<input type="radio" name="imgtype" value="P"> Profile Image
 							</label> </div>
 							</li>
 							<li><div class="radio"> <label>
-								<input type="radio" name="optionsRadios"> Cover Image
+								<input type="radio" name="imgtype" value="C"> Cover Image
 							</label> </div>
 							</li>
 							
 						</ul>
 					</div>
-					<div class="col-sm-7">
-					<div class="imgfile">
-						
-						<div class="box">
-									<input type="file" name="file-2[]" id="file-2" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" multiple />
-									<label for="file-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Select Image&hellip;</span></label>
-								</div>
-						</div>
+					<div class="col-sm-5">
+						<div class="imgfile">						
+							<div class="box">
+								<!-- <input type="file" name="file-2[]" id="file-2" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" multiple /> -->
+								<input name="file" type="file"  id="file-2" class="inputfile inputfile-2" data-multiple-caption="{count} files selected" multiple />
+								<label for="file-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Select Image&hellip;</span></label>
+							</div>
+						</div>						
+					</div>
+					<div class="col-sm-2">
+						<button type="submit" class="theme_button color btn-block" id="sub">Save</button>
 					</div>
 				</div>
 			</div>
 			</div>
-			
+			</form>
 			
 			<section class="dcommoncontainer">
 				<div class="container">
@@ -134,4 +153,30 @@ function participate_contest(obj){
 		window.location.href = url;
 	}
 }
+
+$(document).ready(function(){
+	$("#image_submit").on('submit', function(e){
+		e.preventDefault(); 
+         $.ajax({
+             url:'<?php echo base_url()?>user/do_upload',
+             type:"post",
+             data:new FormData(this),
+             processData:false,
+             contentType:false,
+             cache:false,
+             async:false,
+              success: function(data){
+				  //alert(data)
+				  if(data){
+					alert("Image uploaded successfully");
+
+				  }
+				location.reload();
+           }
+         });
+	});
+});
+
+
+
 </script>

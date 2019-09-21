@@ -115,11 +115,52 @@ class Users extends CI_Model{
 		}			
         return $rs->row();
     }
+
+    public function getUserProfileImage($id){
+        $rs = $this->db->get_where('users_profile', array( 'userID' => $id));
+        //print_r($this->db->last_query());
+		if($rs->num_rows() == 0){
+				return false;
+		}
+		return $rs->row();
+
+    }
     
     public function forgetPassword($data){
         $this->db->where('email', $data['email']);
 		return $this->db->update('users', $data);
 		//$this->db->update('users', $data);
+    }
+
+    public function uploadProfileImage($uploadType,$imagename,$fullpath,$userid){
+        if($uploadType == 'P'){
+            $data = array(
+                'userID' => $userid,
+                'profileImageName' => $imagename,
+                'profileImagePath' => $fullpath
+            );
+
+        }else if($uploadType == 'C'){
+            $data = array(
+                'userID' => $userid,
+                'coverImageName' => $imagename,
+                'coverImagePath' => $fullpath
+            );
+        }else{
+            return "fail";
+        }       
+        $rs = $this->db->select('*')
+					->where('userID', $userid)
+					->limit(1)
+                    ->get('users_profile');
+                    //echo $rs->num_rows();
+		if($rs->num_rows() == 0){
+           return  $this->db->insert('users_profile', $data);
+		}else{
+            $this->db->where('userID', $userid);
+            return $this->db->update('users_profile', $data);
+        }			
+       
     }
 }
 

@@ -49,7 +49,8 @@ class User extends MY_Controller {
         $data['sessionData'] = $this->getSessionData();
        // echo "<pre>";print_r($loginUser['userID']);
         $data['user'] = $this->users->getUser( $data['sessionData']['userID']);
-        //echo '<pre>';print_r($userData);die;
+        $data['userProfileImage'] = $this->users->getUserProfileImage( $data['sessionData']['userID']);
+       // echo '<pre>';print_r($data);die;
 		
 		
 		$data['contests'] = $this->contest_m->current_contest_list($data['sessionData']['userID']);
@@ -183,7 +184,117 @@ class User extends MY_Controller {
 		}
 	}
 
-    
+    public function profileImage(){
+        $config['upload_path']="./assets/profileImages/";
+        $config['allowed_types']='gif|jpg|png';
+		$this->load->library('upload',$config);
+		//print_r( $this->upload->do_upload());
+		if($this->upload->do_upload('file')){
+			$data = array('upload_data' => $this->upload->data());
+			$data['sessionData'] 	= $this->getSessionData();
+			$userid 				= $data['sessionData']['userID'];
+			$uploadType 			= $this->input->post('imgtype');
+			$imagename				= $data['upload_data'] ['file_name'];
+			$fullpath				= $data['upload_data'] ['full_path'];
+			echo $result = $this->users->uploadProfileImage($uploadType,$imagename,$fullpath,$userid);
+
+				 //store the file info
+				
+
+	 }
+	}
+    public function do_upload(){
+		$uploadType 			= $this->input->post('imgtype');
+		if($uploadType == 'P'){
+			$config['upload_path']="./assets/profileImages/";
+			$config['allowed_types']='gif|jpg|png';
+			$this->load->library('upload',$config);
+			//print_r( $this->upload->do_upload());
+			if($this->upload->do_upload('file')){
+				$data = array('upload_data' => $this->upload->data());
+				$data['sessionData'] 	= $this->getSessionData();
+				$userid 				= $data['sessionData']['userID'];
+				$uploadType 			= $this->input->post('imgtype');
+				$imagename				= $data['upload_data'] ['file_name'];
+				$fullpath				= $data['upload_data'] ['full_path'];
+				echo $result = $this->users->uploadProfileImage($uploadType,$imagename,$fullpath,$userid);
+		 }
+		}else{
+			$config['upload_path']="./assets/profileImages/";
+			$config['allowed_types']='gif|jpg|png';
+			$this->load->library('upload',$config);
+			if($this->upload->do_upload('file')){
+				$image_data = $this->upload->data();
+				//print_r($image_data);
+				$this->resize_image($image_data);
+			}
+		}
+		
+				
+	}
+
+
+
+
+	public function resize_image($image_data){
+		$this->load->library('image_lib');
+		$w = $image_data['image_width']; // original image's width
+		$h = $image_data['image_height']; // original images's height
+	
+		$n_w = 1140; // destination image's width
+		$n_h = 356; // destination image's height
+	
+		$source_ratio = $w / $h;
+		$new_ratio = $n_w / $n_h;
+		if($source_ratio != $new_ratio){
+	
+			$config['image_library'] = 'gd2';
+			$config['source_image'] = $image_data['full_path'];
+			$config['maintain_ratio'] = FALSE;
+			if($new_ratio > $source_ratio || (($new_ratio == 1) && ($source_ratio < 1))){
+				$config['width'] = $w;
+				$config['height'] = round($w/$new_ratio);
+				$config['y_axis'] = round(($h - $config['height'])/2);
+				$config['x_axis'] = 0;
+	
+			} else {
+	
+				$config['width'] = round($h * $new_ratio);
+				$config['height'] = $h;
+				$size_config['x_axis'] = round(($w - $config['width'])/2);
+				$size_config['y_axis'] = 0;
+	
+			}
+	
+			$this->image_lib->initialize($config);
+			$this->image_lib->crop();
+			$this->image_lib->clear();
+		}
+		$config['image_library'] = 'gd2';
+		$config['source_image'] = $image_data['full_path'];
+		//$config['new_image'] = './uploads/new/resized_image.jpg';
+		$config['new_image'] = './assets/profileImages/crop/'.$image_data['file_name'];
+		$config['maintain_ratio'] = TRUE;
+		$config['width'] = $n_w;
+		$config['height'] = $n_h;
+		$this->image_lib->initialize($config);
+	
+		if (!$this->image_lib->resize()){
+	
+			echo $this->image_lib->display_errors();
+	
+		} else {
+			$data['sessionData'] 	= $this->getSessionData();
+			$userid 				= $data['sessionData']['userID'];
+			$uploadType 			= $this->input->post('imgtype');
+			$imagename				= $image_data['file_name'];
+			$fullpath				= $image_data['full_path'];
+			return $result = $this->users->uploadProfileImage($uploadType,$imagename,$fullpath,$userid);
+			//echo "done";
+	
+		}
+	}
+
 
 
 }

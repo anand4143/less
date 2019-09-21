@@ -22,7 +22,8 @@
 					<div class="col-sm-6">
 						<div class="dashboardboxes apsc-facebook-icon">
 						<a href="<?php echo base_url('meraganacontest/information');?>">
-						<i class="fa fa-users"></i>
+                        <!-- <i class="fa fa-users"></i> -->
+                        <i class="fa fa-trophy" style="color:white"></i>
                         Mera Gana Contest
 						</a>
 					</div>
@@ -48,7 +49,7 @@
 					</div>
                     </div>
 
-                    
+
                     
                     <div class="col-sm-6">
 						<div class="dashboardboxes apsc-instagram-icon">
