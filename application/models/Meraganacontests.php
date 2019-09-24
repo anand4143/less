@@ -13,6 +13,11 @@ public function getMeraganacontestDesc(){
     }       
 }
 
+public function saveMeraganacontestDesc($data){
+    $this->db->where('id', 1);
+    return $this->db->update('meraganacontest', $data);
+}
+
 
 }
 
