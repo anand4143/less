@@ -18,8 +18,8 @@
 <section class="dcommoncontainer">
 				<div class="container">
 					<div class="row">
-						<div class="cucontest table-responsive">
-						<div style="padding:10px;margin:10px 0px 0px 0px;"> <h3><?php echo $levelList[0]->contestName; ?></h3></div>
+						<div class="cucontest table-responsive contestlistBLog" style="padding: 20px; margin-top: 40px;text-align: left">
+						<div> <strong><h4><?php echo $levelList[0]->contestName; ?></h4></strong></div>
 							<table width="100%" class="table table-hover" border="0" cellspacing="0" cellpadding="0">
 							<tbody>
 								<th><strong>Level Name</strong></th>
@@ -31,7 +31,7 @@
                                                 ?>
 												<tr>
 													<td><?php echo $row->levelName;?></td>
-													<td><a href="<?php echo base_url('userranking/userLevelRanking');?>/?cId=<?php echo $row->contestID?>&lId=<?php echo $row->id?>" >View Ranking</a></td>
+													<td><a href="<?php echo base_url('userranking/userLevelRanking');?>/?cId=<?php echo $row->contestID?>&lId=<?php echo $row->id?>" >View Ranking  <i class="fa fa-external-link-square"></i></a></td>
 												</tr>
 												<?php endforeach;
 												endif;?>

@@ -1,21 +1,20 @@
 <?php  $this->view('templates/frontend/header.php');?>
 <?php 
-	if(isset($userProfileImage->profileImageName) && $userProfileImage->profileImageName !=''){
+	if(isset($userProfileImage->profileImageName)){
 		$pImage = $userProfileImage->profileImageName;
 	}else{
 		$pImage = 'profile.png';
 	}
-	if(isset($userProfileImage->coverImageName) && $userProfileImage->coverImageName !=''){
-		$cImage = $userProfileImage->coverImageName;	
+	if(isset($userProfileImage->coverImageName)){
+		$cImage = $userProfileImage->coverImageName;
+				
 	}else{
 		$cImage = 'cover.jpg';				
 	}
 	
 ?>
 <div class="container">
-		<div class="relativeDiv">
-			<div class="coverimgcontainer">
-							
+			<div class="coverimgcontainer">				
 				<img src="<?php echo base_url('assets/profileImages/crop/').$cImage;?>"/>
 				<div class="profileimage"><img src="<?php echo base_url('assets/profileImages/').$pImage;?>"/>
 			</div>
@@ -24,14 +23,14 @@
 			<div class="editimgbutton">
 				<div class="row">
 					<div class="col-sm-5 imguptxt">
-					Profile Image/Update Cover
+					Update Cover/Profile Image
 					<ul class="list-inline">
 							<li><div class="radio"> <label>
-								<input type="radio" id="imgtype1" name="imgtype" value="P"> Profile Image
+								<input type="radio" name="imgtype" value="P"> Profile Image
 							</label> </div>
 							</li>
 							<li><div class="radio"> <label>
-								<input type="radio" id="imgtype2" name="imgtype" value="C"> Cover Image
+								<input type="radio" name="imgtype" value="C"> Cover Image
 							</label> </div>
 							</li>
 							
@@ -114,9 +113,9 @@
 		<table width="100%" class="table table-hover" border="0" cellspacing="0" cellpadding="0">
 		  <tbody>
 			<tr>
-			  <th style="width: 30%"><i class="fa fa-trophy"></i><strong> Contest Name</strong></th>
-			  <th style="width: 25%"><i class="fa fa-calendar"></i><strong> Start Date</strong></th>
-			  <th style="width: 25%"><i class="fa fa-calendar"></i><strong> End Date</strong></th>
+			  <th style="width: 30%"><strong>Contest Name</strong></th>
+			  <th style="width: 25%"><strong>Start Date</strong></th>
+			  <th style="width: 25%"><strong>End Date</strong></th>
 			  <th style="width: 20%"><strong>Action</strong></th>
 			</tr>
 			<?php 
@@ -129,10 +128,10 @@
 			  <td><?php echo date('d-m-Y', strtotime($row->endDate));?></td>
 			  <td>
 				<?php if(!empty($row->userID)) :?>
-				<a  href="<?php echo base_url('contests/contest_details/'.$row->id);?>" ><button class="theme_button color btn-block">View</button></a>
+				<a class="theme_button color" href="<?php echo base_url('contests/contest_details/'.$row->id);?>" >View</a>
 				
 				<?php else :?>
-				 <a  href="javascript:void(0);" data-url="<?php echo base_url('contests/participate/'.$row->id.'/'.$row->levelID);?>" onclick="participate_contest(this);"><button class="theme_button color btn-block">Participate</button></a>
+				 <a class="theme_button color" href="javascript:void(0);" data-url="<?php echo base_url('contests/participate/'.$row->id.'/'.$row->levelID);?>" onclick="participate_contest(this);">Participate</a>
 				<?php endif;?>
 			  </td>
 			</tr>
@@ -158,16 +157,6 @@ function participate_contest(obj){
 $(document).ready(function(){
 	$("#image_submit").on('submit', function(e){
 		e.preventDefault(); 
-		var radioTypeVal = $("input[name=imgtype]:checked").val();
-		var imgVal = $("#file-2").val();
-		if( radioTypeVal == undefined){
-			alert("Please select Profile Image/Update Cover option");
-			return false;
-		}else if(imgVal == ''){
-			alert("Please select Profile Image/Update Cover image");
-			return false;
-		}else{		
-		
          $.ajax({
              url:'<?php echo base_url()?>user/do_upload',
              type:"post",
@@ -185,9 +174,7 @@ $(document).ready(function(){
 				location.reload();
            }
          });
-		}
 	});
-	
 });
 
 

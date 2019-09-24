@@ -20,16 +20,16 @@
 			<section class="dcommoncontainer">
 				<div class="container">
 					<div class="row">
-						<div class="cucontest table-responsive contestlistBLog" style="padding: 20px; margin-top: 40px;">
+						<div class="cucontest table-responsive">
 							<table width="100%" class="table table-hover" border="0" cellspacing="0" cellpadding="0">
 								  <tbody>
 									<tr>
-									  <th><i class="fa fa-sort-numeric-desc"></i><strong> S No</strong></th>
-									  <th><i class="fa fa-trophy"></i><strong> Contest Name</strong></th>
-									  <th><i class="fa fa-calendar"></i><strong> Start Date</strong></th>
-									  <th><i class="fa fa-calendar"></i><strong> End Date</strong></th>
-									  <th><i class="fa fa-calendar"></i><strong> Created Date</strong></th>
-									  <th><i class="fa fa-tasks"></i><strong> Rank</strong></th>
+									  <th><strong>S No</strong></th>
+									  <th><strong>Contest Name</strong></th>
+									  <th><strong>Start Date</strong></th>
+									  <th><strong>End Date</strong></th>
+									  <th><strong>Created Date</strong></th>
+									  <th><strong>Rank</strong></th>
 									</tr>
 									<?php 
 												   // print_r($contests);
@@ -46,8 +46,7 @@
 									<td><?php echo date('d-m-Y', strtotime($row->endDate));?></td>
 									<td><?php echo $row->createdDate;?></td>
 									<!-- <td><span class="badge <?php //echo $class;?>"><?php echo $status;?></span></td> -->
-									<td><a href="<?php echo base_url('userranking/levelList');?>/?id=<?php echo $row->id?>" >Click here 
-									 <i class="fa fa-external-link-square"></i></a></td>
+									<td><a href="<?php echo base_url('userranking/levelList');?>/?id=<?php echo $row->id?>" >Click here</a></td>
 									</tr>
 									<?php 
 										$i++;

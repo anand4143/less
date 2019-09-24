@@ -19,14 +19,14 @@
 			<section class="dcommoncontainer">
 				<div class="container">
 					<div class="row">
-						<div class="cucontest table-responsive">
+					<div class="cucontest table-responsive contestlistBLog" style="padding: 20px; margin-top: 40px;">
 							<table width="100%" class="table table-hover" border="0" cellspacing="0" cellpadding="0">
 							  <tbody>
 								<tr>
-								  <th style="width: 30%"><strong>Contest Name</strong></th>
-								  <th style="width: 25%"><strong>Registration Start Date</strong></th>
-								  <th style="width: 25%"><strong>Registration End Date</strong></th>
-								  <th style="width: 20%"><strong></strong></th>
+								  <th style="width: 30%"><i class="fa fa-trophy"></i><strong> Contest Name</strong></th>
+								  <th style="width: 25%"><i class="fa fa-calendar"></i><strong> Registration Start Date</strong></th>
+								  <th style="width: 25%"><i class="fa fa-calendar"></i><strong> Registration End Date</strong></th>
+								  <!-- <th style="width: 20%"><strong></strong></th> -->
 								</tr>
 								<?php 
 								if($upcoming_contests):

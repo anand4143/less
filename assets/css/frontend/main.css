@@ -9340,6 +9340,7 @@ body.active-side-header.slide-right .page_header_side {
 
 .page_breadcrumbs h2.small {
 	font-size: 20px;
+	font-weight: bold;
 }
 
 @media screen and (min-width: 992px) {
@@ -14918,6 +14919,7 @@ section.dcommoncontainer {
 .contestedtxt .contestName {font-size: 16px;}
 .btnVote { position: absolute; bottom: 0px; left: 120px; background:#40d8dd; color: #fff; border-radius: 4px;}
 .btnVote a {display: block; padding: 5px 15px; color: #fff;}
+.cucontest th {text-align: center;}
 
 /*******End********/
 
