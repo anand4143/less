@@ -16,6 +16,11 @@ public function getcontestDesc(){
     }       
 }
 
+public function savecontestDesc($data){
+    $this->db->where('id', 1);
+    return $this->db->update('contest_information', $data);
+}
+
 
 }
 

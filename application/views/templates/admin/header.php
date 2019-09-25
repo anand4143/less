@@ -305,7 +305,7 @@
                                             <a class="nav-link" href="<?php echo site_url('admin/adminMeraganaContest') ?>">Mera gana page</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="<?php echo site_url('admin/userranking/contestList') ?>">Contest page</a>
+                                            <a class="nav-link" href="<?php echo site_url('admin/adminContestPageInfo') ?>">Contest page</a>
                                         </li>                                      
                                     </ul>
                                 </li>
