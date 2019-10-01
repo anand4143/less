@@ -12,6 +12,8 @@
 	}
 	
 ?>
+<div id="loader"></div>
+
 <div class="container">
 		<div class="relativeDiv">
 			<div class="coverimgcontainer">
@@ -62,9 +64,33 @@
 						<div class="padding_30">
 							<div class="userpro" style="padding-left: 0px;">
 							<h5>My Info</h5>
-							<div class="infosty"><strong><i class="fa fa-user"></i></strong> <?php echo $user->firstName.' '.$user->lastName;?> </div>
-							<div class="infosty"><strong><i class="fa fa-envelope"></i></strong> <?php echo $user->email;?> </div>
-							<div class="infosty"><strong><i class="fa fa-phone"></i></strong> <?php echo $user->mobileno;?></div>
+							<div class="infosty clearfix">
+								<strong>
+									<i class="fa fa-user"></i>
+								</strong> <?php echo $user->firstName.' '.$user->lastName;?> 
+								<div class="editBTN">
+								<a href="#editName" data-toggle="modal"><i class="fa fa-pencil"></i></a>
+								</div>
+							</div>
+							<div class="infosty clearfix">
+								<strong>
+									<i class="fa fa-envelope"></i>
+								</strong> <?php echo $user->email;?> 
+								<!-- <div class="editBTN">
+									<a href="#"><i class="fa fa-pencil"></i></a>
+								</div> -->
+							</div>
+							<div class="infosty">
+								<strong>
+									<i class="fa fa-phone"></i>
+								</strong> <?php echo $user->mobileno;?>
+								<div class="editBTN">
+								<a href="#editMobileno" data-toggle="modal"><i class="fa fa-pencil"></i></a>
+								</div>
+							</div>
+							<div class="mt-20">
+							<a class="theme_button color btn-block" href="<?php echo base_url('contests/previous_contests');?>" data-toggle="modal">Previous Contest</a>
+							</div>
 							<div class="mt-20">
 							<a class="theme_button color btn-block" href="#currentcontest" data-toggle="modal">Current Contest</a>
 							</div>
@@ -79,11 +105,16 @@
 						
 						<div class="dashboardboxes mtb">
 						<div class="padding_30">
-						<h5>About Me</h5>
+						<h5>About Me 
+							<div class="editBTN">
+								<a href="#editAboutme" data-toggle="modal"><i class="fa fa-pencil"></i></a>
+							</div>
+						</h5>
 						
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+						<p>
+						<?php echo $user->aboutUser;?> 
 						
-						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+						</p>
 							</div>
 						</div>
 						
@@ -147,6 +178,120 @@
   </div>
 </div>
 
+
+
+
+
+
+
+<div id="editName" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h5 class="modal-title">Edit Name</h5>
+      </div>
+      <div class="modal-body contact-form row columns_padding_5">
+
+
+	  <?php //echo form_open('user/editName',['class'=>'contact-form row columns_padding_5']);?>
+    <div class="col-sm-12">
+        <div class="form-group bottommargin_0">                                    
+            <label for="name">First Name<span class="required">*</span></label>
+			<input type="text" class="form-control" id="fname" name="fname" placeholder="First name"/>
+            <?php 
+                //echo form_input(['class'=>'form-control','type'=>'text','aria-required'=>'true','name'=>'fname','id'=>'fname','placeholder'=>'Frist Name*']); 
+            ?>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group bottommargin_0">
+            <label for="email">Password<span class="required">*</span></label>
+			<input type="text" class="form-control" id="lname" name="lname" placeholder="Last name"/>
+            <?php 
+               //echo form_input(['class'=>'form-control','type'=>'text','aria-required'=>'true','name'=>'lname','id'=>'lname','placeholder'=>'Last Name*']); 
+            ?>
+        </div>
+    </div>
+    
+    <div class="col-sm-12">
+        <div class="contact-form-submit topmargin_10 text-center">
+            <button type="submit" name="editnameBtn" id="editnameBtn"  class="theme_button btn-block color min_width_button">Save</button>
+            
+        </div>
+    </div>
+								
+<?php //echo form_close();?>	
+       
+       
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!--update mobile no -->
+
+
+<div id="editMobileno" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h5 class="modal-title">Edit Mobile No</h5>
+      </div>
+      <div class="modal-body contact-form row columns_padding_5">
+    <div class="col-sm-12">
+        <div class="form-group bottommargin_0">                                    
+            <label for="name">Mobile no<span class="required">*</span></label>
+			<input type="text" class="form-control" id="mono" name="mono" placeholder="Mobile no"/>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="contact-form-submit topmargin_10 text-center">
+            <button type="submit" name="editMobileBtn" id="editMobileBtn"  class="theme_button btn-block color min_width_button">Save</button>
+        </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end update mobile no -->
+
+
+<!--update about me-->
+
+
+<div id="editAboutme" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h5 class="modal-title">Edit About Me</h5>
+      </div>
+      <div class="modal-body contact-form row columns_padding_5">
+    <div class="col-sm-12">
+        <div class="form-group bottommargin_0">                                    
+            <label for="name">About me<span class="required">*</span></label>
+			<textarea  class="form-control" id="aboutme" name="aboutme" placeholder="About me"></textarea>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="contact-form-submit topmargin_10 text-center">
+            <button type="submit" name="editAboutmeBtn" id="editAboutmeBtn"  class="theme_button btn-block color min_width_button">Save</button>
+        </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end update about me -->
+
+
+
 <script type="text/javascript">
 function participate_contest(obj){
 	var url = $(obj).attr('data-url');
@@ -157,7 +302,7 @@ function participate_contest(obj){
 
 $(document).ready(function(){
 	$("#image_submit").on('submit', function(e){
-		e.preventDefault(); 
+		//e.preventDefault(); 
 		var radioTypeVal = $("input[name=imgtype]:checked").val();
 		var imgVal = $("#file-2").val();
 		if( radioTypeVal == undefined){
@@ -167,6 +312,7 @@ $(document).ready(function(){
 			alert("Please select Profile Image/Update Cover image");
 			return false;
 		}else{		
+		$("#loader").addClass('imgloader');
 		
          $.ajax({
              url:'<?php echo base_url()?>user/do_upload',
@@ -178,6 +324,8 @@ $(document).ready(function(){
              async:false,
               success: function(data){
 				  //alert(data)
+				  //$("#loader").removeClass('imgloader');
+				  
 				  if(data){
 					alert("Image uploaded successfully");
 
@@ -187,6 +335,95 @@ $(document).ready(function(){
          });
 		}
 	});
+
+	$('#editnameBtn').on('click',function(){
+		
+		let fname  = $('#fname').val();
+		let lname = $('#lname').val();
+
+		if(fname == ''){
+			alert("Please enter first name!");
+			return false;
+		}else if(lname == ''){
+			alert("Please enter last name!");
+			return false;
+		}else{
+			$.ajax({
+             url:'<?php echo base_url()?>user/editName',
+             type:"post",
+             data: "fn="+fname+"&ln="+lname,
+              success: function(data){
+				  //alert(data)
+				  //$("#loader").removeClass('imgloader');
+				  
+				  if(data){
+					alert("Profile name updated successfully");
+
+				  }
+				location.reload();
+           }
+         });
+		}
+
+	});
+
+	/**update mobile no */
+
+	$('#editMobileBtn').on('click',function(){		
+		let mono  = $('#mono').val();
+		//alert(mono);
+		if(mono == ''){
+			alert("Please enter mobile no!");
+			return false;
+		}else{
+			$.ajax({
+             url:'<?php echo base_url()?>user/editMobileno',
+             type:"post",
+             data: "mono="+mono,
+              success: function(data){
+				  //alert(data)
+				  //$("#loader").removeClass('imgloader');
+				  
+				  if(data){
+					alert("Profile mobile no updated successfully");
+
+				  }
+				location.reload();
+           }
+         });
+		}
+
+	});
+
+
+	/**update about me */
+
+	$('#editAboutmeBtn').on('click',function(){		
+		let aboutme  = $('#aboutme').val();
+		//alert(aboutme);
+		if(aboutme == ''){
+			alert("Please enter about me!");
+			return false;
+		}else{
+			$.ajax({
+             url:'<?php echo base_url()?>user/editAboutme',
+             type:"post",
+             data: "aboutme="+aboutme,
+              success: function(data){
+				  //alert(data)
+				  //$("#loader").removeClass('imgloader');
+				  
+				  if(data){
+					alert("Profile about me updated successfully");
+
+				  }
+				location.reload();
+           }
+         });
+		}
+
+	});
+
 	
 });
 

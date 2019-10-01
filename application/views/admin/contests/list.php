@@ -20,7 +20,7 @@
 													<th>Start Date</th>
 													<th>End Date</th>
 													<th>Created Date</th>
-													<th class="w-5">Status</th>
+													<!-- <th class="w-5">Status</th> -->
 													<th class="w-8">Action</th>
 												</tr>
 											</thead>
@@ -34,11 +34,19 @@
 													<td><?php echo date('d-m-Y', strtotime($row->startDate));?></td>
 													<td><?php echo date('d-m-Y', strtotime($row->endDate));?></td>
 													<td><?php echo $row->createdDate;?></td>
-													<td><span class="badge <?php echo $class;?>"><?php echo $status;?></span></td>
+													<!-- <td><span class="badge <?php echo $class;?>"><?php echo $status;?></span></td> -->
 													<td>
-														<a href="<?php echo base_url('admin/contests/edit/'.$row->id);?>" title="Edit Contest"><span class="fa fa-edit"></span></a>
-														<a href="<?php echo base_url('admin/contests/delete/'.$row->id);?>" title="Remove Contest"><span class="fa fa-remove"></span></a>
-													    <a href="#" id="levelListingId<?php echo $row->id;?>" class="contest-level-list" data-cid="<?php echo $row->id;?>" data-cname="<?php echo $row->contestName;?>" data-toggle="modal" data-target="#levelModal" title="View Content Level List" ><i class="fa fa-list" aria-hidden="true"></i></a>
+														<a href="<?php echo base_url('admin/contests/edit/'.$row->id);?>" title="Edit Contest">
+															<span class="fa fa-edit"></span>
+														</a>
+														<!-- <a href="<?php //echo base_url('admin/contests/delete/'.$row->id);?>" title="Remove Contest">
+															<span class="fa fa-remove"></span>
+														</a> -->
+														<a href="javascript:void(0);" onClick="deleteContest(<?php echo $row->id;?>)" title="Remove Contest">
+															<span class="fa fa-remove"></span>
+														</a>
+													    <a href="#" id="levelListingId<?php echo $row->id;?>" class="contest-level-list" data-cid="<?php echo $row->id;?>" data-cname="<?php echo $row->contestName;?>" data-toggle="modal" data-target="#levelModal" title="View Content Level List" ><i class="fa fa-list" aria-hidden="true"></i>
+														</a>
 														<a href="#" id="viewParticipatIconId<?php echo $row->id;?>" class="view-participant-list" data-cid="<?php echo $row->id;?>" data-cname="<?php echo $row->contestName;?>" data-toggle="modal" data-target="#participantModal" title="View Participant List" ><i class="fa fa-users" aria-hidden="true"></i></a>
 													</td>
 												</tr>
@@ -246,4 +254,33 @@ $('.view-participant-list').on('click', function() {
 		console.log("Something went wrong!", err);
 	});
 });
+
+
+function deleteContest(id){
+	//alert(id);
+	var co = confirm("Are you sure want to delete");
+	if (co == true) {
+		$.ajax({
+             url:'<?php echo base_url()?>admin/contests/delete',
+             type:"post",
+             data: "id="+id,
+              success: function(data){
+				  //alert(data)
+				  //$("#loader").removeClass('imgloader');
+				  
+				  if(data){
+					alert("Dpdated successfully");
+
+				  }
+				location.reload();
+           }
+         });
+	}else{
+		return false;
+	}
+	
+			
+	
+}
+
 </script>

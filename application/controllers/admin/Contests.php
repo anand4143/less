@@ -114,11 +114,13 @@ class Contests extends MY_Controller {
 		}
 	}
 	
-	public function delete($id){
+	public function delete(){
+		$id = $this->input->post('id');
 		$res = $this->contest_m->delete_data($id);
-		$msg = $res ? 'Contest Removed Successfully' : 'Contest Fail to Remove';
-		$this->session->set_flashdata('resp_msg', $msg);
-		redirect('admin/contests');
+		return $res;
+		//$msg = $res ? 'Contest Removed Successfully' : 'Contest Fail to Remove';
+		//$this->session->set_flashdata('resp_msg', $msg);
+		//redirect('admin/contests');
 		
 	}
 	

@@ -36,7 +36,7 @@
 				<table width="100%" class="table table-hover" border="0" cellspacing="0" cellpadding="0">
 				    
 					    <th><strong>User Name</strong></th>
-						<th><strong>Email</strong></th>													
+						<th><strong>Smule Id</strong></th>													
 						<th><strong>Sur</strong></th>													
 						<th><strong>Taal</strong></th>													
 						<th><strong>Emotion Feel</strong></th>													
@@ -62,7 +62,7 @@
                                                 ?>
 												<tr>
 													<td><?php echo $row->fullName;?></td>
-													<td><?php echo $row->email;?></td>
+													<td><?php echo $row->userName;?></td>
                                                     
                                                     <td><?php 
                                                     if(isset($row->averageSur)){

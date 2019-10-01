@@ -45,6 +45,8 @@ class Contests extends MY_Controller {
 	
 	public function contest_details($contest_id) {
 		$user_id = $this->getSessionData('userID');
+		$data['sessionData'] = $this->getSessionData();
+        $data['userProfileImage'] = $this->users->getUserProfileImage($data['sessionData']['userID']);
 		
 		$this->load->model('contest_m');
 		$this->load->model('participant_m');

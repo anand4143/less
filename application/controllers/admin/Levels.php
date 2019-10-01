@@ -123,11 +123,14 @@ class Levels extends MY_Controller {
 		}
 	}
 	
-	public function delete($id){
+	public function delete(){
+		$id = $this->input->post('id');
 		$res = $this->level_m->delete_data($id);
-		$msg = $res ? 'Level Removed Successfully' : 'Level Fail to Remove';
-		$this->session->set_flashdata('resp_msg', $msg);
-		redirect('admin/levels');
+		return $res;
+
+		// $msg = $res ? 'Level Removed Successfully' : 'Level Fail to Remove';
+		// $this->session->set_flashdata('resp_msg', $msg);
+		// redirect('admin/levels');
 	}
 	
 	public function get_contest_levels($contest_id){

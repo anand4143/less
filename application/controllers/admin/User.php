@@ -121,6 +121,13 @@ class User extends MY_Controller {
     //     }
     
     // }
+
+
+    public function delete(){
+        $id = $this->input->post('id');
+        $result = $this->users->deleteUserById($id);
+        return $result;
+    }
 }
 
 ?>

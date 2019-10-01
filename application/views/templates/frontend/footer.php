@@ -1,6 +1,6 @@
 <footer class="page_footer ds gradient_bg section_padding_bottom_75">
 				<div class="container">
-				<h4 class="widget-title text-center toppadding_50"> Our Branches </h4>
+				<!-- <h4 class="widget-title text-center toppadding_50"> Our Branches </h4>
 				<div class="">
 				<div class="row">
 					<div class="col-md-3">
@@ -24,17 +24,18 @@
 						</address>
 					</div>
 				</div>
-				</div>
+				</div> -->
 					
 					<div class="row">
 						<div class="col-md-4 text-center">
 							<div class="widget widget_text">
 								<h4 class="widget-title"> Discover </h4>
 								<ul class="whitelinks list-unstyled">
-									<li> <a href="#0">Gallery</a> </li>
-									<li> <a href="#0">About</a> </li>
-									<li> <a href="#0">Enquiry</a> </li>
-									<li> <a href="#0">Career</a> </li>
+									<li> <a href="<?php echo base_url()?>feedback">Feedback</a> </li>
+									<li> <a href="<?php echo base_url()?>services">Gallery</a> </li>
+									<li> <a href="<?php echo base_url()?>services">About</a> </li>
+									<li> <a href="<?php echo base_url()?>services">Enquiry</a> </li>
+									<li> <a href="<?php echo base_url()?>services">Career</a> </li>
 								</ul>
 							</div>
 						</div>
@@ -48,7 +49,7 @@
 									<a href="#" class="social-icon border-icon socicon-linkedin"></a>
 									
 								</div>
-								<a href="mailto:thecrowd@example.com">info@example.com</a>
+								<a href="mailto:lesssuperstar2019@gmail.com">lesssuperstar2019@gmail.com</a>
 							</div>
 						</div>
 						<div class="col-md-4 text-center">

@@ -58,7 +58,7 @@
 											My account<span class="caret"></span>
 	                					</a> -->
 									<?php //}else{ ?>
-										<!-- <a class="active" href="<?php echo site_url('meraganacontest') ?>">Mera Gana Contest</a>				 -->
+										<!-- <a class="active" href="<?php //echo site_url('meraganacontest') ?>">Mera Gana Contest</a>				 -->
 									<?php 
 										//}
 									?>
@@ -139,20 +139,23 @@
 						<div class="col-sm-12" style="z-index: 9999;">
 							<nav class="mainmenu_wrapper">
 								<ul class="mainmenu nav sf-menu">
-									<li class=""> <a href="#">Services</a>
-										<ul>
-											<li> <a href="#">Audio Production</a> </li>
-											<li> <a href="#">Video Production</a> </li>
-											<li> <a href="#">Photography</a> </li>
-											
-											<li> <a href="#">Animation</a> </li>
-											<li> <a href="#">Launches, Distribution And Market Release</a> </li>
-											<li> <a href="#">Events And Talent Management​</a> </li>
-										</ul>
+									<li class=""> 
+										<a href="#">Services</a>
+											<ul>
+												<li> <a href="<?php echo base_url()?>services">Audio Production</a> </li>
+												<li> <a href="<?php echo base_url()?>services">Video Production</a> </li>
+												<li> <a href="<?php echo base_url()?>services">Photography</a> </li>
+												
+												<li> <a href="<?php echo base_url()?>services">Animation</a> </li>
+												<li> <a href="<?php echo base_url()?>services">Launches, Distribution And Market Release</a> </li>
+												<li> <a href="<?php echo base_url()?>services">Events And Talent Management​</a> </li>
+											</ul>
 									</li>
 									<li class="active">
 										<a  href="<?php echo site_url('meraganacontest') ?>">Mera Gana Contest</a>
 									</li>
+									
+									
 									<!-- <li><a class="active" href="<?php //echo site_url('userranking/contestList') ?>">Ranking</a></li>
 									<li><a class="" href="<?php //echo site_url('votings/index') ?>">Voting</a></li> -->
 									<!-- <li> <a href="#">About</a>

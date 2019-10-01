@@ -43,7 +43,12 @@
 													<td><span class="badge <?php echo $class;?>"><?php echo $status;?></span></td>
 													<td>
 														<a href="<?php echo base_url('admin/levels/edit/'.$row->id);?>" title="Edit Contest"><span class="fa fa-edit"></span></a>
-														<a href="<?php echo base_url('admin/levels/delete/'.$row->id);?>" title="Remove Contest"><span class="fa fa-remove"></span></a>
+														<!-- <a href="<?php echo base_url('admin/levels/delete/'.$row->id);?>" title="Remove Contest">
+															<span class="fa fa-remove"></span>
+														</a> -->
+														<a href="javascript:void(0);" onClick="deleteLevel(<?php echo $row->id;?>)" title="Remove Contest">
+															<span class="fa fa-remove"></span>
+														</a>
 													</td>
 												</tr>
 												<?php endforeach;
@@ -100,4 +105,35 @@ $('.current-level').on('click', function() {
 		console.log("Something went wrong!", err);
 	});
 });
+
+
+
+function deleteLevel(id){
+	//alert(id);
+	var co = confirm("Are you sure want to delete");
+	if (co == true) {
+		$.ajax({
+             url:'<?php echo base_url()?>admin/levels/delete',
+             type:"post",
+             data: "id="+id,
+              success: function(data){
+				  //alert(data)
+				  //$("#loader").removeClass('imgloader');
+				  
+				  if(data){
+					alert("Updated successfully");
+
+				  }
+				location.reload();
+           }
+         });
+	}else{
+		return false;
+	}
+	
+			
+	
+}
+
+
 </script>

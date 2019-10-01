@@ -14,7 +14,14 @@
 					</div>
 				</div>
 			</section>
+<?php 
 
+if(isset($userProfileImage->profileImageName) && $userProfileImage->profileImageName !=''){
+	$pImage = $userProfileImage->profileImageName;
+}else{
+	$pImage = 'profile.png';
+}
+?>
 			<section class="dcommoncontainer">
 				<div class="container">
 				<div class="row">
@@ -23,7 +30,8 @@
 						<div class="padding_30">
 							<div class="row">
 								<div class="col-sm-6">
-								<div class="userproimg"><img src="<?php echo base_url('assets/frontend/images/profile.jpg');?>"/></div>
+								<div class="userproimg">
+								<img src="<?php echo base_url('assets/profileImages/').$pImage;?>"/></div>
 								<div class="userpro">
 									<div><strong>Name :</strong> <?php echo $user->userName;?> </div>									
 									<div><strong>Email :</strong> <?php echo $user->email;?></div>
@@ -45,13 +53,25 @@
 									  <tbody>
 										<tr>
 										  <th><strong>Songs</strong></th>
+										  <th><strong>Uploaded at</strong></th>
 										</tr>
-										 <?php if(isset($my_songs['song_list']) && count($my_songs['song_list'])):  
+										 <?php 
+										 $i = 1;
+										 
+										 if(isset($my_songs['song_list']) && count($my_songs['song_list'])):  
 											foreach($my_songs['song_list'] as $song): ?>
 										<tr>
-										  <td> <a target="_blank" href="<?php echo $song['smuleUrl'];?>"><i class="fa fa-music"></i></a></td>
+										  <td> <a target="_blank" href="<?php echo $song['smuleUrl'];?>"><i class="fa fa-music"></i> Song#<?php echo $i;?></a></td>
+										  <td>
+										  	<?php 
+										  		$d = $song['createdDate'];
+											  	echo date("d-m-Y H:i:s",strtotime($d));
+											?>
+										</td>
 										</tr>
-										<?php endforeach;
+										<?php 
+											$i++;
+											endforeach;
 										  else :
 										  ?>
 											<tr>
@@ -73,13 +93,24 @@
 									  <tbody>
 										<tr>
 										  <th><strong>Songs</strong></th>
+										  <th><strong>Uploaded at</strong></th>
 										</tr>
-										 <?php if(isset($row['song_list']) && count($row['song_list'])):  
+										 <?php 
+										 $j = 1;
+										 if(isset($row['song_list']) && count($row['song_list'])):  
    											 foreach($row['song_list'] as $song): ?>
 										<tr>
-										  <td> <a target="_blank" href="<?php echo $song['smuleUrl'];?>"><i class="fa fa-music"></i></a></td>
+										  <td> <a target="_blank" href="<?php echo $song['smuleUrl'];?>"><i class="fa fa-music"></i> Song#<?php echo $j;?></a></td>
+										  <td>
+										  	<?php 
+										  		$d = $song['createdDate'];
+											  	echo date("d-m-Y H:i:s",strtotime($d));
+											?>
+										</td>
 										</tr>
-										<?php endforeach;
+										<?php 
+										$j++;
+										endforeach;
 										  else :
 										  ?>
 											<tr>
@@ -92,7 +123,9 @@
 								
 								</div>
 							</div>
-							<?php endforeach;
+							<?php
+							 
+								endforeach;
 							endif;?>
 						</div>
 					</div>
@@ -179,7 +212,7 @@ $(document).ready(function() {
 			dataType: "json",
 			beforeSend : function() {
 					//$("#preview").fadeOut();
-				   // $("#filesLoader").fadeOut();
+				    //$("#filesLoader").fadeOut();
 			},
 			success: function(response) {
 				$("#resp_msg").html(response.resp_msg);

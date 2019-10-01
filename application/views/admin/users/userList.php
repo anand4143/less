@@ -44,8 +44,16 @@
                                                     <span class="badge badge-danger">inactive</span>
                                                   <?php } ?>
                                                     <td>
-														<a href="<?php echo base_url('admin/user/edit/'.$user->id);?>" title="Edit Contest"><span class="fa fa-edit"></span></a>
-														<a href="<?php echo base_url('admin/user/delete/'.$user->id);?>" title="Remove Contest"><span class="fa fa-remove"></span></a>
+														<a href="<?php echo base_url('admin/user/edit/'.$user->id);?>" title="Edit Contest">
+															<span class="fa fa-edit"></span>
+														</a>
+														<!-- <a href="<?php echo base_url('admin/user/delete/'.$user->id);?>" title="Remove Contest">
+															<span class="fa fa-remove"></span>
+														</a> -->
+
+														<a href="#" onClick="deleteUser(<?php echo $user->id;?>)" title="Remove Contest">
+															<span class="fa fa-remove"></span>
+														</a>
 													</td>
 												</tr>
 											<?php }
@@ -67,3 +75,33 @@
 
 
 <?php  $this->view('templates/admin/footer.php'); ?>
+
+
+<script>
+function deleteUser(id){
+	//alert(id);
+	var co = confirm("Are you sure want to delete");
+	if (co == true) {
+		$.ajax({
+             url:'<?php echo base_url()?>admin/user/delete',
+             type:"post",
+             data: "id="+id,
+              success: function(data){
+				  //alert(data)
+				  //$("#loader").removeClass('imgloader');
+				  
+				  if(data){
+					alert("Dpdated successfully");
+
+				  }
+				location.reload();
+           }
+         });
+	}else{
+		return false;
+	}
+	
+			
+	
+}
+</script>

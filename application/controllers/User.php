@@ -58,7 +58,7 @@ class User extends MY_Controller {
     }
 
     public function register(){
-		//echo "<pre>";print_r($this->input->post());
+		//echo "<pre>";print_r($this->input->post());die;
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('firstName', 'First Name', 'required|trim');
 		$this->form_validation->set_rules('lastName', 'Last Name', 'required|trim');
@@ -78,6 +78,7 @@ class User extends MY_Controller {
  
 		if($this->form_validation->run()) {
 			$data = array(
+				'userName' => $this->input->post('smuleId'),
 				'firstName' => $this->input->post('firstName'),
 				'lastName' => $this->input->post('lastName'),
 				'email' => $this->input->post('email'),
@@ -293,6 +294,37 @@ class User extends MY_Controller {
 			//echo "done";
 	
 		}
+	}
+
+	public function editName(){
+		 $this->input->post('fn');
+		 $this->input->post('ln');
+		$data['sessionData'] 	= $this->getSessionData();
+		 $userid 			= $data['sessionData']['userID'];
+		$data = array(
+			'firstName' => $this->input->post('fn'),
+			'lastName' => $this->input->post('fn')
+		);
+		echo $this->users->editName($data,$userid);
+		
+	}
+	public function editMobileno(){
+		$data['sessionData'] 	= $this->getSessionData();
+		 $userid 			= $data['sessionData']['userID'];
+		$data = array(
+			'mobileno' => $this->input->post('mono')
+		);
+		echo $this->users->editMobileno($data,$userid);
+		
+	}
+	public function editAboutme(){
+		$data['sessionData'] 	= $this->getSessionData();
+		 $userid 			= $data['sessionData']['userID'];
+		$data = array(
+			'aboutUser' => $this->input->post('aboutme')
+		);
+		echo $this->users->editMobileno($data,$userid);
+		
 	}
 
 

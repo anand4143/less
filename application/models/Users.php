@@ -162,6 +162,22 @@ class Users extends CI_Model{
         }			
        
     }
+
+    public function editName($data,$userid){
+        $this->db->where('id', $userid);
+        return $this->db->update('users', $data);
+
+    }
+    public function editMobileno($data,$userid){
+        $this->db->where('id', $userid);
+        return $this->db->update('users', $data);
+
+    }
+    public function editAboutme($data,$userid){
+        $this->db->where('id', $userid);
+        return $this->db->update('users', $data);
+
+    }
 }
 
 
