@@ -1,4 +1,5 @@
-<footer class="page_footer ds gradient_bg section_padding_bottom_75">
+
+			<footer class="page_footer ds gradient_bg section_padding_bottom_75">
 				<div class="container">
 				<!-- <h4 class="widget-title text-center toppadding_50"> Our Branches </h4>
 				<div class="">

@@ -2,6 +2,7 @@
 <html class="no-js">
 <head>
 	<title>Lesssuperstars</title>
+	<link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>assets/frontend/images/FAVICON.png"/>
 	<meta charset="utf-8">
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +16,7 @@
     <script src="<?php echo base_url();?>assets/js/frontend/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
+<div class="feedbackcon gradient_bg"><a href="<?php echo base_url()?>feedback"><i class="fa fa-comments-o"></i></a></div>
 	<div class="preloader">
 		<div class="preloader_image"></div>
 	</div>
@@ -24,7 +26,7 @@
 		<!-- template sections -->
 		<section class="page_toplogo with_bottom_overlap_logo ls with_top_color_border columns_padding_0">
 				<div class="container">
-					<div class="row flex-wrap v-center" style="padding-top: 10px;">
+					<div class="row flex-wrap v-center paddtb">
 						<div class="col-sm-2 col-sm-push-5 text-left text-sm-center">
 							<div class="bottom_overlap_logo"> 
 								<a href="<?php if($this->session->userdata('logged_in')){ echo base_url('user/landing');}else{echo base_url();}?>" class="logo">
@@ -93,8 +95,8 @@
 						<?php 
 							if($this->session->userdata('logged_in') == TRUE){
 						?>
-						<div class="col-sm-5 text-left text-sm-right">
-							<div class="divided-content small-text greylinks color2">
+						<div class="col-sm-5 text-left text-sm-right width60">
+							<div class="divided-content small-text greylinks color2 marri20">
 								<div>
 									<div class="dropdown"> 
 										<a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -111,8 +113,8 @@
 						<?php
 							}else{					
 						?>
-						<div class="col-sm-5 text-left text-sm-right">
-							<div class="divided-content small-text greylinks color2">
+						<div class="col-sm-5 text-left text-sm-right width60">
+							<div class="divided-content small-text greylinks color2 marri20">
 								<div>
 									<div class="dropdown"> 
 										<a href="#0" id="account-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -139,23 +141,20 @@
 						<div class="col-sm-12" style="z-index: 9999;">
 							<nav class="mainmenu_wrapper">
 								<ul class="mainmenu nav sf-menu">
-									<li class=""> 
-										<a href="#">Services</a>
-											<ul>
-												<li> <a href="<?php echo base_url()?>services">Audio Production</a> </li>
-												<li> <a href="<?php echo base_url()?>services">Video Production</a> </li>
-												<li> <a href="<?php echo base_url()?>services">Photography</a> </li>
-												
-												<li> <a href="<?php echo base_url()?>services">Animation</a> </li>
-												<li> <a href="<?php echo base_url()?>services">Launches, Distribution And Market Release</a> </li>
-												<li> <a href="<?php echo base_url()?>services">Events And Talent Management​</a> </li>
-											</ul>
+									<li class=""> <a href="#">Services</a>
+										<ul>
+											<li> <a href="<?php echo base_url()?>services">Audio Production</a> </li>
+											<li> <a href="<?php echo base_url()?>services">Video Production</a> </li>
+											<li> <a href="<?php echo base_url()?>services">Photography</a> </li>
+											
+											<li> <a href="<?php echo base_url()?>services">Animation</a> </li>
+											<li> <a href="<?php echo base_url()?>services">Launches, Distribution And Market Release</a> </li>
+											<li> <a href="<?php echo base_url()?>services">Events And Talent Management​</a> </li>
+										</ul>
 									</li>
 									<li class="active">
 										<a  href="<?php echo site_url('meraganacontest') ?>">Mera Gana Contest</a>
 									</li>
-									
-									
 									<!-- <li><a class="active" href="<?php //echo site_url('userranking/contestList') ?>">Ranking</a></li>
 									<li><a class="" href="<?php //echo site_url('votings/index') ?>">Voting</a></li> -->
 									<!-- <li> <a href="#">About</a>
